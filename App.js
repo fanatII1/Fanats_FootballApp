@@ -46,12 +46,12 @@ const App = () => {
 
         <View style={styles.authBtns}>
           <Shadow startColor={COLORS.secondary}  distance={4} offset={[0,0]}>
-            <TouchableOpacity activeOpacity={0.5} style={styles.logInBtn}>
+            <TouchableOpacity activeOpacity={0} style={styles.logInBtn}>
               <Text style={styles.formBtnText}>Google</Text>
             </TouchableOpacity>
           </Shadow>
           <Shadow startColor={COLORS.secondary}  distance={4} offset={[0,0]}>
-            <TouchableOpacity activeOpacity={0.5} style={styles.signInBtn}>
+            <TouchableOpacity activeOpacity={0} style={styles.signInBtn}>
               <Text style={styles.formBtnText}>Facebook</Text>
             </TouchableOpacity>
           </Shadow>
@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
   welcomeText:{
     color: '#fff', 
     textAlign: 'center', 
-    fontSize: 33,
+    fontSize: SIZES.h1,
     fontWeight: 'bold'
   },
   subText: {
     color: '#fff', 
     textAlign: 'center', 
-    fontSize: 12,
+    fontSize: 11,
     fontStyle: 'italic'
   },
   emailContainer: {
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   },
   passwordForms:{
     color: COLORS.text,
+    fontSize: 15, 
     borderColor: '#7c7b7bd2', 
     borderWidth: 2, 
     borderRadius: 30, 
