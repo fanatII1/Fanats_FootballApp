@@ -1,8 +1,10 @@
+import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput } from 'react-native';
+import { MaterialCommunityIcons} from '@expo/vector-icons';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from './constants/index';
 import { Dimensions } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
-import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 
 const { height } = Dimensions.get('window');
@@ -39,7 +41,7 @@ const App = () => {
           <TextInput onChangeText={(text)=> console.log(text)} style={styles.passwordForms} placeholder='Email..' placeholderTextColor='#7c7b7bd2'/>
           <TextInput onChangeText={(text)=> console.log(text)} style={styles.passwordForms} placeholder='Password...' placeholderTextColor='#7c7b7bd2'/>
           <TouchableOpacity style={styles.emailBtn}>
-            <Text style={styles.formBtnText}>Continue</Text>
+            <Text style={styles.emailBtnText}>Continue</Text>
           </TouchableOpacity>
         </View>
 
@@ -47,12 +49,14 @@ const App = () => {
         <View style={styles.authBtns}>
           <Shadow startColor={COLORS.secondary}  distance={4} offset={[0,0]}>
             <TouchableOpacity activeOpacity={0} style={styles.logInBtn}>
-              <Text style={styles.formBtnText}>Google</Text>
+              <AntDesign name="google" size={24} color="black" />
+              <Text style={styles.authBtnText}>Google</Text>
             </TouchableOpacity>
           </Shadow>
           <Shadow startColor={COLORS.secondary}  distance={4} offset={[0,0]}>
             <TouchableOpacity activeOpacity={0} style={styles.signInBtn}>
-              <Text style={styles.formBtnText}>Facebook</Text>
+              <Entypo name="facebook-with-circle" size={24} color="black" />
+              <Text style={styles.authBtnText}>Facebook</Text>
             </TouchableOpacity>
           </Shadow>
         </View>
@@ -111,11 +115,18 @@ const styles = StyleSheet.create({
     width: '75%', 
     borderRadius: 30
   },
-  formBtnText:{
+  emailBtnText:{
     color: COLORS.text,
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: 17,
+  },
+  authBtnText:{
+    color: COLORS.text,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 17,
+    marginLeft: 10
   },
   authBtns:{
     flexDirection: 'row',
@@ -123,6 +134,7 @@ const styles = StyleSheet.create({
     padding: '5%'
   },
   logInBtn:{
+    flexDirection: 'row',
     backgroundColor: COLORS.secondary,
     height: 50,
     width: 160,
@@ -131,6 +143,7 @@ const styles = StyleSheet.create({
     borderRadius: 30
   },
   signInBtn:{
+    flexDirection: 'row',
     backgroundColor: COLORS.secondary,
     height: 50,
     width: 160,
