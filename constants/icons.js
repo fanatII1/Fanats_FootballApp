@@ -13,7 +13,7 @@ export const bookmark_icon = require("../assets/icons/bookmark_icon.png");
 export const read_icon = require("../assets/icons/read_icon.png");
 export const back_arrow_icon = require("../assets/icons/back_arrow_icon.png");
 export const more_icon = require("../assets/icons/more_icon.png");
-export const login_wallpaper = require("../assets/images/Login_Wallpaper_2.png");
+export const login_wallpaper = require("../assets/images/Login_WallPaper.jpg");
 
 //export as object(in 1 value)
 export default {

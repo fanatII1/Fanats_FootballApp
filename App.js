@@ -1,8 +1,9 @@
-import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput } from 'react-native';
 import { icons,  theme, COLORS, SIZES, FONTS} from './constants/index';
 import { Dimensions } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import React from 'react'
+import { LinearGradient } from 'expo-linear-gradient';
 
 const { height } = Dimensions.get('window');
 
@@ -13,25 +14,45 @@ const App = () => {
     <SafeAreaView style={styles.AppContainer}>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent={true}/>
       <View style={styles.LoginHeader}>
-         <ImageBackground source={icons.login_wallpaper} resizeMode='cover' style={styles.wallpaperImg}></ImageBackground>
+         <ImageBackground source={icons.login_wallpaper} resizeMode='cover' style={styles.wallpaperImg}>
+         <LinearGradient
+           colors={['transparent', COLORS.primary]}
+           start={{x: 0.5, y: 0}}
+           end={{x: 0.5, y: 1}}
+           style={{flex: 1}}
+         />
+         </ImageBackground>
       </View>
-      <View style={{alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{color: '#fff', textAlign: 'center', fontSize: SIZES.h1, fontWeight: 'bold'}}>Welcome</Text>
-      <Text style={{color: '#fff', textAlign: 'center', fontSize: SIZES.h3, fontStyle: 'italic'}}>Homeground to the beautiful game's analysis</Text>
-      <View style={{width: "90%", height: 2, backgroundColor: COLORS.secondaryOrange, borderRadius: 2, marginTop: 10}}></View>
-      </View>
-      <View style={styles.LoginAuthentication}>
-        <Shadow startColor='#000'  distance={5} offset={[0,0]}>
-          <TouchableOpacity activeOpacity={0.5} style={styles.Login}>
-            <Text style={{color: "#fff", fontWeight: 'bold', fontSize: 20}}>Login</Text>
+
+      {/* Login Details*/}
+      <View style={styles.LoginDetails}>
+        <Text style={styles.welcomeText}>
+          Welcome!
+        </Text>
+
+        <View style={styles.emailContainer}>
+          <TextInput onChangeText={(text)=> console.log(text)} style={styles.passwordForms} placeholder='Email..' placeholderTextColor="#7c7b7bd2"/>
+          <TextInput onChangeText={(text)=> console.log(text)} style={styles.passwordForms} placeholder='Password...' placeholderTextColor="#7c7b7bd2"/>
+          <TouchableOpacity style={styles.emailBtn}>
+            <Text style={styles.formBtnText}>Continue</Text>
           </TouchableOpacity>
-        </Shadow>
-        <Shadow>
-          <TouchableOpacity activeOpacity={0.5} style={styles.SignIn}>
-            <Text style={{color: "#fff", fontWeight: 'bold', fontSize: 20}}>Email</Text>
-          </TouchableOpacity>
-        </Shadow>
+        </View>
+
+
+        <View style={styles.authBtns}>
+          <Shadow startColor='#1773ea87'  distance={10} offset={[0,0]}>
+            <TouchableOpacity activeOpacity={0.5} style={styles.logInBtn}>
+              <Text style={styles.formBtnText}>Google</Text>
+            </TouchableOpacity>
+          </Shadow>
+          <Shadow startColor='#ab1770ad'  distance={10} offset={[0,0]}>
+            <TouchableOpacity activeOpacity={0.5} style={styles.signInBtn}>
+              <Text style={styles.formBtnText}>Facebook</Text>
+            </TouchableOpacity>
+          </Shadow>
+        </View>
       </View>
+
     </SafeAreaView>
   )
 }
@@ -41,37 +62,66 @@ export default App
 const styles = StyleSheet.create({
   AppContainer: {
     flex: 1,
-    backgroundColor: COLORS.mainColor,
+    backgroundColor: COLORS.primary,
   },
   LoginHeader:{
-    height: height > 700 ? "65%" : "63%"
+    height: height > 700 ? "55%" : "53%",
   },
   wallpaperImg:{
     flex: 1,
-    marginTop: 50
   },
-  LoginAuthentication:{
-    height: height > 700 ? "30%" : "33%",
+  LoginDetails:{
+    height: height > 700 ? "45%" : "33%",
+    justifyContent: 'space-between',
+  },
+  welcomeText:{
+    color: '#fff', 
+    textAlign: 'center', 
+    fontSize: SIZES.h1,
+    fontWeight: 'bold'
+  },
+  emailContainer: {
+    alignItems: 'center', 
+    justifyContent: 'space-between'
+  },
+  passwordForms:{
+    color: COLORS.text,
+    borderColor: '#7c7b7bd2', 
+    borderWidth: 2, 
+    borderRadius: 30, 
+    width: "75%", 
+    padding: 10,
+    marginVertical: "2%"
+  },
+  emailBtn: {
+    backgroundColor: COLORS.secondary, 
+    padding: 20, 
+    width: "75%", 
+    borderRadius: 30
+  },
+  formBtnText:{
+    color: COLORS.text,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18
+  },
+  authBtns:{
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
+    justifyContent: 'space-between',
+    padding: "5%"
   },
-  Login:{
-    backgroundColor: '',
-    height: 50,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: COLORS.secondaryOrange,
-    width: 160,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  SignIn:{
-    backgroundColor: COLORS.secondaryOrange,
-    borderRadius: 7,
+  logInBtn:{
+    backgroundColor: '#1773ea',
     height: 50,
     width: 160,
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
+  signInBtn:{
+    backgroundColor: '#ab1770',
+    height: 50,
+    width: 160,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 })
