@@ -74,13 +74,14 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
   },
   LoginHeader:{
-    height: height > 700 ? '55%' : '53%',
+    // height: height > 700 ? '55%' : '53%',
+    flex: 0.5
   },
   wallpaperImg:{
     flex: 1,
   },
   LoginDetails:{
-    height: height > 700 ? '45%' : '33%',
+    flex: 0.5,
     justifyContent: 'space-between',
   },
   welcomeText:{
