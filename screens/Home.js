@@ -7,6 +7,7 @@ import { Dimensions } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { FlatList } from 'react-native-gesture-handler';
 
 const Home = () => {
   return (
@@ -25,7 +26,21 @@ const Home = () => {
         </View>
       </View>
 
-      
+      {/* TEAMS */}
+      <View>
+        <FlatList
+          data={teams}
+          horizontal
+          renderItem={(item, index)=>{
+            return (
+              <View>
+                <Image source={require('../assets/images/Logo.png')} resizeMode='contain' style={styles.logo}/>
+              </View>
+            )
+          }}
+          keyExtractor={(item , index)=> index }
+        />
+      </View>
     </SafeAreaView>
   )
 }
@@ -35,7 +50,7 @@ export default Home
 const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
-    backgroundColor: COLORS.text
+    backgroundColor: '#f2f2f2'
   },
   headerWrapper:{
     height: "10%",
