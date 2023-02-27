@@ -5,11 +5,16 @@ import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
 import { Dimensions } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 const { height } = Dimensions.get('window');
 
 const Login = () => {
-  console.log(height)
+  const navigation = useNavigation();
+  
+  function Homepage(){
+    navigation.navigate('Home')
+  }
 
   return (
     <SafeAreaView style={styles.AppContainer}>
@@ -47,7 +52,7 @@ const Login = () => {
 
         <View style={styles.authBtns}>
           <Shadow startColor={COLORS.secondary}  distance={4} offset={[0,0]}>
-            <TouchableOpacity activeOpacity={0} style={styles.logInBtn}>
+            <TouchableOpacity activeOpacity={0} style={styles.logInBtn} onPress={Homepage}>
               <AntDesign name="google" size={24} color="black" />
               <Text style={styles.authBtnText}>Google</Text>
             </TouchableOpacity>

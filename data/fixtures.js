@@ -191,7 +191,7 @@ function returnMatchOfTheDay(){
     let chooseMatchOfTheDay = Math.floor(Math.random() * fixtures.length);
     let matches = fixtures;
     let matchOfTheDay = matches[chooseMatchOfTheDay].status.matchOfTheDay = true;
-    return matchOfTheDay.find(match => match.status.matchOfTheDay);
+    return matches[chooseMatchOfTheDay]
 }
 
 const matchOfTheDay = returnMatchOfTheDay();
