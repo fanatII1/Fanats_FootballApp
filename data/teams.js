@@ -1,4 +1,4 @@
-import teamIcons from '../constants/icons'
+import { icons } from '../constants/index';
 export const teams = [
     {
       "team": {
@@ -8,7 +8,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1878,
         "national": false,
-        "logo": teamIcons.amazulu_badge
+        "logo": icons.amazulu_badge
       },
       "venue": {
         "id": 556,
@@ -28,7 +28,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1892,
         "national": false,
-        "logo": teamIcons.arrows_badge
+        "logo": icons.arrows_badge
       },
       "venue": {
         "id": 562,
@@ -48,7 +48,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1899,
         "national": false,
-        "logo": teamIcons.cape_town_city_badge
+        "logo": icons.cape_town_city_badge
       },
       "venue": {
         "id": 504,
@@ -68,7 +68,7 @@ export const teams = [
         "country": "England",
         "founded": 1881,
         "national": false,
-        "logo": teamIcons.chiefs_badge
+        "logo": icons.chiefs_badge
       },
       "venue": {
         "id": 596,
@@ -88,7 +88,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1877,
         "national": false,
-        "logo": teamIcons.chippa_badge
+        "logo": icons.chippa_badge
       },
       "venue": {
         "id": 600,
@@ -108,7 +108,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1892,
         "national": false,
-        "logo": teamIcons.gallants_badge
+        "logo": icons.gallants_badge
       },
       "venue": {
         "id": 550,
@@ -128,7 +128,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1885,
         "national": false,
-        "logo": teamIcons.martizburg_badge
+        "logo": icons.martizburg_badge
       },
       "venue": {
         "id": 585,
@@ -148,7 +148,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1886,
         "national": false,
-        "logo": teamIcons.pirates_badge
+        "logo": icons.pirates_badge
       },
       "venue": {
         "id": 494,
@@ -168,7 +168,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1882,
         "national": false,
-        "logo": teamIcons.richards_bay_badge
+        "logo": icons.richards_bay_badge
       },
       "venue": {
         "id": 512,
@@ -188,7 +188,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1878,
         "national": false,
-        "logo": teamIcons.royal_am_badge
+        "logo": icons.royal_am_badge
       },
       "venue": {
         "id": 8560,
@@ -208,7 +208,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1884,
         "national": false,
-        "logo": teamIcons.sekhukhune_badge
+        "logo": icons.sekhukhune_badge
       },
       "venue": {
         "id": 547,
@@ -228,7 +228,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1882,
         "national": false,
-        "logo": teamIcons.stellenbosch_badge
+        "logo": icons.stellenbosch_badge
       },
       "venue": {
         "id": 593,
@@ -248,7 +248,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1895,
         "national": false,
-        "logo": teamIcons.sundowns_badge
+        "logo": icons.sundowns_badge
       },
       "venue": {
         "id": 598,
@@ -268,7 +268,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1905,
         "national": false,
-        "logo": teamIcons.supersport_badge
+        "logo": icons.supersport_badge
       },
       "venue": {
         "id": 519,
@@ -288,7 +288,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1880,
         "national": false,
-        "logo": teamIcons.swallows_badge
+        "logo": icons.swallows_badge
       },
       "venue": {
         "id": 555,
@@ -308,7 +308,7 @@ export const teams = [
         "country": "South Africa",
         "founded": 1901,
         "national": false,
-        "logo": teamIcons.ts_galaxy_badge
+        "logo": icons.ts_galaxy_badge
       },
       "venue": {
         "id": 508,

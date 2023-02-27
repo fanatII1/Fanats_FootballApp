@@ -10,7 +10,7 @@ import {teams, fixtures, matchOfTheDay} from './data/footballData'
 const Stack = createStackNavigator();
 
 const App = () => {
-  console.log(matchOfTheDay)
+  // console.log(matchOfTheDay)
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>

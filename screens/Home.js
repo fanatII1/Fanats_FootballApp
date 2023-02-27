@@ -15,14 +15,14 @@ const Home = () => {
       {/*HEADER*/}
       <View style={styles.headerWrapper}>
         <View>
-          <EvilIcons name="navicon" size={26} color="black" />
+          <EvilIcons name="navicon" size={26} color={COLORS.text} />
         </View>
         <View style={styles.logoWrapper}>
           <Image source={require('../assets/images/Logo.png')} resizeMode='contain' style={styles.logo}/>
           <Text style={styles.appHeaderText}>Fanat Scouts</Text>
         </View>
         <View>
-          <AntDesign name="search1" size={22} color={'black'} />
+          <AntDesign name="search1" size={22} color={COLORS.text} />
         </View>
       </View>
 
@@ -31,11 +31,20 @@ const Home = () => {
         <FlatList
           data={teams}
           horizontal
-          renderItem={(item, index)=>{
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item, index})=>{
+            console.log(item.team.logo)
             return (
-              <View>
-                <Image source={require('../assets/images/Logo.png')} resizeMode='contain' style={styles.logo}/>
-              </View>
+                <TouchableOpacity style={styles.teamWrapper}>
+                  <LinearGradient 
+                    colors={[COLORS.secondary, "#000"]}
+                    start={{x: 0, y: 1}}
+                    end={{x: 0.8, y: 0}}
+                    style={{flex: 1, borderRadius: 40, justifyContent: 'center'}}
+                  >
+                    <Image source={item.team.logo} resizeMode='contain' style={styles.logo}/>
+                  </LinearGradient>
+                </TouchableOpacity>
             )
           }}
           keyExtractor={(item , index)=> index }
@@ -50,7 +59,8 @@ export default Home
 const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
-    backgroundColor: '#f2f2f2'
+    backgroundColor: COLORS.primary, 
+    paddingVertical: 20
   },
   headerWrapper:{
     height: "10%",
@@ -71,7 +81,15 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   appHeaderText:{
-    color: "#000",
+    color: COLORS.text,
     fontSize: 16
+  }, 
+  teamWrapper: {
+    backgroundColor: "#fff", 
+    marginHorizontal: 10, 
+    height: 60, 
+    width: 40, 
+    borderRadius: 40, 
+    justifyContent: 'center'
   }
 })
