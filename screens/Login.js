@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput } from 'react-native';
-import { MaterialCommunityIcons} from '@expo/vector-icons';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
 import { Dimensions } from 'react-native';

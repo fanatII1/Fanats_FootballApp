@@ -27,7 +27,6 @@ var fixtures = [
         },
         status: {
             live: game1,
-            matchOfTheDay: matchDayStatus
         }
 
     },
