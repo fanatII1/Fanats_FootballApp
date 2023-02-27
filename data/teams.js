@@ -1,13 +1,14 @@
+import teamIcons from '../constants/icons'
 export const teams = [
     {
       "team": {
         "id": 33,
-        "name": "Manchester United",
-        "code": "MUN",
-        "country": "England",
+        "name": "Amazulu F.C",
+        "code": "AMA",
+        "country": "South Africa",
         "founded": 1878,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/33.png"
+        "logo": teamIcons.amazulu_badge
       },
       "venue": {
         "id": 556,
@@ -22,12 +23,12 @@ export const teams = [
     {
       "team": {
         "id": 34,
-        "name": "Newcastle",
-        "code": "NEW",
-        "country": "England",
+        "name": "Golden Arrows",
+        "code": "GA",
+        "country": "South Africa",
         "founded": 1892,
         "national": false,
-        "logo": "https://media.api-sports.io/football/teams/34.png"
+        "logo": teamIcons.arrows_badge
       },
       "venue": {
         "id": 562,
@@ -42,12 +43,12 @@ export const teams = [
     {
       "team": {
         "id": 35,
-        "name": "Bournemouth",
-        "code": "BOU",
-        "country": "England",
+        "name": "Cape Town City",
+        "code": "CTC",
+        "country": "South Africa",
         "founded": 1899,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/35.png"
+        "logo": teamIcons.cape_town_city_badge
       },
       "venue": {
         "id": 504,
@@ -62,12 +63,12 @@ export const teams = [
     {
       "team": {
         "id": 38,
-        "name": "Watford",
-        "code": "WAT",
+        "name": "Kaizer Chiefs",
+        "code": "KC",
         "country": "England",
         "founded": 1881,
         "national": false,
-        "logo": "https://media.api-sports.io/football/teams/38.png"
+        "logo": teamIcons.chiefs_badge
       },
       "venue": {
         "id": 596,
@@ -82,12 +83,12 @@ export const teams = [
     {
       "team": {
         "id": 39,
-        "name": "Wolves",
-        "code": "WOL",
-        "country": "England",
+        "name": "Chippa United",
+        "code": "CHI",
+        "country": "South Africa",
         "founded": 1877,
         "national": false,
-        "logo": "https://media.api-sports.io/football/teams/39.png"
+        "logo": teamIcons.chippa_badge
       },
       "venue": {
         "id": 600,
@@ -102,12 +103,12 @@ export const teams = [
     {
       "team": {
         "id": 40,
-        "name": "Liverpool",
-        "code": "LIV",
-        "country": "England",
+        "name": "Marumo Gallants",
+        "code": "GAL",
+        "country": "South Africa",
         "founded": 1892,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/40.png"
+        "logo": teamIcons.gallants_badge
       },
       "venue": {
         "id": 550,
@@ -122,12 +123,12 @@ export const teams = [
     {
       "team": {
         "id": 41,
-        "name": "Southampton",
-        "code": "SOU",
-        "country": "England",
+        "name": "Maritzburg United",
+        "code": "MAR",
+        "country": "South Africa",
         "founded": 1885,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/41.png"
+        "logo": teamIcons.martizburg_badge
       },
       "venue": {
         "id": 585,
@@ -142,12 +143,12 @@ export const teams = [
     {
       "team": {
         "id": 42,
-        "name": "Arsenal",
-        "code": "ARS",
-        "country": "England",
+        "name": "Orlando Pirates",
+        "code": "PIR",
+        "country": "South Africa",
         "founded": 1886,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/42.png"
+        "logo": teamIcons.pirates_badge
       },
       "venue": {
         "id": 494,
@@ -162,12 +163,12 @@ export const teams = [
     {
       "team": {
         "id": 44,
-        "name": "Burnley",
-        "code": "BUR",
-        "country": "England",
+        "name": "Richards Bay F.C",
+        "code": "RIC",
+        "country": "South Africa",
         "founded": 1882,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/44.png"
+        "logo": teamIcons.richards_bay_badge
       },
       "venue": {
         "id": 512,
@@ -182,12 +183,12 @@ export const teams = [
     {
       "team": {
         "id": 45,
-        "name": "Everton",
-        "code": "EVE",
-        "country": "England",
+        "name": "Royal AM",
+        "code": "ROY",
+        "country": "South Africa",
         "founded": 1878,
         "national": false,
-        "logo": "https://media.api-sports.io/football/teams/45.png"
+        "logo": teamIcons.royal_am_badge
       },
       "venue": {
         "id": 8560,
@@ -202,12 +203,12 @@ export const teams = [
     {
       "team": {
         "id": 46,
-        "name": "Leicester",
-        "code": "LEI",
-        "country": "England",
+        "name": "Sekhukhune United",
+        "code": "SEK",
+        "country": "South Africa",
         "founded": 1884,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/46.png"
+        "logo": teamIcons.sekhukhune_badge
       },
       "venue": {
         "id": 547,
@@ -222,12 +223,12 @@ export const teams = [
     {
       "team": {
         "id": 47,
-        "name": "Tottenham",
-        "code": "TOT",
-        "country": "England",
+        "name": "Stellenbosch F.C",
+        "code": "STE",
+        "country": "South Africa",
         "founded": 1882,
         "national": false,
-        "logo": "https://media.api-sports.io/football/teams/47.png"
+        "logo": teamIcons.stellenbosch_badge
       },
       "venue": {
         "id": 593,
@@ -242,12 +243,12 @@ export const teams = [
     {
       "team": {
         "id": 48,
-        "name": "West Ham",
-        "code": "WES",
-        "country": "England",
+        "name": "Mamelodi Sundowns",
+        "code": "SUN",
+        "country": "South Africa",
         "founded": 1895,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/48.png"
+        "logo": teamIcons.sundowns_badge
       },
       "venue": {
         "id": 598,
@@ -262,12 +263,12 @@ export const teams = [
     {
       "team": {
         "id": 49,
-        "name": "Chelsea",
-        "code": "CHE",
-        "country": "England",
+        "name": "Supersport United",
+        "code": "SSU",
+        "country": "South Africa",
         "founded": 1905,
         "national": false,
-        "logo": "https://media.api-sports.io/football/teams/49.png"
+        "logo": teamIcons.supersport_badge
       },
       "venue": {
         "id": 519,
@@ -282,12 +283,12 @@ export const teams = [
     {
       "team": {
         "id": 50,
-        "name": "Manchester City",
-        "code": "MAC",
-        "country": "England",
+        "name": "Swallows F.C",
+        "code": "SWA",
+        "country": "South Africa",
         "founded": 1880,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/50.png"
+        "logo": teamIcons.swallows_badge
       },
       "venue": {
         "id": 555,
@@ -302,12 +303,12 @@ export const teams = [
     {
       "team": {
         "id": 51,
-        "name": "Brighton",
-        "code": "BRI",
-        "country": "England",
+        "name": "T.S Galaxy",
+        "code": "TSG",
+        "country": "South Africa",
         "founded": 1901,
         "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/51.png"
+        "logo": teamIcons.ts_galaxy_badge
       },
       "venue": {
         "id": 508,
@@ -319,86 +320,6 @@ export const teams = [
         "image": "https://media.api-sports.io/football/venues/508.png"
       }
     },
-    {
-      "team": {
-        "id": 52,
-        "name": "Crystal Palace",
-        "code": "CRY",
-        "country": "England",
-        "founded": 1905,
-        "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/52.png"
-      },
-      "venue": {
-        "id": 525,
-        "name": "Selhurst Park",
-        "address": "Holmesdale Road",
-        "city": "London",
-        "capacity": 26309,
-        "surface": "grass",
-        "image": "https://media-3.api-sports.io/football/venues/525.png"
-      }
-    },
-    {
-      "team": {
-        "id": 62,
-        "name": "Sheffield Utd",
-        "code": "SHE",
-        "country": "England",
-        "founded": 1889,
-        "national": false,
-        "logo": "https://media.api-sports.io/football/teams/62.png"
-      },
-      "venue": {
-        "id": 581,
-        "name": "Bramall Lane",
-        "address": "Bramall Lane",
-        "city": "Sheffield",
-        "capacity": 32702,
-        "surface": "grass",
-        "image": "https://media-3.api-sports.io/football/venues/581.png"
-      }
-    },
-    {
-      "team": {
-        "id": 66,
-        "name": "Aston Villa",
-        "code": "AST",
-        "country": "England",
-        "founded": 1874,
-        "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/66.png"
-      },
-      "venue": {
-        "id": 495,
-        "name": "Villa Park",
-        "address": "Trinity Road",
-        "city": "Birmingham",
-        "capacity": 42788,
-        "surface": "grass",
-        "image": "https://media.api-sports.io/football/venues/495.png"
-      }
-    },
-    {
-      "team": {
-        "id": 71,
-        "name": "Norwich",
-        "code": "NOR",
-        "country": "England",
-        "founded": 1902,
-        "national": false,
-        "logo": "https://media-3.api-sports.io/football/teams/71.png"
-      },
-      "venue": {
-        "id": 565,
-        "name": "Carrow Road",
-        "address": "Carrow Road",
-        "city": "Norwich, Norfolk",
-        "capacity": 27606,
-        "surface": "grass",
-        "image": "https://media.api-sports.io/football/venues/565.png"
-      }
-    }
   ];
 
   export default teams;
