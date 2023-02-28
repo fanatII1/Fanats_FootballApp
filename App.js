@@ -4,8 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/Login';
 import Home from './screens/Home';
-import {teams, fixtures, matchOfTheDay} from './data/footballData'
-
 
 const Stack = createStackNavigator();
 
