@@ -15,6 +15,9 @@ export const supersport_badge = require('../assets/images/club_images/SuperSport
 export const swallows_badge = require('../assets/images/club_images/Swallows.png');
 export const ts_galaxy_badge = require('../assets/images/club_images/TsGalaxy.png');
 export const login_wallpaper = require("../assets/images/Login_WallPaper.webp");
+export const dstv_competition = require("../assets/images/dstv.jpg");
+export const nedbank_competition = require("../assets/images/nedbank.pngg");
+export const mtn8_competition = require("../assets/images/mtn8.png");
 
 //export as object(in 1 value)
 export default {
@@ -34,5 +37,8 @@ export default {
     supersport_badge,
     swallows_badge,
     ts_galaxy_badge,
-    login_wallpaper
+    login_wallpaper,
+    dstv_competition, 
+    nedbank_competition,
+    mtn8_competition
 }
