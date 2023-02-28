@@ -13,16 +13,16 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.HomeContainer}>
       {/*HEADER*/}
-      <View style={styles.headerWrapper}>
+      <View style={styles.header_wrapper}>
         <View>
-          <EvilIcons name="navicon" size={26} color={COLORS.text} />
+          <EvilIcons name="navicon" size={26} color="#000" />
         </View>
-        <View style={styles.logoWrapper}>
+        <View style={styles.logo_wrapper}>
           <Image source={require('../assets/images/Logo.png')} resizeMode='contain' style={styles.logo}/>
-          <Text style={styles.appHeaderText}>Fanat Scouts</Text>
+          <Text style={styles.app_headerText}>FANAT SCOUTS</Text>
         </View>
         <View>
-          <AntDesign name="search1" size={22} color={COLORS.text} />
+          <AntDesign name="search1" size={22} color="#000" />
         </View>
       </View>
 
@@ -33,17 +33,10 @@ const Home = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           renderItem={({item, index})=>{
-            console.log(item.team.logo)
+            
             return (
                 <TouchableOpacity style={styles.teamWrapper}>
-                  <LinearGradient 
-                    colors={[COLORS.secondary, "#000"]}
-                    start={{x: 0, y: 1}}
-                    end={{x: 0.8, y: 0}}
-                    style={{flex: 1, borderRadius: 40, justifyContent: 'center'}}
-                  >
-                    <Image source={item.team.logo} resizeMode='contain' style={styles.logo}/>
-                  </LinearGradient>
+                    <Image source={item.team.logo} resizeMode='contain' style={styles.badge}/>
                 </TouchableOpacity>
             )
           }}
@@ -59,17 +52,17 @@ export default Home
 const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
-    backgroundColor: COLORS.primary, 
+    backgroundColor: '#fafafa', 
     paddingVertical: 20
   },
-  headerWrapper:{
+  header_wrapper:{
     height: "10%",
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: 15,
   },
-  logoWrapper:{
+  logo_wrapper:{
     flexDirection: 'row', 
     alignItems: 'center', 
     justifyContent: 'center'
@@ -80,16 +73,25 @@ const styles = StyleSheet.create({
     borderRadius: 40/2,
     marginRight: 10
   },
-  appHeaderText:{
-    color: COLORS.text,
-    fontSize: 16
+  app_headerText:{
+    color: "#000",
+    fontSize: 25,
+    fontWeight: '600'
   }, 
   teamWrapper: {
     backgroundColor: "#fff", 
     marginHorizontal: 10, 
-    height: 60, 
-    width: 40, 
-    borderRadius: 40, 
-    justifyContent: 'center'
+    height: 45, 
+    width: 45, 
+    borderRadius: 45/2, 
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 7,
+    elevation: 10,
+    overflow: 'hidden'
+  },
+  badge:{
+    height: "65%",
+    width: "90%",
   }
 })
