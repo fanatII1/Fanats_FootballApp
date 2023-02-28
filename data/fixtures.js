@@ -1,3 +1,5 @@
+import { icons } from '../constants/index';
+
 let game1 = (Math.floor(Math.random() * 2) === 1) ? true : false ;
 let game2 = (Math.floor(Math.random() * 2) === 1) ? true : false ;
 let game3 = (Math.floor(Math.random() * 2) === 1) ? true : false ;
@@ -12,11 +14,11 @@ var fixtures = [
         teams: {
             home: {
                 name : 'Orlando Pirates',
-                logo: 'logo'
+                logo: icons.pirates_badge
             },
             away: {
                 name: 'Kaizer Chiefs',
-                logo: 'logo'
+                logo: icons.chiefs_badge
             }
         },
         fixture: {
@@ -34,11 +36,11 @@ var fixtures = [
         teams: {
             home: {
                 name : 'Mamelodi Sundowns',
-                logo: 'logo'
+                logo: icons.sundowns_badge
             },
             away: {
                 name: 'Supersport United',
-                logo: 'logo'
+                logo: icons.supersport_badge
             }
         },
         fixture: {
@@ -56,11 +58,11 @@ var fixtures = [
         teams: {
             home: {
                 name : 'Amazulu',
-                logo: 'logo'
+                logo: icons.amazulu_badge
             },
             away: {
                 name: 'Cape Town City',
-                logo: 'logo'
+                logo: icons.cape_town_city_badge
             }
         },
         fixture: {
@@ -77,12 +79,12 @@ var fixtures = [
     {
         teams: {
             home: {
-                name : 'Supersport United',
-                logo: 'logo'
+                name : 'Maritzburg United',
+                logo: icons.martizburg_badge
             },
             away: {
                 name: 'RoyalAM',
-                logo: 'logo'
+                logo: icons.royal_am_badge
             }
         },
         fixture: {
@@ -100,11 +102,11 @@ var fixtures = [
         teams: {
             home: {
                 name : 'Marumo Gallants',
-                logo: 'logo'
+                logo: icons.gallants_badge
             },
             away: {
                 name: 'Sekhukhune United',
-                logo: 'logo'
+                logo: icons.sekhukhune_badge
             }
         },
         fixture: {
@@ -122,11 +124,11 @@ var fixtures = [
         teams: {
             home: {
                 name : 'Stellenbosch F.C',
-                logo: 'logo'
+                logo: icons.stellenbosch_badge
             },
             away: {
                 name: 'Swallows F.C',
-                logo: 'logo'
+                logo: icons.swallows_badge
             }
         },
         fixture: {
@@ -144,11 +146,11 @@ var fixtures = [
         teams: {
             home: {
                 name : 'Chippa United',
-                logo: 'logo'
+                logo: icons.chippa_badge
             },
             away: {
                 name: 'Golden Arrows',
-                logo: 'logo'
+                logo: icons.arrows_badge
             }
         },
         fixture: {
@@ -166,11 +168,11 @@ var fixtures = [
         teams: {
             home: {
                 name : 'Richards Bay F.C',
-                logo: 'logo'
+                logo: icons.richards_bay_badge
             },
             away: {
                 name: 'T.S Galaxy',
-                logo: 'logo'
+                logo: icons.ts_galaxy_badge
             }
         },
         fixture: {
@@ -190,7 +192,7 @@ var fixtures = [
 function returnMatchOfTheDay(){
     let chooseMatchOfTheDay = Math.floor(Math.random() * fixtures.length);
     let matches = fixtures;
-    let matchOfTheDay = matches[chooseMatchOfTheDay].status.matchOfTheDay = true;
+    matches[chooseMatchOfTheDay].status.matchOfTheDay = true;
     return matches[chooseMatchOfTheDay]
 }
 

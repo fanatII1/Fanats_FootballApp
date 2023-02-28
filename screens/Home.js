@@ -10,20 +10,49 @@ import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 
 const Home = () => {
+  console.log(matchOfTheDay)
   return (
     <SafeAreaView style={styles.HomeContainer}>
       {/*HEADER*/}
       <View style={styles.header_wrapper}>
-        <View>
-          <EvilIcons name="navicon" size={26} color="#000" />
+        <View style={{flex: 1}}>
+          <EvilIcons name="navicon" size={26} color="#fff" />
         </View>
-        <View style={styles.logo_wrapper}>
-          <Image source={require('../assets/images/Logo.png')} resizeMode='contain' style={styles.logo}/>
-          <Text style={styles.app_headerText}>FANAT SCOUTS</Text>
+        
+        <Image source={require('../assets/images/Logo_2.png')} resizeMode='contain' style={styles.logo}/>
+        
+        <View style={{flex: 1, alignItems: 'flex-end',}}>
+          <AntDesign name="search1" size={22} color="#fff" style={{backgroundColor: COLORS.support_primary, padding: 7, borderTopRightRadius: 12}} />
         </View>
-        <View>
-          <AntDesign name="search1" size={22} color="#000" />
-        </View>
+      </View>
+
+      <Text style={styles.liveGamesHeading}>
+        <Entypo name="dot-single" size={24} color="#925BFF" />
+        Live Matches
+      </Text>
+      
+      {/* TOP MATCHES */}
+      <View>
+      <FlatList
+        data={fixtures}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item, index})=>{
+            
+          return (
+              <TouchableOpacity style={{height: 240, width: 160, margin: 10, backgroundColor: '#1a1c1e', borderRadius: 20}}>
+                <View style={{flexDirection: 'row', justifyContent: 'center',alignItems: 'center', height: "50%"}}>
+                  <Image source={item.teams.home.logo} resizeMode='contain' style={{height: "50%", width: "50%"}}/>
+                  <Image source={item.teams.away.logo} resizeMode='contain' style={{height: "50%", width: "50%"}}/>     
+                </View>
+                <Text style={{color: '#fff', fontWeight: '600', marginLeft: 12, marginTop: 10}}>{item.teams.home.name}   1</Text>
+                <Text style={{color: '#fff', fontWeight: '600', marginLeft: 12, marginTop: 10}}>{item.teams.away.name}   3</Text>
+              </TouchableOpacity>
+          )
+        }}
+        keyExtractor={(item , index)=> index }
+        style={{height: 260}}
+      />
       </View>
 
       {/* TEAMS */}
@@ -43,6 +72,7 @@ const Home = () => {
           keyExtractor={(item , index)=> index }
         />
       </View>
+
     </SafeAreaView>
   )
 }
@@ -52,7 +82,7 @@ export default Home
 const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
-    backgroundColor: '#fafafa', 
+    backgroundColor: '#000', 
     paddingVertical: 20
   },
   header_wrapper:{
@@ -62,25 +92,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 15,
   },
-  logo_wrapper:{
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'center'
-  },
   logo:{
-    width: 40,
-    height: 40,
-    borderRadius: 40/2,
-    marginRight: 10
+    width: 200
+  },
+  liveGamesHeading:{
+    fontWeight: '500',
+    fontSize: 30,
+    paddingLeft: 10,
+    color: COLORS.text
   },
   app_headerText:{
     color: "#000",
-    fontSize: 25,
-    fontWeight: '600'
+    fontSize: 20,
+    fontWeight: '400'
   }, 
   teamWrapper: {
     backgroundColor: "#fff", 
-    marginHorizontal: 10, 
+    marginHorizontal: 10,
     height: 45, 
     width: 45, 
     borderRadius: 45/2, 
@@ -88,10 +116,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 7,
     elevation: 10,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   badge:{
     height: "65%",
     width: "90%",
+  },
+  top_match_wrapper: { 
+    alignItems: 'center',
   }
 })
