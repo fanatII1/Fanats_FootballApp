@@ -234,7 +234,9 @@ var standings = [
                     wins: 8,
                     loses: 0,
                     draws: 1,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -246,7 +248,9 @@ var standings = [
                     wins: 4,
                     loses: 2,
                     draws: 3,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -273,7 +277,9 @@ var standings = [
                     wins: 7,
                     loses: 1,
                     draws: 1,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -285,7 +291,9 @@ var standings = [
                     wins: 4,
                     loses: 4,
                     draws: 1,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -312,7 +320,9 @@ var standings = [
                     wins: 8,
                     loses: 0,
                     draws: 1,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -324,7 +334,9 @@ var standings = [
                     wins: 5,
                     loses: 2,
                     draws: 2,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -351,7 +363,9 @@ var standings = [
                     wins: 2,
                     loses: 6,
                     draws: 1,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -363,7 +377,9 @@ var standings = [
                     wins: 1,
                     loses: 6,
                     draws: 2,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -390,7 +406,9 @@ var standings = [
                     wins: 0,
                     loses: 8,
                     draws: 1,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -402,7 +420,9 @@ var standings = [
                     wins: 1,
                     loses: 5,
                     draws: 3,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -429,7 +449,9 @@ var standings = [
                     wins: 8,
                     loses: 2,
                     draws: 0,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -441,7 +463,9 @@ var standings = [
                     wins: 3,
                     loses: 7,
                     draws: 0,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -468,7 +492,9 @@ var standings = [
                     wins: 2,
                     loses: 1,
                     draws: 7,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -480,7 +506,9 @@ var standings = [
                     wins: 4,
                     loses: 4,
                     draws: 2,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -507,7 +535,9 @@ var standings = [
                     wins: 8,
                     loses: 0,
                     draws: 0,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             },
             away: {
@@ -519,7 +549,9 @@ var standings = [
                     wins: 6,
                     loses: 1,
                     draws: 1,
-                    pts: (this.wins * 3) + (this.draws * 1)
+                    pts: function(){
+                        return (this.wins * 3) + (this.draws * 1)
+                    }
                 }
             }
         },
@@ -546,5 +578,12 @@ function returnMatchOfTheDay(){
 }
 
 const matchOfTheDay = returnMatchOfTheDay();
+// let home = standings.map((team) => team.teams.home.standings.pts());
+// let away = standings.map((team) => team.teams.home.standings.pts());
+var home = standings.map((team) => team.teams.home);
+var away = standings.map((team) => team.teams.away);
+var combinedTeams = home.concat(away);
+var sortedStandings = combinedTeams.sort((a,b) => a.standings.pts() - b.standings.pts());
 
-export {fixtures, results, standings, matchOfTheDay}
+
+export {fixtures, results, sortedStandings, matchOfTheDay}
