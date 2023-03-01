@@ -156,21 +156,20 @@ const Home = () => {
         ListHeaderComponent={renderHeader}
         renderItem={({item, index}) =>{
           return(
-            <TouchableOpacity style={{ flexDirection: 'row', margin: 5, height: 85, backgroundColor: '#232232', borderRadius: 10}}>
-              <View style={{flex: 2, justifyContent: 'space-around'}}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <Image style={{marginLeft: 10, height: 38, width: 40}} source={item.teams.home.logo} resizeMode='contain'/>
-                  <Text style={{marginLeft: 10, color: '#fff'}}>{item.teams.home.name}</Text>
-                </View>     
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <Image style={{marginLeft: 10, height: 38, width: 40}} source={item.teams.away.logo} resizeMode='contain'/>
-                  <Text style={{marginLeft: 10, color: '#fff'}}>{item.teams.away.name}</Text>
-                </View>
-              </View>
+            <TouchableOpacity style={{ flexDirection: 'row', margin: 5, height: 85, backgroundColor: '#232232', borderRadius: 10, overflow: 'hidden'}}>
+              <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', flex: 1,}}>
+                <Text style={{marginLeft: 10, color: '#fff'}}>{item.teams.home.name}</Text>
+                <Image style={{marginLeft: 10, height: 28, width: 30}} source={item.teams.home.logo} resizeMode='contain'/>
+              </View>  
 
-              <View style={{flex: 1, justifyContent: 'center'}}>
+              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 5}}>
                 <Text style={{color:'#fff'}}>27 Aug</Text>
                 <Text style={{color:'#fff'}}>{item.fixture.time}</Text>
+              </View>
+
+              <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', flex: 1}}>
+                <Image style={{height: 18, width: 30}} source={item.teams.away.logo} resizeMode='contain'/>
+                <Text style={{color: '#fff', marginRight: 10}}>{item.teams.away.name}</Text>
               </View>
             </TouchableOpacity>
           )
