@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput, ScrollView } from 'react-native';
 import { teams, fixtures, matchOfTheDay } from '../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
@@ -13,6 +13,7 @@ const Home = () => {
   console.log(matchOfTheDay)
   return (
     <SafeAreaView style={styles.HomeContainer}>
+      <ScrollView>
       {/*HEADER*/}
       <View style={styles.header_wrapper}>
         <View style={{flex: 1}}>
@@ -44,37 +45,12 @@ const Home = () => {
         />
       </View>
 
-      <Text style={styles.liveGamesHeading}>
-        <Entypo name="dot-single" size={30} color="#925BFF" />
+      <Text style={styles.sectionHeading}>
+        <Entypo name="dot-single" size={24} color="#925BFF" />
         Live Matches
       </Text>
-      
 
-      {/* TOP MATCHES */}
-      {/* <View style={{height: 200, marginHorizontal: 15}}>
-        <LinearGradient
-          colors={['#4a6ada', '#9764ad']}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 1}}
-          style={{flexDirection: 'row', height: '100%', width: "100%", borderRadius: 20}}
-        >
-          <View style={{flex: 1, height: "100%", justifyContent: 'center', alignItems: 'center'}}>
-            <Image source={matchOfTheDay.teams.home.logo} resizeMode='contain' style={{height: 100}}/>
-            <Text style={{color: '#fff', fontWeight: '550'}}>{matchOfTheDay.teams.home.name}</Text>
-          </View>
-
-          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{color: '#fff', fontSize: 30, fontWeight: 'bold'}}>3 - 1</Text>
-            <Text style={{color: '#fff', fontSize: 15, fontStyle: 'italic', position: 'absolute', top: 5}}>43:20</Text>
-          </View>
-
-          <View style={{flex: 1, height: "100%", justifyContent: 'center', alignItems: 'center'}}>
-            <Image source={matchOfTheDay.teams.away.logo} resizeMode='contain' style={{height: 100}}/>
-            <Text style={{color: '#fff', fontWeight: '550'}}>{matchOfTheDay.teams.home.name}</Text>
-          </View>
-        </LinearGradient>
-      </View> */}
-
+      {/* LIVE GAMES */}
       <View>
       <FlatList
         data={fixtures}
@@ -111,6 +87,15 @@ const Home = () => {
       />
       </View>
 
+      <Text style={styles.sectionHeading}>
+        <Entypo name="dot-single" size={24} color="#925BFF" />
+        Match Schedule
+      </Text>
+      
+      <View style={{height: 500, backgroundColor: '#fff'}}>
+
+      </View>
+    </ScrollView>
     </SafeAreaView>
   )
 }
@@ -121,10 +106,10 @@ const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
     backgroundColor: '#151727', 
-    paddingVertical: 20
+    paddingVertical: 20,
   },
   header_wrapper:{
-    height: "10%",
+    height: 80,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -133,7 +118,7 @@ const styles = StyleSheet.create({
   logo:{
     width: 200
   },
-  liveGamesHeading:{
+  sectionHeading:{
     fontWeight: '500',
     fontSize: 22,
     paddingLeft: 10,
