@@ -26,35 +26,6 @@ const Home = () => {
         </View>
       </View>
 
-      <Text style={styles.liveGamesHeading}>
-        <Entypo name="dot-single" size={24} color="#925BFF" />
-        Live Matches
-      </Text>
-      
-      {/* TOP MATCHES */}
-      <View>
-      <FlatList
-        data={fixtures}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        renderItem={({item, index})=>{
-            
-          return (
-              <TouchableOpacity style={{height: 240, width: 160, margin: 10, backgroundColor: '#1a1c1e', borderRadius: 20}}>
-                <View style={{flexDirection: 'row', justifyContent: 'center',alignItems: 'center', height: "50%"}}>
-                  <Image source={item.teams.home.logo} resizeMode='contain' style={{height: "50%", width: "50%"}}/>
-                  <Image source={item.teams.away.logo} resizeMode='contain' style={{height: "50%", width: "50%"}}/>     
-                </View>
-                <Text style={{color: '#fff', fontWeight: '600', marginLeft: 12, marginTop: 10}}>{item.teams.home.name}   1</Text>
-                <Text style={{color: '#fff', fontWeight: '600', marginLeft: 12, marginTop: 10}}>{item.teams.away.name}   3</Text>
-              </TouchableOpacity>
-          )
-        }}
-        keyExtractor={(item , index)=> index }
-        style={{height: 260}}
-      />
-      </View>
-
       {/* TEAMS */}
       <View>
         <FlatList
@@ -73,6 +44,73 @@ const Home = () => {
         />
       </View>
 
+      <Text style={styles.liveGamesHeading}>
+        <Entypo name="dot-single" size={30} color="#925BFF" />
+        Live Matches
+      </Text>
+      
+
+      {/* TOP MATCHES */}
+      {/* <View style={{height: 200, marginHorizontal: 15}}>
+        <LinearGradient
+          colors={['#4a6ada', '#9764ad']}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
+          style={{flexDirection: 'row', height: '100%', width: "100%", borderRadius: 20}}
+        >
+          <View style={{flex: 1, height: "100%", justifyContent: 'center', alignItems: 'center'}}>
+            <Image source={matchOfTheDay.teams.home.logo} resizeMode='contain' style={{height: 100}}/>
+            <Text style={{color: '#fff', fontWeight: '550'}}>{matchOfTheDay.teams.home.name}</Text>
+          </View>
+
+          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{color: '#fff', fontSize: 30, fontWeight: 'bold'}}>3 - 1</Text>
+            <Text style={{color: '#fff', fontSize: 15, fontStyle: 'italic', position: 'absolute', top: 5}}>43:20</Text>
+          </View>
+
+          <View style={{flex: 1, height: "100%", justifyContent: 'center', alignItems: 'center'}}>
+            <Image source={matchOfTheDay.teams.away.logo} resizeMode='contain' style={{height: 100}}/>
+            <Text style={{color: '#fff', fontWeight: '550'}}>{matchOfTheDay.teams.home.name}</Text>
+          </View>
+        </LinearGradient>
+      </View> */}
+
+      <View>
+      <FlatList
+        data={fixtures}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item, index})=>{
+          console.log(item.fixture.tournament)
+            
+          return (
+              <TouchableOpacity style={styles.liveGame}>
+                <LinearGradient
+                  colors={['#4a6ada', '#9764ad']}
+                  start={{x: 0, y: 0}}
+                  end={{x: 1, y: 1}}
+                  style={{height: '100%', width: "100%", borderRadius: 20}}
+                >
+                  <View style={styles.tournamentContainer}>
+                    <View style={styles.tournamentIconWrapper}>
+                      <Image source={item.fixture.tournament} resizeMode='contain' style={styles.tournamentIcon}/>
+                    </View>
+                  </View>
+                  <View style={styles.liveTeamsContainer}>
+                    <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
+                    <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
+                  </View>
+                  <Text style={styles.liveTeamName}>{item.teams.home.name}   1</Text>
+                  <Text style={styles.liveTeamName}>{item.teams.away.name}   3</Text>
+                </LinearGradient>
+      
+              </TouchableOpacity>
+          )
+        }}
+        keyExtractor={(item , index)=> index }
+      />
+      </View>
+
     </SafeAreaView>
   )
 }
@@ -82,7 +120,7 @@ export default Home
 const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
-    backgroundColor: '#000', 
+    backgroundColor: '#151727', 
     paddingVertical: 20
   },
   header_wrapper:{
@@ -97,8 +135,9 @@ const styles = StyleSheet.create({
   },
   liveGamesHeading:{
     fontWeight: '500',
-    fontSize: 30,
+    fontSize: 22,
     paddingLeft: 10,
+    marginVertical: 10,
     color: COLORS.text
   },
   app_headerText:{
@@ -112,10 +151,11 @@ const styles = StyleSheet.create({
     height: 45, 
     width: 45, 
     borderRadius: 45/2, 
+    borderWidth: 3,
+    borderColor: COLORS.support_primary,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 7,
-    elevation: 10,
     overflow: 'hidden',
   },
   badge:{
@@ -124,5 +164,46 @@ const styles = StyleSheet.create({
   },
   top_match_wrapper: { 
     alignItems: 'center',
-  }
+  },
+  liveGame: {
+    height: 180, 
+    width: 180, 
+    margin: 10,
+  },
+  tournamentContainer: {
+    position: 'absolute', 
+    width: "100%", 
+    top: -10, 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  tournamentIconWrapper: {
+    height: 35, 
+    width: 35, 
+    borderRadius: 35/2, 
+    backgroundColor: "#fff", 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  tournamentIcon: {
+    height: "95%", 
+    width: "95%"
+  },
+  liveTeamsContainer: {
+    flexDirection: 'row', 
+    justifyContent: 'center',
+    alignItems: 'center', 
+    height: "50%",
+  },
+  liveTeam: {
+    height: "50%", 
+    width: "50%",
+    marginTop: 25
+  },
+  liveTeamName: {
+    color: '#fff', 
+    fontWeight: '600', 
+    marginLeft: 12, 
+    marginTop: 10
+  },
 })

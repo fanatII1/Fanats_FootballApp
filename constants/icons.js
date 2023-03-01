@@ -15,7 +15,7 @@ export const supersport_badge = require('../assets/images/club_images/SuperSport
 export const swallows_badge = require('../assets/images/club_images/Swallows.png');
 export const ts_galaxy_badge = require('../assets/images/club_images/TsGalaxy.png');
 export const login_wallpaper = require("../assets/images/Login_WallPaper.webp");
-export const dstv_logo = require("../assets/images/club_images/dstv.jpg");
+export const dstv_logo = require("../assets/images/club_images/dstv.png");
 export const nedbank_logo = require("../assets/images/club_images/nedbank.png");
 export const mtn8_logo = require("../assets/images/club_images/mtn8.png");
 
