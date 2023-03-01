@@ -13,6 +13,31 @@ var fixtures = [
     {
         teams: {
             home: {
+                name : 'Maritzburg United',
+                logo: icons.martizburg_badge,
+                shortName: 'MAR',
+            },
+            away: {
+                name: 'RoyalAM',
+                logo: icons.royal_am_badge,
+                shortName: 'ROY',
+            }
+        },
+        fixture: {
+            time: "18:00",
+            stadium: "Lucas Moripe Stadium",
+            tournament: icons.nedbank_logo,
+            stream: '',
+            bgColor: COLORS.support_primary
+        },
+        status: {
+            live: game4
+        }
+
+    },
+    {
+        teams: {
+            home: {
                 name : 'Orlando Pirates',
                 logo: icons.pirates_badge,
                 shortName: 'PIR'
@@ -88,33 +113,6 @@ var fixtures = [
 ];
 //amount of games live
 var results = [
-    {
-        teams: {
-            home: {
-                name : 'Maritzburg United',
-                logo: icons.martizburg_badge,
-                shortName: 'MAR',
-                score: 2
-            },
-            away: {
-                name: 'RoyalAM',
-                logo: icons.royal_am_badge,
-                shortName: 'ROY',
-                score: 0
-            }
-        },
-        fixture: {
-            time: "18:00",
-            stadium: "Lucas Moripe Stadium",
-            tournament: icons.nedbank_logo,
-            stream: '',
-            bgColor: COLORS.support_primary
-        },
-        status: {
-            live: game4
-        }
-
-    },
     {
         teams: {
             home: {

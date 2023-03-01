@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput, ScrollView } from 'react-native';
-import { teams, fixtures, matchOfTheDay } from '../data/footballData'
+import { teams, fixtures, results, matchOfTheDay } from '../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
 import { Dimensions } from 'react-native';
@@ -52,7 +52,7 @@ const Home = () => {
       {/* LIVE GAMES */}
       <View>
       <FlatList
-        data={fixtures}
+        data={results}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index})=>{
@@ -75,8 +75,8 @@ const Home = () => {
                     <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
                     <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
                   </View>
-                  <Text style={styles.liveTeamName}>{item.teams.home.name}   1</Text>
-                  <Text style={styles.liveTeamName}>{item.teams.away.name}   3</Text>
+                  <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
+                  <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
                 </LinearGradient>
       
               </TouchableOpacity>
@@ -104,8 +104,22 @@ const Home = () => {
         ListHeaderComponent={renderHeader}
         renderItem={({item, index}) =>{
           return(
-            <TouchableOpacity style={{margin: 5, height: 40, backgroundColor: '#232232'}}>
+            <TouchableOpacity style={{ flexDirection: 'row', margin: 5, height: 85, backgroundColor: '#232232', borderRadius: 10}}>
+              <View style={{flex: 2, justifyContent: 'space-around'}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Image style={{marginLeft: 10, height: 38, width: 40}} source={item.teams.home.logo} resizeMode='contain'/>
+                  <Text style={{marginLeft: 10, color: '#fff'}}>{item.teams.home.name}</Text>
+                </View>     
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Image style={{marginLeft: 10, height: 38, width: 40}} source={item.teams.away.logo} resizeMode='contain'/>
+                  <Text style={{marginLeft: 10, color: '#fff'}}>{item.teams.away.name}</Text>
+                </View>
+              </View>
 
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <Text style={{color:'#fff'}}>27 Aug</Text>
+                <Text style={{color:'#fff'}}>{item.fixture.time}</Text>
+              </View>
             </TouchableOpacity>
           )
         }}
