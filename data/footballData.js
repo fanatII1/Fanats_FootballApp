@@ -1,4 +1,4 @@
-import { fixtures, results, matchOfTheDay } from "./fixtures";
+import { fixtures, results, standings, matchOfTheDay } from "./fixtures";
 import teams from "./teams";
 
-export { teams, fixtures, results, matchOfTheDay } ;
+export { teams, fixtures, results, standings, matchOfTheDay } ;

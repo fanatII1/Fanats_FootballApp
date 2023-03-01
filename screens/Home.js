@@ -96,6 +96,14 @@ const Home = () => {
     )
   }
 
+  function renderFooter(){
+    return(
+      <View>
+        
+      </View>
+    )
+  }
+
   return (
     <SafeAreaView style={styles.HomeContainer}>
       <FlatList
@@ -123,6 +131,7 @@ const Home = () => {
             </TouchableOpacity>
           )
         }}
+        ListFooterComponent={ renderFooter }
         keyExtractor={(fixture, index) => index}
       />
     </SafeAreaView>
