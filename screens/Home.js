@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput, ScrollView } from 'react-native';
-import { teams, fixtures, results, standings, matchOfTheDay } from '../data/footballData'
+import { teams, fixtures, results, sortedStandings, matchOfTheDay } from '../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
 import { Dimensions } from 'react-native';
@@ -56,7 +56,6 @@ const Home = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index})=>{
-          console.log(item.fixture.tournament)
             
           return (
               <TouchableOpacity style={styles.liveGame}>
@@ -100,7 +99,7 @@ const Home = () => {
     return(
       <View style={{backgroundColor: '#232232', height: 300, }}>
         <FlatList
-          data={standings}
+          data={sortedStandings}
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={()=>{
             return (
@@ -118,16 +117,18 @@ const Home = () => {
             )
           }}
           renderItem={({item, index}) => {
+            // console.log(item)
             return (
               <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1.2}}>
-                  <Image style={{marginLeft: 10, height: 38, width: 40}} source={item.teams.home.logo} resizeMode='contain'/>
+                <View style={{flex: 1.2, flexDirection: 'row', alignItems: 'center'}}>
+                  <Image style={{marginLeft: 10, height: 38, width: 40}} source={item.logo} resizeMode='contain'/>
+                  <Text style={{color: COLORS.text}}>{item.name}</Text>
                 </View>
                 <View style={{flex: 0.8, flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>P</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>W</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>L</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>Pts</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.plays}</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.wins}</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.loses}</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.pts()}</Text>
                 </View>
               </View>
             )

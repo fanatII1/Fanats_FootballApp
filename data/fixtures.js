@@ -583,7 +583,7 @@ const matchOfTheDay = returnMatchOfTheDay();
 var home = standings.map((team) => team.teams.home);
 var away = standings.map((team) => team.teams.away);
 var combinedTeams = home.concat(away);
-var sortedStandings = combinedTeams.sort((a,b) => a.standings.pts() - b.standings.pts());
+var sortedStandings = combinedTeams.sort((a,b) => b.standings.pts() - a.standings.pts());
 
 
 export {fixtures, results, sortedStandings, matchOfTheDay}
