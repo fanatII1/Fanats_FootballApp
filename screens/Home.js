@@ -61,10 +61,10 @@ const Home = () => {
           return (
               <TouchableOpacity style={styles.liveGame}>
                 <LinearGradient
-                  colors={['#4a6ada', '#9764ad']}
+                  colors={['#2a2e3a', '#2a2e3a']}
                   start={{x: 0, y: 0}}
                   end={{x: 1, y: 1}}
-                  style={{height: '100%', width: "100%", borderRadius: 20}}
+                  style={{height: '100%', width: "100%", borderRadius: 20, borderColor: COLORS.secondary, borderWidth: 4}}
                 >
                   <View style={styles.tournamentContainer}>
                     <View style={styles.tournamentIconWrapper}>
