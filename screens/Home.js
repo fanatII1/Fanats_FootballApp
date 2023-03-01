@@ -97,13 +97,19 @@ const Home = () => {
 
   function renderFooter(){
     return(
-      <View style={{backgroundColor: '#232232', height: 300, }}>
+      <>
+      <Text style={styles.sectionHeading}>
+        <Entypo name="dot-single" size={24} color="#925BFF" />
+        Standings
+      </Text>
+      <View style={{backgroundColor: '#232232', marginHorizontal: 5, paddingHorizontal: 10, borderRadius: 20}}>
+        <Text style={{color: "#fff", fontSize: 20, marginVertical: 17}}> Table standings </Text>
         <FlatList
           data={sortedStandings}
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={()=>{
             return (
-              <View style={{flexDirection: 'row'}}>
+              <View style={{flexDirection: 'row', marginHorizontal: 5, borderBottomColor: '#fff', borderBottomWidth: 1}}>
                 <View style={{flex: 1.2}}>
                   <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>Club</Text>
                 </View>
@@ -117,25 +123,28 @@ const Home = () => {
             )
           }}
           renderItem={({item, index}) => {
-            // console.log(item)
-            return (
-              <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1.2, flexDirection: 'row', alignItems: 'center'}}>
-                  <Image style={{marginLeft: 10, height: 38, width: 40}} source={item.logo} resizeMode='contain'/>
-                  <Text style={{color: COLORS.text}}>{item.name}</Text>
+            console.log(index)
+            if(index <= 5){
+              return (
+                <View style={{flexDirection: 'row', paddingVertical: 10, borderBottomColor: '#fff', borderBottomWidth: 1 }}>
+                  <View style={{flex: 1.2, flexDirection: 'row', alignItems: 'center'}}>
+                    <Image style={{height: 30, width: 40}} source={item.logo} resizeMode='contain'/>
+                    <Text style={{color: COLORS.text, marginLeft: 10}}>{item.name}</Text>
+                  </View>
+                  <View style={{flex: 0.8, flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text style={{fontSize: 18, color: COLORS.text}}>{item.standings.plays}</Text>
+                    <Text style={{fontSize: 18, color: COLORS.text}}>{item.standings.wins}</Text>
+                    <Text style={{fontSize: 18, color: COLORS.text}}>{item.standings.loses}</Text>
+                    <Text style={{fontSize: 18, color: COLORS.text}}>{item.standings.pts()}</Text>
+                  </View>
                 </View>
-                <View style={{flex: 0.8, flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.plays}</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.wins}</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.loses}</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.text}}>{item.standings.pts()}</Text>
-                </View>
-              </View>
-            )
+              )
+            }
           }}
           keyExtractor={(team, index) => index}
         />
       </View>
+      </>
     )
   }
 
