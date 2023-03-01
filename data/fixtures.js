@@ -85,17 +85,22 @@ var fixtures = [
         }
 
     },
+];
+//amount of games live
+var results = [
     {
         teams: {
             home: {
                 name : 'Maritzburg United',
                 logo: icons.martizburg_badge,
-                shortName: 'MAR'
+                shortName: 'MAR',
+                score: 2
             },
             away: {
                 name: 'RoyalAM',
                 logo: icons.royal_am_badge,
-                shortName: 'ROY'
+                shortName: 'ROY',
+                score: 0
             }
         },
         fixture: {
@@ -115,12 +120,14 @@ var fixtures = [
             home: {
                 name : 'Marumo Gallants',
                 logo: icons.gallants_badge,
-                shortName: 'GAL'
+                shortName: 'GAL',
+                score: 0
             },
             away: {
                 name: 'Sekhukhune United',
                 logo: icons.sekhukhune_badge,
-                shortName: 'SEK'
+                shortName: 'SEK',
+                score: 0
             }
         },
         fixture: {
@@ -140,12 +147,14 @@ var fixtures = [
             home: {
                 name : 'Stellenbosch F.C',
                 logo: icons.stellenbosch_badge,
-                shortName: 'STE'
+                shortName: 'STE',
+                score: 4
             },
             away: {
                 name: 'Swallows F.C',
                 logo: icons.swallows_badge,
-                shortName: 'SWA'
+                shortName: 'SWA',
+                score: 3
             }
         },
         fixture: {
@@ -153,7 +162,7 @@ var fixtures = [
             stadium: "Dobsonville Stadium",
             tournament: icons.mtn8_logo,
             stream: '',
-            bgColor: COLORS.support_primary
+            bgColor: COLORS.support_primary,
         },
         status: {
             live: game6
@@ -165,12 +174,14 @@ var fixtures = [
             home: {
                 name : 'Chippa United',
                 logo: icons.chippa_badge,
-                shortName: 'CHI'
+                shortName: 'CHI',
+                score: 2
             },
             away: {
                 name: 'Golden Arrows',
                 logo: icons.arrows_badge,
-                shortName: 'ARR'
+                shortName: 'ARR',
+                score: 3
             }
         },
         fixture: {
@@ -190,12 +201,14 @@ var fixtures = [
             home: {
                 name : 'Richards Bay F.C',
                 logo: icons.richards_bay_badge,
-                shortName: 'RIC'
+                shortName: 'RIC',
+                score: 1
             },
             away: {
                 name: 'T.S Galaxy',
                 logo: icons.ts_galaxy_badge,
-                shortName: 'TSG'
+                shortName: 'TSG',
+                score: 0
             }
         },
         fixture: {
@@ -222,4 +235,4 @@ function returnMatchOfTheDay(){
 
 const matchOfTheDay = returnMatchOfTheDay();
 
-export {fixtures, matchOfTheDay}
+export {fixtures, results, matchOfTheDay}
