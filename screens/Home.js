@@ -11,10 +11,10 @@ import { FlatList } from 'react-native-gesture-handler';
 
 const Home = () => {
   console.log(matchOfTheDay)
-  return (
-    <SafeAreaView style={styles.HomeContainer}>
-      <ScrollView>
-      {/*HEADER*/}
+
+  function renderHeader(){
+    return(
+      <>
       <View style={styles.header_wrapper}>
         <View style={{flex: 1}}>
           <EvilIcons name="navicon" size={26} color="#fff" />
@@ -27,7 +27,6 @@ const Home = () => {
         </View>
       </View>
 
-      {/* TEAMS */}
       <View>
         <FlatList
           data={teams}
@@ -83,19 +82,35 @@ const Home = () => {
               </TouchableOpacity>
           )
         }}
-        keyExtractor={(item , index)=> index }
+        keyExtractor={(item , index) => index }
       />
-      </View>
 
       <Text style={styles.sectionHeading}>
         <Entypo name="dot-single" size={24} color="#925BFF" />
         Match Schedule
       </Text>
-      
-      <View style={{height: 500, backgroundColor: '#fff'}}>
+
 
       </View>
-    </ScrollView>
+      </>
+    )
+  }
+
+  return (
+    <SafeAreaView style={styles.HomeContainer}>
+      <FlatList
+        data={fixtures}
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={renderHeader}
+        renderItem={({item, index}) =>{
+          return(
+            <TouchableOpacity style={{margin: 5, height: 40, backgroundColor: '#232232'}}>
+
+            </TouchableOpacity>
+          )
+        }}
+        keyExtractor={(fixture, index) => index}
+      />
     </SafeAreaView>
   )
 }
@@ -106,14 +121,14 @@ const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
     backgroundColor: '#151727', 
-    paddingVertical: 20,
+    paddingTop: 20,
+    paddingHorizontal: 5,
   },
   header_wrapper:{
     height: 80,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginHorizontal: 15,
   },
   logo:{
     width: 200
@@ -132,7 +147,7 @@ const styles = StyleSheet.create({
   }, 
   teamWrapper: {
     backgroundColor: "#fff", 
-    marginHorizontal: 10,
+    marginRight: 15,
     height: 45, 
     width: 45, 
     borderRadius: 45/2, 
