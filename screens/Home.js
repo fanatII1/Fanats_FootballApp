@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect, memo} from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput, ScrollView } from 'react-native';
 import { teams, fixtures, results, sortedStandings, matchOfTheDay } from '../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
@@ -8,6 +8,38 @@ import { Shadow } from 'react-native-shadow-2';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
+
+//live games
+
+const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
+  //we set the gradient colot of the component based on the component(index) clicked
+  let firstColor = index === matchIndex ? COLORS.secondary : '#232232';
+  let secondColor = index === matchIndex ? COLORS.secondary : '#232232';
+    
+  return (
+      <TouchableOpacity activeOpacity={0.6} style={styles.liveGame} onPress={()=> setMatchIndex(index)}>
+        <LinearGradient
+          colors={[firstColor, secondColor]}
+          start={{x: 0, y: 1}}
+          end={{x: 1, y: 1}}
+          style={{height: '100%', width: '100%', borderRadius: 20,}}
+        >
+          <View style={styles.tournamentContainer}>
+            <View style={styles.tournamentIconWrapper}>
+              <Image source={item.fixture.tournament} resizeMode='contain' style={styles.tournamentIcon}/>
+            </View>
+          </View>
+          <View style={styles.liveTeamsContainer}>
+            <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
+            <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
+          </View>
+          <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
+          <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
+        </LinearGradient>
+
+      </TouchableOpacity>
+  )
+}
 
 const Home = () => {
   const [matchIndex, setMatchIndex] = useState(0)
@@ -55,35 +87,7 @@ const Home = () => {
         data={results}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({item, index})=>{
-          //we set the gradient colot of the component based on the component(index) clicked
-          let firstColor = index === matchIndex ? COLORS.secondary : '#232232';
-          let secondColor = index === matchIndex ? COLORS.secondary : '#232232';
-            
-          return (
-              <TouchableOpacity activeOpacity={0.6} style={styles.liveGame} onPress={()=> setMatchIndex(index)}>
-                <LinearGradient
-                  colors={[firstColor, secondColor]}
-                  start={{x: 0, y: 1}}
-                  end={{x: 1, y: 1}}
-                  style={{height: '100%', width: '100%', borderRadius: 20,}}
-                >
-                  <View style={styles.tournamentContainer}>
-                    <View style={styles.tournamentIconWrapper}>
-                      <Image source={item.fixture.tournament} resizeMode='contain' style={styles.tournamentIcon}/>
-                    </View>
-                  </View>
-                  <View style={styles.liveTeamsContainer}>
-                    <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
-                    <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
-                  </View>
-                  <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
-                  <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
-                </LinearGradient>
-      
-              </TouchableOpacity>
-          )
-        }}
+        renderItem={({item, index})=> <LiveGames item={item} index={index} matchIndex={matchIndex} setMatchIndex={setMatchIndex}/>}
         keyExtractor={(item , index) => index }
       />
 
@@ -152,6 +156,10 @@ const Home = () => {
         <Entypo name='dot-single' size={24} color='#925BFF' />
         Latest News
       </Text>
+
+      <View style={{height: 320, width: 250, backgroundColor: 'red', marginBottom: 10}}>
+        <ImageBackground/>
+      </View>
       </>
     )
   }
