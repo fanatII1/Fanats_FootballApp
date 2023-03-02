@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect, memo} from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput, ScrollView } from 'react-native';
-import { teams, fixtures, results, sortedStandings, matchOfTheDay } from '../data/footballData'
+import { teams, fixtures, results, sortedStandings, matchOfTheDay, news } from '../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
 import { Dimensions } from 'react-native';
@@ -109,22 +109,22 @@ const Home = () => {
         <Entypo name='dot-single' size={24} color='#925BFF' />
         Standings
       </Text>
-      <View style={{backgroundColor: '#fff', marginHorizontal: 5, marginBottom: 10, paddingHorizontal: 10, borderRadius: 7}}>
-        <Text style={{color: '#000', fontSize: 20, marginVertical: 17}}> Table standings </Text>
+
+      <View style={{marginHorizontal: 7}}>
         <FlatList
           data={sortedStandings}
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={()=>{
             return (
-              <View style={{flexDirection: 'row', marginHorizontal: 5, borderBottomColor: '#fff', borderBottomWidth: 1}}>
+              <View style={{flexDirection: 'row', marginHorizontal: 5}}>
                 <View style={{flex: 1.2}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#000'}}>Club</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>Club</Text>
                 </View>
                 <View style={{flex: 0.8, flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#000'}}>P</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#000'}}>W</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#000'}}>L</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#000'}}>Pts</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>P</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>W</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>L</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>Pts</Text>
                 </View>
               </View>
             )
@@ -133,6 +133,7 @@ const Home = () => {
             // console.log(index)
             if(index <= 5){
               return (
+                <View style={{backgroundColor: '#fff', marginHorizontal: 5, marginBottom: 10, paddingHorizontal: 10, borderRadius: 7}}>
                 <View style={{flexDirection: 'row', paddingVertical: 10, borderBottomColor: '#fff', borderBottomWidth: 1 }}>
                   <View style={{flex: 1.2, flexDirection: 'row', alignItems: 'center'}}>
                     <Image style={{height: 30, width: 40}} source={item.logo} resizeMode='contain'/>
@@ -145,20 +146,38 @@ const Home = () => {
                     <Text style={{fontSize: 18, color: '#000'}}>{item.standings.pts()}</Text>
                   </View>
                 </View>
+                </View>
               )
             }
           }}
+          ListFooterComponent={()=>{
+            return(
+            <>
+            <Text style={styles.sectionHeading}>
+              <Entypo name='dot-single' size={24} color='#925BFF' />
+              Latest News
+            </Text>
+      
+            <View>
+              <FlatList
+                data={news}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                renderItem={({item}) => {
+                  return(
+                    <View style={{height: 320, width: 250, backgroundColor: 'red', marginBottom: 10}}>
+                      <ImageBackground source={item.title}/>
+                    </View>
+                  )
+                }}
+                keyExtractor={(item, index) => index}
+              />
+            </View>
+            </>
+            )
+          }}
           keyExtractor={(team, index) => index}
         />
-      </View>
-
-      <Text style={styles.sectionHeading}>
-        <Entypo name='dot-single' size={24} color='#925BFF' />
-        Latest News
-      </Text>
-
-      <View style={{height: 320, width: 250, backgroundColor: 'red', marginBottom: 10}}>
-        <ImageBackground/>
       </View>
       </>
     )
@@ -172,7 +191,7 @@ const Home = () => {
         ListHeaderComponent={renderHeader}
         renderItem={({item, index}) =>{
           return(
-            <TouchableOpacity activeOpacity={0.8} style={{ flexDirection: 'row', margin: 5, height: 85, backgroundColor: '#fff', borderRadius: 10, overflow: 'hidden'}}>
+            <TouchableOpacity activeOpacity={0.8} style={{ flexDirection: 'row', margin: 7, height: 85, backgroundColor: '#fff', borderRadius: 10, overflow: 'hidden'}}>
               <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', flex: 1,}}>
                 <Text style={{marginLeft: 10, color: '#000'}}>{item.teams.home.name}</Text>
                 <Image style={{marginLeft: 10, height: 28, width: 30}} source={item.teams.home.logo} resizeMode='contain'/>
@@ -218,7 +237,7 @@ const styles = StyleSheet.create({
   sectionHeading:{
     fontWeight: '500',
     fontSize: 22,
-    paddingLeft: 10,
+    paddingLeft: 5,
     marginVertical: 10,
     color: COLORS.text
   },
