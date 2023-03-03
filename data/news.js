@@ -15,7 +15,7 @@ var news = [
       "title": "Case Study: What Can Data Do for a Football Club?",
       "url": "https://www.espn.com/soccer/nashville-sc/story/4890622/giannis-antetokounmpo-buys-stake-in-mls-club-nashville-sc",
       "writer": "Jaden Wesley",
-      "pic": require('../assets/images/data.jpg')
+      "pic": require('../assets/images/data.png')
     },
     {
       "title": "Talent Watch: The best talents of the MDC",

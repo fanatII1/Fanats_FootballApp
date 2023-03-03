@@ -43,6 +43,17 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
 
 const Home = () => {
   const [matchIndex, setMatchIndex] = useState(0)
+  const refFlatList = useRef();
+
+  useEffect(()=>{
+    if(refFlatList.current){
+      refFlatList.current.scrollToIndex({animated: true, index: matchIndex})
+    }
+  }, [matchIndex])
+
+  const getItemLayout = (data, index) =>{
+    return  {length: 180, offset: 180 * index, index}
+  }
 
   function renderHeader(){
     return(
@@ -84,9 +95,11 @@ const Home = () => {
       {/* LIVE GAMES */}
       <View>
       <FlatList
+        ref={refFlatList}
         data={results}
         horizontal
         showsHorizontalScrollIndicator={false}
+        getItemLayout={getItemLayout}
         renderItem={({item, index})=> <LiveGames item={item} index={index} matchIndex={matchIndex} setMatchIndex={setMatchIndex}/>}
         keyExtractor={(item , index) => index }
       />
