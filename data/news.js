@@ -6,7 +6,7 @@ var news = [
       "pic": require('../assets/images/coach.jpg')
     },
     {
-      "title": "Tactical Theory: Rest defence in Functional Play and its differences with Positional Play",
+      "title": "Tactical Theory: Rest defence in Functional Play",
       "url": "https://sports.yahoo.com/the-nbas-mvp-discussion-is-out-of-control-224621619.html",
       "writer": "Mandla Nkosi",
       "pic": require('../assets/images/tactics.jpg')
@@ -21,7 +21,7 @@ var news = [
       "title": "Talent Watch: The best talents of the MDC",
       "url": "https://bleacherreport.com/articles/10067270-grizzlies-ja-morant-accused-of-punching-17-year-old-flashing-gun-in-police-report",
       "writer": "Precious Mokoena",
-      "pic": require('../assets/images/tactics.jpg')
+      "pic": require('../assets/images/mdc.webp')
     },
   ]
 

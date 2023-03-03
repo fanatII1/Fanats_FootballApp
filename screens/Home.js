@@ -1,16 +1,14 @@
-import React, {useRef, useState, useEffect, memo} from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput, ScrollView } from 'react-native';
-import { teams, fixtures, results, sortedStandings, matchOfTheDay, news } from '../data/footballData'
+import React, {useRef, useState, useEffect} from 'react';
+import { StyleSheet, TouchableOpacity, Text, View, SafeAreaView, ImageBackground, Image} from 'react-native';
+import { teams, fixtures, results, sortedStandings, news } from '../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
-import { Dimensions } from 'react-native';
-import { Shadow } from 'react-native-shadow-2';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
+import mainListHeader from '../components/HomeComponents/mainListHeader';
 
 //live games
-
 const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   //we set the gradient colot of the component based on the component(index) clicked
   let firstColor = index === matchIndex ? COLORS.secondary : '#232232';
@@ -42,77 +40,9 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
 }
 
 const Home = () => {
-  const [matchIndex, setMatchIndex] = useState(0)
-  const refFlatList = useRef();
-
-  useEffect(()=>{
-    if(refFlatList.current){
-      refFlatList.current.scrollToIndex({animated: true, index: matchIndex})
-    }
-  }, [matchIndex])
 
   const getItemLayout = (data, index) =>{
     return  {length: 180, offset: 180 * index, index}
-  }
-
-  function renderHeader(){
-    return(
-      <>
-      <View style={styles.header_wrapper}>
-        <View style={{flex: 1}}>
-          <EvilIcons name='navicon' size={26} color='#fff' />
-        </View>
-        
-        <Image source={require('../assets/images/Logo_2.png')} resizeMode='contain' style={styles.logo}/>
-        
-        <View style={{flex: 1, alignItems: 'flex-end',}}>
-          <AntDesign name='search1' size={22} color='#fff' style={{backgroundColor: COLORS.support_primary, padding: 7, borderTopRightRadius: 12}} />
-        </View>
-      </View>
-
-      <View>
-        <FlatList
-          data={teams}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item, index})=>{
-            
-            return (
-                <TouchableOpacity activeOpacity={0.8} style={styles.teamWrapper}>
-                    <Image source={item.team.logo} resizeMode='contain' style={styles.badge}/>
-                </TouchableOpacity>
-            )
-          }}
-          keyExtractor={(item , index)=> index }
-        />
-      </View>
-
-      <Text style={styles.sectionHeading}>
-        <Entypo name='dot-single' size={24} color='#925BFF' />
-        Live Matches
-      </Text>
-
-      {/* LIVE GAMES */}
-      <View>
-      <FlatList
-        ref={refFlatList}
-        data={results}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        getItemLayout={getItemLayout}
-        renderItem={({item, index})=> <LiveGames item={item} index={index} matchIndex={matchIndex} setMatchIndex={setMatchIndex}/>}
-        keyExtractor={(item , index) => index }
-      />
-
-      <Text style={styles.sectionHeading}>
-        <Entypo name='dot-single' size={24} color='#925BFF' />
-        Match Schedule
-      </Text>
-
-
-      </View>
-      </>
-    )
   }
 
   function renderFooter(){
@@ -177,9 +107,20 @@ const Home = () => {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 renderItem={({item}) => {
+                  console.log(item)
                   return(
-                    <View style={{height: 320, width: 250, backgroundColor: 'red', marginBottom: 10}}>
-                      <ImageBackground source={item.title}/>
+                    <View style={{height: 320, width: 250, marginRight: 10, marginBottom: 15}}>
+                        <ImageBackground source={item.pic} resizeMode='cover' style={{height: '100%', width: '100%'}} imageStyle={{borderRadius: 20}}>
+                           <LinearGradient
+                              colors={['transparent', '#000']}
+                              start={{x: 0.5, y: 0}}
+                              end={{x: 0.5, y: 1}}
+                              style={{height: "100%", width: "100%", justifyContent: 'flex-end', padding: 10, borderRadius: 20}}
+                            >
+                              <Text style={{color: COLORS.text, fontSize: 13, fontStyle: 'italic', marginBottom: 5}}>{item.writer} :</Text>
+                              <Text style={{color: COLORS.text, fontSize: 23, marginBottom: 20}}>{item.title}</Text>
+                            </LinearGradient>
+                        </ImageBackground>
                     </View>
                   )
                 }}
@@ -201,7 +142,7 @@ const Home = () => {
       <FlatList
         data={fixtures}
         showsVerticalScrollIndicator={false}
-        ListHeaderComponent={renderHeader}
+        ListHeaderComponent={mainListHeader}
         renderItem={({item, index}) =>{
           return(
             <TouchableOpacity activeOpacity={0.8} style={{ flexDirection: 'row', margin: 7, height: 85, backgroundColor: '#fff', borderRadius: 10, overflow: 'hidden'}}>
@@ -302,22 +243,5 @@ const styles = StyleSheet.create({
   tournamentIcon: {
     height: '95%', 
     width: '95%'
-  },
-  liveTeamsContainer: {
-    flexDirection: 'row', 
-    justifyContent: 'center',
-    alignItems: 'center', 
-    height: '50%',
-  },
-  liveTeam: {
-    height: '50%', 
-    width: '50%',
-    marginTop: 25
-  },
-  liveTeamName: {
-    color: '#fff', 
-    fontWeight: '600', 
-    marginLeft: 12, 
-    marginTop: 10
   },
 })
