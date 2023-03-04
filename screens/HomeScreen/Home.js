@@ -1,11 +1,11 @@
 import React, {useRef, useState, useEffect} from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, SafeAreaView, Image} from 'react-native';
-import {fixtures} from '../data/footballData'
-import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
+import {fixtures} from '../../data/footballData'
+import { icons,  theme, COLORS, SIZES, FONTS} from '../../constants/index';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
-import mainListHeader from '../components/HomeComponents/mainListHeader';
-import mainListFooter from '../components/HomeComponents/mainListFooter';
+import mainListHeader from './mainListHeader';
+import mainListFooter from './mainListFooter';
 
 const Home = () => {
 

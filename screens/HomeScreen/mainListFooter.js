@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, SafeAreaView, ImageBackground, Image} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, ImageBackground, Image} from 'react-native';
 import { teams, fixtures, results, sortedStandings, news } from '../../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { icons,  theme, COLORS, SIZES, FONTS} from '../../constants/index';
@@ -8,7 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 
 const mainListFooter = () => {
-
 
   return (
     <>

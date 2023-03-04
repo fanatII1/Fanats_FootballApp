@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StatusBar, SafeAreaView, ImageBackground, Image, TextInput } from 'react-native';
 import { AntDesign, Entypo } from '@expo/vector-icons';
-import { icons,  theme, COLORS, SIZES, FONTS} from '../constants/index';
+import { icons,  theme, COLORS, SIZES, FONTS} from '../../constants/index';
 import { Dimensions } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import { LinearGradient } from 'expo-linear-gradient';
