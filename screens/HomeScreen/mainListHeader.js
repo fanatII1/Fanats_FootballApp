@@ -8,13 +8,12 @@ import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 
 
-//live games
 const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
-  //we set the gradient colot of the component based on the component(index) clicked
+  const navigation = useNavigation();
+
+  //set gradient color based on the component(index) clicked
   let firstColor = index === matchIndex ? COLORS.secondary : '#232232';
   let secondColor = index === matchIndex ? COLORS.secondary : '#232232';
-
-  const navigation = useNavigation();
   const navigateToLiveGames = () =>{
     setMatchIndex(index)
     navigation.navigate('LiveGames')
