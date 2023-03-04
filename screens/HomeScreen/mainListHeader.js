@@ -13,9 +13,15 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   //we set the gradient colot of the component based on the component(index) clicked
   let firstColor = index === matchIndex ? COLORS.secondary : '#232232';
   let secondColor = index === matchIndex ? COLORS.secondary : '#232232';
+
+  const navigation = useNavigation();
+  const navigateToLiveGames = () =>{
+    setMatchIndex(index)
+    navigation.navigate('LiveGames')
+  }
     
   return (
-      <TouchableOpacity activeOpacity={0.6} style={styles.liveGame} onPress={()=> setMatchIndex(index)}>
+      <TouchableOpacity activeOpacity={0.6} style={styles.liveGame} onPress={navigateToLiveGames}>
         <LinearGradient
           colors={[firstColor, secondColor]}
           start={{x: 0, y: 1}}
