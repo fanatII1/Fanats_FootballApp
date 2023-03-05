@@ -1,8 +1,8 @@
-import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, ImageBackground, Image} from 'react-native';
-import { teams, fixtures, results, sortedStandings, news } from '../../data/footballData'
-import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
-import { icons,  theme, COLORS, SIZES, FONTS} from '../../constants/index';
+import React from 'react';
+import { StyleSheet, Text, View, ImageBackground, Image} from 'react-native';
+import { sortedStandings, news } from '../../data/footballData'
+import { Entypo } from '@expo/vector-icons';
+import { COLORS } from '../../constants/index';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
@@ -70,7 +70,7 @@ const mainListFooter = () => {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 renderItem={({item}) => {
-                  console.log(item)
+                  // console.log(item)
                   return(
                     <View style={{height: 320, width: 250, marginRight: 10, marginBottom: 15}}>
                         <ImageBackground source={item.pic} resizeMode='cover' style={{height: '100%', width: '100%'}} imageStyle={{borderRadius: 20}}>

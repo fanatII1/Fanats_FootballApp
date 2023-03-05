@@ -1,48 +1,11 @@
 import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, SafeAreaView, ImageBackground, Image} from 'react-native';
-import { teams, fixtures, results, sortedStandings, news } from '../../data/footballData'
+import { StyleSheet, TouchableOpacity, Text, View, Image} from 'react-native';
+import { teams, results } from '../../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
-import { icons,  theme, COLORS, SIZES, FONTS} from '../../constants/index';
+import { COLORS } from '../../constants/index';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
-
-
-const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
-  const navigation = useNavigation();
-
-  //set gradient color based on the component(index) clicked
-  let firstColor = index === matchIndex ? COLORS.secondary : '#232232';
-  let secondColor = index === matchIndex ? COLORS.secondary : '#232232';
-  const navigateToLiveGames = () =>{
-    setMatchIndex(index)
-    navigation.navigate('LiveGames')
-  }
-    
-  return (
-      <TouchableOpacity activeOpacity={0.6} style={styles.liveGame} onPress={navigateToLiveGames}>
-        <LinearGradient
-          colors={[firstColor, secondColor]}
-          start={{x: 0, y: 1}}
-          end={{x: 1, y: 1}}
-          style={{height: '100%', width: '100%', borderRadius: 20,}}
-        >
-          <View style={styles.tournamentContainer}>
-            <View style={styles.tournamentIconWrapper}>
-              <Image source={item.fixture.tournament} resizeMode='contain' style={styles.tournamentIcon}/>
-            </View>
-          </View>
-          <View style={styles.liveTeamsContainer}>
-            <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
-            <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
-          </View>
-          <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
-          <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
-        </LinearGradient>
-
-      </TouchableOpacity>
-  )
-}
 
 
 const mainListHeader = () => {
@@ -115,6 +78,45 @@ const mainListHeader = () => {
 
       </View>
       </>
+  )
+}
+
+const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
+  const navigation = useNavigation();
+  // console.log(item)
+
+  //set gradient color based on the component(index) clicked
+  var firstColor = index === matchIndex ? COLORS.secondary : '#232232';
+  var secondColor = index === matchIndex ? COLORS.secondary : '#232232';
+  
+  //navigate to live games and pass details of live game as parameters
+  const navigateToLiveGames = () =>{
+    setMatchIndex(index)
+    navigation.navigate('LiveGames', {liveGame: item})
+  }
+    
+  return (
+      <TouchableOpacity activeOpacity={0.6} style={styles.liveGame} onPress={navigateToLiveGames}>
+        <LinearGradient
+          colors={[firstColor, secondColor]}
+          start={{x: 0, y: 1}}
+          end={{x: 1, y: 1}}
+          style={{height: '100%', width: '100%', borderRadius: 20,}}
+        >
+          <View style={styles.tournamentContainer}>
+            <View style={styles.tournamentIconWrapper}>
+              <Image source={item.fixture.tournament} resizeMode='contain' style={styles.tournamentIcon}/>
+            </View>
+          </View>
+          <View style={styles.liveTeamsContainer}>
+            <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
+            <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
+          </View>
+          <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
+          <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
+        </LinearGradient>
+
+      </TouchableOpacity>
   )
 }
 
