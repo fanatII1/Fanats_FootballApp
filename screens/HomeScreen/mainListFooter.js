@@ -16,21 +16,21 @@ const mainListFooter = () => {
         Standings
       </Text>
 
-      <View style={{marginHorizontal: 7}}>
+      <View style={styles.standingsContainer}>
         <FlatList
           data={sortedStandings}
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={()=>{
             return (
-              <View style={{flexDirection: 'row', marginHorizontal: 5}}>
+              <View style={styles.standingsHeaders}>
                 <View style={{flex: 1.2}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>Club</Text>
+                  <Text style={styles.clubHeading}>Club</Text>
                 </View>
-                <View style={{flex: 0.8, flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>P</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>W</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>L</Text>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', color: '#fff'}}>Pts</Text>
+                <View style={styles.standingTeamsStats}>
+                  <Text style={styles.standingTeamsStat}>P</Text>
+                  <Text style={styles.standingTeamsStat}>W</Text>
+                  <Text style={styles.standingTeamsStat}>L</Text>
+                  <Text style={styles.standingTeamsStat}>Pts</Text>
                 </View>
               </View>
             )
@@ -39,17 +39,17 @@ const mainListFooter = () => {
             // console.log(index)
             if(index <= 5){
               return (
-                <View style={{backgroundColor: '#fff', marginHorizontal: 5, marginBottom: 10, paddingHorizontal: 10, borderRadius: 7}}>
-                <View style={{flexDirection: 'row', paddingVertical: 10, borderBottomColor: '#fff', borderBottomWidth: 1 }}>
-                  <View style={{flex: 1.2, flexDirection: 'row', alignItems: 'center'}}>
-                    <Image style={{height: 30, width: 40}} source={item.logo} resizeMode='contain'/>
-                    <Text style={{color: '#000', marginLeft: 10}}>{item.name}</Text>
+                <View style={styles.standingTeamWrapper}>
+                <View style={styles.standingTeam}>
+                  <View style={styles.standingClubNameLogo}>
+                    <Image style={styles.standingClubLogo} source={item.logo} resizeMode='contain'/>
+                    <Text style={styles.standingClubName}>{item.name}</Text>
                   </View>
-                  <View style={{flex: 0.8, flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <Text style={{fontSize: 18, color: '#000'}}>{item.standings.plays}</Text>
-                    <Text style={{fontSize: 18, color: '#000'}}>{item.standings.wins}</Text>
-                    <Text style={{fontSize: 18, color: '#000'}}>{item.standings.loses}</Text>
-                    <Text style={{fontSize: 18, color: '#000'}}>{item.standings.pts()}</Text>
+                  <View style={styles.standingClubStats}>
+                    <Text style={styles.clubStat}>{item.standings.plays}</Text>
+                    <Text style={styles.clubStat}>{item.standings.wins}</Text>
+                    <Text style={styles.clubStat}>{item.standings.loses}</Text>
+                    <Text style={styles.clubStat}>{item.standings.pts()}</Text>
                   </View>
                 </View>
                 </View>
@@ -72,16 +72,16 @@ const mainListFooter = () => {
                 renderItem={({item}) => {
                   // console.log(item)
                   return(
-                    <View style={{height: 320, width: 250, marginRight: 10, marginBottom: 15}}>
-                        <ImageBackground source={item.pic} resizeMode='cover' style={{height: '100%', width: '100%'}} imageStyle={{borderRadius: 20}}>
+                    <View style={styles.latestArticlesContainer}>
+                        <ImageBackground source={item.pic} resizeMode='cover' style={styles.articlesBackgroundImg} imageStyle={{borderRadius: 20}}>
                            <LinearGradient
                               colors={['transparent', '#000']}
                               start={{x: 0.5, y: 0}}
                               end={{x: 0.5, y: 1}}
-                              style={{height: "100%", width: "100%", justifyContent: 'flex-end', padding: 10, borderRadius: 20}}
+                              style={styles.articleGradient}
                             >
-                              <Text style={{color: COLORS.text, fontSize: 13, fontStyle: 'italic', marginBottom: 5}}>{item.writer} :</Text>
-                              <Text style={{color: COLORS.text, fontSize: 23, marginBottom: 20}}>{item.title}</Text>
+                              <Text style={styles.articleWriter}>{item.writer} :</Text>
+                              <Text style={styles.articleHeading}>{item.title}</Text>
                             </LinearGradient>
                         </ImageBackground>
                     </View>
@@ -110,5 +110,89 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         marginVertical: 10,
         color: COLORS.text
+    },
+    standingsContainer: {
+      marginHorizontal: 7
+    }, 
+    standingsHeaders: {
+      flexDirection: 'row', 
+      marginHorizontal: 5
+    },
+    clubHeading: {
+      fontSize: 18, 
+      fontWeight: 'bold', 
+      color: '#fff'
+    },
+    standingTeamsStats: {
+      flex: 0.8, 
+      flexDirection: 'row', 
+      justifyContent: 'space-between'
+    },
+    standingTeamsStat: {
+      fontSize: 18, 
+      fontWeight: 'bold', 
+      color: '#fff'
+    },
+    standingTeamWrapper: {
+      backgroundColor: '#fff', 
+      marginHorizontal: 5, 
+      marginBottom: 10, 
+      paddingHorizontal: 
+      10, borderRadius: 7
+    },
+    standingTeam: {
+      flexDirection: 'row', 
+      paddingVertical: 10, 
+      borderBottomColor: '#fff', 
+      borderBottomWidth: 1 
+    },
+    standingClubNameLogo: {
+      flex: 1.2, 
+      flexDirection: 'row', 
+      alignItems: 'center'
+    },
+    standingClubLogo: {
+      height: 30, 
+      width: 40
+    },
+    standingClubName: {
+      color: '#000', marginLeft: 10
+    },
+    standingClubStats: {
+      flex: 0.8, 
+      flexDirection: 'row', 
+      justifyContent: 'space-between'
+    },
+    clubStat: {
+      fontSize: 18, 
+      color: '#000'
+    },
+    latestArticlesContainer: {
+      height: 320, 
+      width: 250, 
+      marginRight: 10, 
+      marginBottom: 15
+    },
+    articlesBackgroundImg: {
+      height: '100%', 
+      width: '100%'
+    },
+    articleGradient: {
+      height: "100%", 
+      width: "100%", 
+      justifyContent: 'flex-end', 
+      padding: 10, 
+      borderRadius: 20
+    },
+    articleWriter: {
+      color: COLORS.text, 
+      fontSize: 13, 
+      fontStyle: 'italic', 
+      marginBottom: 5
+    },
+    articleHeading: {
+      color: COLORS.text, 
+      fontSize: 23, 
+      marginBottom: 20
     },
 })
