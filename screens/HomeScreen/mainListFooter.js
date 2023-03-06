@@ -65,43 +65,6 @@ const mainListFooter = () => {
               )
             }
           }}
-          ListFooterComponent={()=>{
-            return(
-            <>
-            <Text style={styles.sectionHeading}>
-              <Entypo name='dot-single' size={24} color='#925BFF' />
-              Latest News
-            </Text>
-      
-            <View>
-              <FlatList
-                data={news}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                renderItem={({item}) => {
-                  // console.log(item)
-                  return(
-                    <View style={styles.latestArticlesContainer}>
-                        <ImageBackground source={item.pic} resizeMode='cover' style={styles.articlesBackgroundImg} imageStyle={{borderRadius: 20}}>
-                           <LinearGradient
-                              colors={['transparent', '#000']}
-                              start={{x: 0.5, y: 0}}
-                              end={{x: 0.5, y: 1}}
-                              style={styles.articleGradient}
-                            >
-                              <Text style={styles.articleWriter}>{item.writer} :</Text>
-                              <Text style={styles.articleHeading}>{item.title}</Text>
-                            </LinearGradient>
-                        </ImageBackground>
-                    </View>
-                  )
-                }}
-                keyExtractor={(item, index) => index}
-              />
-            </View>
-            </>
-            )
-          }}
           keyExtractor={(team, index) => index}
         />
       </View>

@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image} from 'react-native';
-import { teams, results, matchOfTheDay } from '../../data/footballData'
+import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground} from 'react-native';
+import { teams, results, news } from '../../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { COLORS } from '../../constants/index';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -14,7 +14,7 @@ const {width} = Dimensions.get('window');
 const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   const navigation = useNavigation();
   const firstGradientColor = index === matchIndex ? '#B20600' : '#000';  
-  const secondGradientColor = index === matchIndex ? '#FF5F00' : '#000';  
+  const secondGradientColor = index === matchIndex ? '#FF5F00' : '#00092C';  
   const liveGameOpacity = index === matchIndex ? {opacity: 1} : {opacity: 0.75};
   const liveGameText = index === matchIndex ? {color: '#fff'} : {color: '#fff'};
 
@@ -115,6 +115,38 @@ const mainListHeader = () => {
       />
       </View>
 
+
+      <Text style={styles.sectionHeading}>
+        <Entypo name='dot-single' size={24} color='#925BFF' />
+        Latest News
+      </Text>
+      <View style={{padding: 5, }}>
+        <FlatList
+          data={news}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => {
+          // console.log(item)
+            return(
+              <Shadow offset={[5,5]} distance={4} style={styles.latestArticlesContainer}>
+                <ImageBackground source={item.pic} resizeMode='cover' style={styles.articlesBackgroundImg} imageStyle={{borderRadius: 20}}>
+                <LinearGradient
+                  colors={['transparent', '#00092C']}
+                  start={{x: 0.5, y: 0}}
+                  end={{x: 0.5, y: 1}}
+                  style={styles.articleGradient}
+                >
+                 <Text style={styles.articleWriter}>{item.writer} :</Text>
+                 <Text style={styles.articleHeading}>{item.title}</Text>
+               </LinearGradient>
+             </ImageBackground>
+             </Shadow>
+            )
+            }}
+            keyExtractor={(item, index) => index}
+            />
+      </View>
+
       <Text style={styles.sectionHeading}>
         <Entypo name='dot-single' size={24} color='#925BFF' />
         Match Schedule
@@ -139,51 +171,6 @@ const styles = StyleSheet.create({
   badge:{
     height: '65%',
     width: '90%',
-  },
-  matchOfDayGradient: {
-    height: 200, 
-    width: 0.98 * width, 
-    borderRadius: 30
-  },
-  matchOfDayTournament: { 
-    position: 'absolute', 
-    top: 0, 
-    width: '100%',
-    color: '#fff',
-    textAlign: 'center',  
-    fontWeight: '600'
-  },
-  matchOfDayDetails: {
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
-    alignItems: 'center', 
-    flex: 1, 
-    borderRadius: 20
-  },
-  matchOfDayHomeTeam: {
-    flex: 1, 
-    alignItems: 'center'
-  },
-  matchOfDayTeamImg: {
-    height: 100, 
-    width:100
-  },
-  matchOfDayTeamName: {
-    color: '#fff', 
-    fontSize: 16, 
-    fontWeight: '600', 
-    textAlign: 'center'
-  },
-  matchOfDayScores: {
-    flexDirection: 'row', 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center'
-  },
-  matchOfDayScore: {
-    color: '#fff', 
-    fontSize: 30, 
-    fontWeight: '600'
   },
   sectionHeading:{
     fontWeight: '500',
@@ -248,5 +235,32 @@ const styles = StyleSheet.create({
   liveTeamName: {
     marginLeft: 12, 
     marginTop: 10
+  },
+  latestArticlesContainer: {
+    height: 220, 
+    width: 220, 
+    marginLeft: 5,
+    marginRight: 15,
+    marginVertical: 5,
+    overflow: 'hidden',
+    borderRadius: 30
+  },
+  articleGradient: {
+    height: "100%", 
+    width: "100%", 
+    justifyContent: 'flex-end', 
+    padding: 10,
+    borderRadius: 20
+  },
+  articleWriter: {
+    color: COLORS.text, 
+    fontSize: 13, 
+    fontStyle: 'italic', 
+    marginBottom: 5
+  },
+  articleHeading: {
+    color: COLORS.text, 
+    fontSize: 19, 
+    marginBottom: 20
   },
 })
