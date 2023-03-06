@@ -10,11 +10,14 @@ import { FlatList } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
 
 const {width} = Dimensions.get('window');
+
 const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   const navigation = useNavigation();
+  const firstGradientColor = index === matchIndex ? '#B20600' : '#fff';  
+  const secondGradientColor = index === matchIndex ? '#FF5F00' : '#fff';  
+  const liveGameOpacity = index === matchIndex ? {opacity: 1} : {opacity: 0.75};
+  const liveGameText = index === matchIndex ? {color: '#fff'} : {color: '#000'};
 
-  //set gradient color based on the component(index) clicked
-  var firstColor = index === matchIndex ? 'blue' : '#232232';  
   //navigate to live games and pass details of live game as parameters
   const navigateToLiveGames = () =>{
     setMatchIndex(index)
@@ -25,10 +28,10 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   <>
     <Shadow offset={[10, 10]}>
       <LinearGradient
-        colors={['#B20600', '#FF5F00']}
+        colors={[firstGradientColor, secondGradientColor]}
         start={{x:0, y:1}}
         end={{x: 1, y:0}}
-        style={[styles.liveGame, {backgroundColor: firstColor}]}
+        style={[styles.liveGame, {backgroundColor: firstGradientColor, opacity: liveGameOpacity.opacity}]}
       > 
       <TouchableOpacity style={{flex: 1}} onPress={navigateToLiveGames}>
         <View style={styles.tournamentContainer}>
@@ -40,8 +43,8 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
           <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
           <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
         </View>
-        <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
-        <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
+        <Text style={[styles.liveTeamName, {color: liveGameText.color }]}>{item.teams.home.name}   {item.teams.home.score}</Text>
+        <Text style={[styles.liveTeamName, {color: liveGameText.color }]}>{item.teams.away.name}   {item.teams.away.score}</Text>
       </TouchableOpacity>
       </LinearGradient>
       </Shadow>
@@ -243,7 +246,6 @@ const styles = StyleSheet.create({
     marginTop: 25
   },
   liveTeamName: {
-    color: '#fff', 
     marginLeft: 12, 
     marginTop: 10
   },
