@@ -15,15 +15,15 @@ const MainHomeScreen = () => {
         ListHeaderComponent={mainListHeader}
         renderItem={({item, index}) =>{
           return(
-            <TouchableOpacity activeOpacity={0.8} style={styles.fixture}>
+            <TouchableOpacity activeOpacity={0.5} style={styles.fixture}>
               <View style={styles.fixture_firstTeam}>
                 <Text style={styles.firstTeamName}>{item.teams.home.name}</Text>
                 <Image style={styles.firstTeamLogo} source={item.teams.home.logo} resizeMode='contain'/>
               </View>  
 
               <View style={styles.fixtureDetails}>
-                <Text style={{color:'#000'}}>27 Aug</Text>
-                <Text style={{color:'#000'}}>{item.fixture.time}</Text>
+                <Text style={{color:'#fff'}}>27 Aug</Text>
+                <Text style={{color:'#fff'}}>{item.fixture.time}</Text>
               </View>
 
               <View style={styles.fixture_secondTeam}>
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
   fixture: { 
     flexDirection: 'row', 
     margin: 7, 
-    height: 85, 
-    backgroundColor: '#fff', 
-    borderRadius: 10, 
+    height: 60, 
+    backgroundColor: '#000', 
+    borderRadius: 20, 
     overflow: 'hidden'
   },
   fixture_firstTeam: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   firstTeamName: {
     marginLeft: 10, 
-    color: '#000'
+    color: '#fff'
   },
   firstTeamLogo: {
     marginLeft: 10, 
@@ -84,6 +84,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     flex: 1
   },
-  secondTeamName: {color: '#000', marginRight: 10},
-  secondTeamLogo: {height: 18, width: 30}
+  secondTeamName: {
+    color: '#fff', 
+    marginRight: 10
+  },
+  secondTeamLogo: {
+    height: 18, 
+    width: 30
+  }
 })

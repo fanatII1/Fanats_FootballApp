@@ -13,10 +13,10 @@ const {width} = Dimensions.get('window');
 
 const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   const navigation = useNavigation();
-  const firstGradientColor = index === matchIndex ? '#B20600' : '#fff';  
-  const secondGradientColor = index === matchIndex ? '#FF5F00' : '#fff';  
+  const firstGradientColor = index === matchIndex ? '#B20600' : '#000';  
+  const secondGradientColor = index === matchIndex ? '#FF5F00' : '#000';  
   const liveGameOpacity = index === matchIndex ? {opacity: 1} : {opacity: 0.75};
-  const liveGameText = index === matchIndex ? {color: '#fff'} : {color: '#000'};
+  const liveGameText = index === matchIndex ? {color: '#fff'} : {color: '#fff'};
 
   //navigate to live games and pass details of live game as parameters
   const navigateToLiveGames = () =>{

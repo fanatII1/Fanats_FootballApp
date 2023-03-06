@@ -39,11 +39,17 @@ const mainListFooter = () => {
             )
           }}
           renderItem={({item, index}) => {
-            // console.log(index)
+            const firstTeamGradient = index === 0 ? ['#B20600', '#FF5F00'] : ['#000', '#000'];
+            const shadowColor = index === 0 ? '#FF5F00' : '#00000070';
             if(index <= 5){
               return (
-                <Shadow distance={5} offset={[0,4]} style={styles.standingTeam}>
-                
+                <Shadow startColor={shadowColor} distance={2} offset={[1,1]} stretch={true}>
+                  <LinearGradient
+                    colors={firstTeamGradient}
+                    start={{x:0, y:1}}
+                    end={{x: 1, y:0}}
+                    style={styles.standingTeam}
+                  >
                   <View style={styles.standingClubNameLogo}>
                     <Image style={styles.standingClubLogo} source={item.logo} resizeMode='contain'/>
                     <Text style={styles.standingClubName}>{item.name}</Text>
@@ -54,7 +60,7 @@ const mainListFooter = () => {
                     <Text style={styles.clubStat}>{item.standings.loses}</Text>
                     <Text style={styles.clubStat}>{item.standings.pts()}</Text>
                   </View>
-                
+                  </LinearGradient>
                 </Shadow>
               )
             }
@@ -139,12 +145,11 @@ const styles = StyleSheet.create({
     standingTeam: {
       flexDirection: 'row',
       flex:1,
+      alignItems: 'center',
       height: 50, 
       padding: 10, 
-      borderBottomColor: '#fff', 
-      borderBottomWidth: 1,
-      backgroundColor: '#fff',
-      marginBottom: 15,
+      marginBottom: 10,
+      backgroundColor: '#000',
       borderRadius: 70
     },
     standingClubNameLogo: {
@@ -157,7 +162,8 @@ const styles = StyleSheet.create({
       width: 40
     },
     standingClubName: {
-      color: '#000', marginLeft: 10
+      color: '#fff', 
+      marginLeft: 10
     },
     standingClubStats: {
       flex: 0.8, 
@@ -166,7 +172,7 @@ const styles = StyleSheet.create({
     },
     clubStat: {
       fontSize: 18, 
-      color: '#000'
+      color: '#fff'
     },
     latestArticlesContainer: {
       height: 320, 
