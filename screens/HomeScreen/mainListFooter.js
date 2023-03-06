@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between'
     },
     clubStat: {
-      fontSize: 18, 
+      fontSize: 16, 
       color: '#fff'
     },
     latestArticlesContainer: {
