@@ -13,27 +13,27 @@ const MainHomeScreen = () => {
         data={fixtures}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={mainListHeader}
-        renderItem={({item, index}) =>{
-          return(
-            <TouchableOpacity activeOpacity={0.8} style={styles.fixture}>
-              <View style={styles.fixture_firstTeam}>
-                <Text style={styles.firstTeamName}>{item.teams.home.name}</Text>
-                <Image style={styles.firstTeamLogo} source={item.teams.home.logo} resizeMode='contain'/>
-              </View>  
+        // renderItem={({item, index}) =>{
+        //   return(
+        //     <TouchableOpacity activeOpacity={0.8} style={styles.fixture}>
+        //       <View style={styles.fixture_firstTeam}>
+        //         <Text style={styles.firstTeamName}>{item.teams.home.name}</Text>
+        //         <Image style={styles.firstTeamLogo} source={item.teams.home.logo} resizeMode='contain'/>
+        //       </View>  
 
-              <View style={styles.fixtureDetails}>
-                <Text style={{color:'#000'}}>27 Aug</Text>
-                <Text style={{color:'#000'}}>{item.fixture.time}</Text>
-              </View>
+        //       <View style={styles.fixtureDetails}>
+        //         <Text style={{color:'#000'}}>27 Aug</Text>
+        //         <Text style={{color:'#000'}}>{item.fixture.time}</Text>
+        //       </View>
 
-              <View style={styles.fixture_secondTeam}>
-                <Image style={styles.secondTeamLogo} source={item.teams.away.logo} resizeMode='contain'/>
-                <Text style={styles.secondTeamName}>{item.teams.away.name}</Text>
-              </View>
-            </TouchableOpacity>
-          )
-        }}
-        ListFooterComponent={ mainListFooter}
+        //       <View style={styles.fixture_secondTeam}>
+        //         <Image style={styles.secondTeamLogo} source={item.teams.away.logo} resizeMode='contain'/>
+        //         <Text style={styles.secondTeamName}>{item.teams.away.name}</Text>
+        //       </View>
+        //     </TouchableOpacity>
+        //   )
+        // }}
+        // ListFooterComponent={ mainListFooter}
         keyExtractor={(fixture, index) => index}
       />
     </SafeAreaView>
@@ -45,9 +45,9 @@ export default MainHomeScreen
 const styles = StyleSheet.create({
   HomeContainer:{
     flex: 1,
-    backgroundColor: '#151727', 
+    backgroundColor: '#EEEEEE', 
     paddingTop: 20,
-    paddingHorizontal: 5,
+    
   },
   fixture: { 
     flexDirection: 'row', 

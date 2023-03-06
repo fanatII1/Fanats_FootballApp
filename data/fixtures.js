@@ -27,6 +27,7 @@ var fixtures = [
             time: "18:00",
             stadium: "Lucas Moripe Stadium",
             tournament: icons.nedbank_logo,
+            tournamentName: 'Nedbank Cup',
             stream: '',
             bgColor: COLORS.support_primary
         },
@@ -52,6 +53,7 @@ var fixtures = [
             time: "15:30",
             stadium: "Orlando Stadium",
             tournament: icons.nedbank_logo,
+            tournamentName: 'NedbankCup',
             stream: '',
             bgColor: COLORS.support_primary
         },
@@ -77,6 +79,7 @@ var fixtures = [
             time: "16:30",
             stadium: "Loftus Versfeld Stadium",
             tournament: icons.mtn8_logo,
+            tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary
         },
@@ -102,6 +105,7 @@ var fixtures = [
             time: "16:30",
             stadium: "Cape Town Stadium",
             tournament: icons.dstv_logo,
+            tournamentName: 'DSTV Premiership',
             stream: '',
             bgColor: COLORS.support_primary
         },
@@ -132,6 +136,7 @@ var results = [
             time: "15:30",
             stadium: "Peter Mokaba Stadium",
             tournament: icons.dstv_logo,
+            tournamentName: 'DSTV Premiership',
             stream: '',
             bgColor: COLORS.support_primary
         },
@@ -159,6 +164,7 @@ var results = [
             time: "15:30",
             stadium: "Dobsonville Stadium",
             tournament: icons.mtn8_logo,
+            tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary,
         },
@@ -186,6 +192,7 @@ var results = [
             time: "20:00",
             stadium: "Harry Gwala Stadium",
             tournament: icons.mtn8_logo,
+            tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary
         },
@@ -213,6 +220,7 @@ var results = [
             time: "15:30",
             stadium: "Mbombela Stadium",
             tournament: icons.dstv_logo,
+            tournamentName: 'DSTV Premiership',
             stream: '',
             bgColor: COLORS.support_primary
         },
@@ -572,7 +580,7 @@ var standings = [
 
 function returnMatchOfTheDay(){
     let chooseMatchOfTheDay = Math.floor(Math.random() * fixtures.length);
-    let matches = fixtures;
+    let matches = results;
     matches[chooseMatchOfTheDay].status.matchOfTheDay = true;
     return matches[chooseMatchOfTheDay]
 }
