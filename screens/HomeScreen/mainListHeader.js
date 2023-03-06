@@ -9,15 +9,12 @@ import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
 
-const {width} = Dimensions.get('window')
-// SECOND COOMPONENT -- MAIN IS DOWN BELOW(mainListHeader)
+const {width} = Dimensions.get('window');
 const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   const navigation = useNavigation();
 
   //set gradient color based on the component(index) clicked
-  var firstColor = index === matchIndex ? COLORS.support_primary : '#232232';
-  var secondColor = index === matchIndex ? COLORS.support_primary : '#232232';
-  
+  var firstColor = index === matchIndex ? 'blue' : '#232232';  
   //navigate to live games and pass details of live game as parameters
   const navigateToLiveGames = () =>{
     setMatchIndex(index)
@@ -25,47 +22,45 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   }
     
   return (
-    <>
-      <TouchableOpacity activeOpacity={0.6} style={styles.liveGame} onPress={navigateToLiveGames}>
-        <LinearGradient
-          colors={[firstColor, secondColor]}
-          start={{x: 0, y: 1}}
-          end={{x: 1, y: 1}}
-          style={{height: '100%', width: '100%', borderRadius: 20,}}
-        >
-          <View style={styles.tournamentContainer}>
-            <View style={styles.tournamentIconWrapper}>
-              <Image source={item.fixture.tournament} resizeMode='contain' style={styles.tournamentIcon}/>
-            </View>
+  <>
+    <Shadow offset={[10, 10]}>
+      <LinearGradient
+        colors={['#B20600', '#FF5F00']}
+        start={{x:0, y:1}}
+        end={{x: 1, y:0}}
+        style={[styles.liveGame, {backgroundColor: firstColor}]}
+      > 
+      <TouchableOpacity style={{flex: 1}} onPress={navigateToLiveGames}>
+        <View style={styles.tournamentContainer}>
+          <View style={styles.tournamentIconWrapper}>
+            <Image source={item.fixture.tournament} resizeMode='contain' style={styles.tournamentIcon}/>
           </View>
-          <View style={styles.liveTeamsContainer}>
-            <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
-            <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
-          </View>
-          <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
-          <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
-        </LinearGradient>
-
+        </View>
+        <View style={styles.liveTeamsContainer}>
+          <Image source={item.teams.home.logo} resizeMode='contain' style={styles.liveTeam}/>
+          <Image source={item.teams.away.logo} resizeMode='contain' style={styles.liveTeam}/>     
+        </View>
+        <Text style={styles.liveTeamName}>{item.teams.home.name}   {item.teams.home.score}</Text>
+        <Text style={styles.liveTeamName}>{item.teams.away.name}   {item.teams.away.score}</Text>
       </TouchableOpacity>
-      </>
+      </LinearGradient>
+      </Shadow>
+    </>
   )
 }
-
 
 const mainListHeader = () => {
   const [matchIndex, setMatchIndex] = useState(0);
   const refFlatList = useRef();
-  const {teams, fixture, status} = matchOfTheDay;
-  const teamTournament = fixture.tournamentName;
 
-  //when matchIndex changes(which is the selected live game), we scroll to that live game
+  //when matchIndex changes( the selected live game), scroll to tht live game
   useEffect(()=>{
     if(refFlatList.current){
       refFlatList.current.scrollToIndex({animated: true, index: matchIndex})
     }
   }, [matchIndex])
 
-  //calculate total height of rows needed to position scrollview of list correctly
+  //calculate total height of rows needed to position list scrollview correctly
   const getItemLayout = (data, index) =>{
     return  {length: 180, offset: 180 * index, index}
   }
@@ -99,37 +94,6 @@ const mainListHeader = () => {
           }}
           keyExtractor={(item , index)=> index }
         />
-      </View>
-
-      {/*MATCH OF THE DAY*/}
-      <View style={{alignItems: 'center'}}>
-        <Shadow startColor='#0000005c' distance={8.5}>
-          <LinearGradient
-          colors={['#B20600', '#FF5F00']}
-          start={{x:0, y:1}}
-          end={{x: 1, y:1}}
-          style={styles.matchOfDayGradient}>
-            <Text style={styles.matchOfDayTournament}>{teamTournament}</Text>
-            <View style={styles.matchOfDayDetails}>
-              <View style={styles.matchOfDayHomeTeam}>
-                <Image source={teams.home.logo} style={styles.matchOfDayTeamImg} resizeMode='contain'/>
-                <Text style={styles.matchOfDayTeamName}>{teams.home.name}</Text>
-              </View>
-        
-              <View style={styles.matchOfDayScores}>
-                <Text style={styles.matchOfDayScore}>{teams.home.score}</Text>
-                 <Text style={{color: '#fff', fontSize: 30, fontWeight: '900'}}> - </Text>
-                 <Text style={styles.matchOfDayScore}>{teams.away.score}</Text>
-              </View>
-        
-              <View style={styles.matchOfDayHomeTeam}>
-                <Image source={teams.away.logo} resizeMode='contain' style={styles.matchOfDayTeamImg} />
-                <Text style={styles.matchOfDayTeamName}>{teams.away.name}</Text>
-              </View>
-            </View>
-          </LinearGradient>
-          </Shadow>
-        </View>
 
       <Text style={styles.sectionHeading}>
         <Entypo name='dot-single' size={24} color='#925BFF' />
@@ -137,8 +101,7 @@ const mainListHeader = () => {
       </Text>
 
       {/* LIVE GAMES */}
-      {/* <View>
-      <FlatList
+        <FlatList
         ref={refFlatList}
         data={results}
         horizontal
@@ -147,14 +110,12 @@ const mainListHeader = () => {
         renderItem={({item, index})=> <LiveGames item={item} index={index} matchIndex={matchIndex} setMatchIndex={setMatchIndex}/>}
         keyExtractor={(item , index) => index }
       />
+      </View>
 
       <Text style={styles.sectionHeading}>
         <Entypo name='dot-single' size={24} color='#925BFF' />
         Match Schedule
       </Text>
-
-
-      </View> */}
       </>
   )
 }
@@ -229,8 +190,9 @@ const styles = StyleSheet.create({
     color: '#000'
   },
   teamWrapper: {
-    backgroundColor: '#fff', 
-    marginRight: 15,
+    backgroundColor: '#fff',
+    marginLeft: 10, 
+    marginRight: 7,
     height: 45, 
     width: 45, 
     borderRadius: 45/2, 
@@ -244,7 +206,11 @@ const styles = StyleSheet.create({
   liveGame: {
     height: 180, 
     width: 180, 
-    margin: 10,
+    marginVertical: 10,
+    marginRight: 10,
+    marginLeft: 5,
+    backgroundColor: 'red',
+    borderRadius: 20,
   },
   tournamentContainer: {
     position: 'absolute', 
@@ -278,7 +244,6 @@ const styles = StyleSheet.create({
   },
   liveTeamName: {
     color: '#fff', 
-    fontWeight: '600', 
     marginLeft: 12, 
     marginTop: 10
   },

@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image} from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, Dimensions} from 'react-native';
 import { sortedStandings, news } from '../../data/footballData'
 import { Entypo } from '@expo/vector-icons';
 import { COLORS } from '../../constants/index';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
+import { Shadow } from 'react-native-shadow-2';
+
+const {width} = Dimensions.get('window');
 
 const mainListFooter = () => {
 
@@ -24,7 +27,7 @@ const mainListFooter = () => {
             return (
               <View style={styles.standingsHeaders}>
                 <View style={{flex: 1.2}}>
-                  <Text style={styles.clubHeading}>Club</Text>
+                  <Text style={styles.clubHeading}>#Team</Text>
                 </View>
                 <View style={styles.standingTeamsStats}>
                   <Text style={styles.standingTeamsStat}>P</Text>
@@ -39,8 +42,8 @@ const mainListFooter = () => {
             // console.log(index)
             if(index <= 5){
               return (
-                <View style={styles.standingTeamWrapper}>
-                <View style={styles.standingTeam}>
+                <Shadow distance={5} offset={[0,4]} style={styles.standingTeam}>
+                
                   <View style={styles.standingClubNameLogo}>
                     <Image style={styles.standingClubLogo} source={item.logo} resizeMode='contain'/>
                     <Text style={styles.standingClubName}>{item.name}</Text>
@@ -51,8 +54,8 @@ const mainListFooter = () => {
                     <Text style={styles.clubStat}>{item.standings.loses}</Text>
                     <Text style={styles.clubStat}>{item.standings.pts()}</Text>
                   </View>
-                </View>
-                </View>
+                
+                </Shadow>
               )
             }
           }}
@@ -109,7 +112,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         paddingLeft: 5,
         marginVertical: 10,
-        color: COLORS.text
+        color: '#000'
     },
     standingsContainer: {
       marginHorizontal: 7
@@ -120,8 +123,8 @@ const styles = StyleSheet.create({
     },
     clubHeading: {
       fontSize: 18, 
-      fontWeight: 'bold', 
-      color: '#fff'
+      fontWeight: '650', 
+      color: '#00'
     },
     standingTeamsStats: {
       flex: 0.8, 
@@ -130,21 +133,19 @@ const styles = StyleSheet.create({
     },
     standingTeamsStat: {
       fontSize: 18, 
-      fontWeight: 'bold', 
-      color: '#fff'
-    },
-    standingTeamWrapper: {
-      backgroundColor: '#fff', 
-      marginHorizontal: 5, 
-      marginBottom: 10, 
-      paddingHorizontal: 
-      10, borderRadius: 7
+      fontWeight: '650', 
+      color: '#000'
     },
     standingTeam: {
-      flexDirection: 'row', 
-      paddingVertical: 10, 
+      flexDirection: 'row',
+      flex:1,
+      height: 50, 
+      padding: 10, 
       borderBottomColor: '#fff', 
-      borderBottomWidth: 1 
+      borderBottomWidth: 1,
+      backgroundColor: '#fff',
+      marginBottom: 15,
+      borderRadius: 70
     },
     standingClubNameLogo: {
       flex: 1.2, 
