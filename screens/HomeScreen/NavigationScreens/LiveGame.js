@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView, FlatList} from 'react-native';
 import { teams, results, news } from '../../../data/footballData'
 import { AntDesign, Entypo, EvilIcons, Ionicons } from '@expo/vector-icons';
@@ -14,7 +14,20 @@ const LiveGame = () => {
   const liveGameDetails = route.params.liveGame;
   const {fixture, teams, status} = liveGameDetails;
   const {home, away} = teams;
-  console.log(fixture)
+  const [matchDetailIndex, setMatchDetailIndex] = useState(0)
+  const matchDetailRef = useRef(0);
+
+  //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
+  useEffect(()=>{
+    //works if matchDetailRef is defined(true)
+    if(matchDetailRef.current){
+     matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
+    }
+  }, [matchDetailIndex])
+
+  const getItemLayout = (data, index) =>{
+    return  {length: 180, offset: 180 * index, index}
+  }
 
   return (
     <SafeAreaView style={styles.LiveGamesContainer}>
@@ -26,7 +39,7 @@ const LiveGame = () => {
           style={styles.main_stats}
         >
           <View style={styles.stats_header}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> setMatchDetailIndex()}>
               <Ionicons name="arrow-back-circle-outline" size={30} color="black" style={styles.backBtn}/>
             </TouchableOpacity>
             <Text style={styles.tournamentName}>{fixture.tournamentName}</Text>
@@ -53,13 +66,16 @@ const LiveGame = () => {
         
         <View style={{height: 50, backgroundColor: '#000', flexDirection:'row', justifyContent: 'space-between', alignItems: 'center'}}>
           <FlatList
+            ref={matchDetailRef}
             data={nav_items}
             horizontal
             showsHorizontalScrollIndicator={false}
+            getItemLayout={getItemLayout}
             contentContainerStyle={{ flex: 1, justifyContent: 'space-between', alignItems: "stretch", marginHorizontal: 10 }}
-            renderItem={({item})=>{
+            renderItem={({item, index})=>{
+              
               return(
-                <TouchableOpacity >
+                <TouchableOpacity onPress={()=> setMatchDetailIndex(index)}>
                   <Text style={{color: '#fff'}}>{item}</Text>
                 </TouchableOpacity>
               )
