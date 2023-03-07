@@ -8,31 +8,20 @@ import { Shadow } from 'react-native-shadow-2';
 import { useRoute } from '@react-navigation/native';
 
 const nav_items = ['Statistics', 'Lineups', 'Summary']
+const matchDetails = ['Possestion', 'Shots', 'Expected Goals', 'Passes', 'Tackles', 'Tackles Won', 'Interceptions', 'Saves', 'Fouls Commited', 'Offsides', 'Corners', 'Freekicks', 'Penalty Kicks', 'Yellow Cards', 'Red Cards'];
 
-const LiveGame = () => {
-  const route = useRoute();
+const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetailIndex}) => {
   const liveGameDetails = route.params.liveGame;
   const {fixture, teams, status} = liveGameDetails;
   const {home, away} = teams;
-  const [matchDetailIndex, setMatchDetailIndex] = useState(0)
-  const matchDetailRef = useRef(0);
-
-  //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
-  useEffect(()=>{
-    //works if matchDetailRef is defined(true)
-    if(matchDetailRef.current){
-     matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
-    }
-  }, [matchDetailIndex])
 
   const getItemLayout = (data, index) =>{
     return  {length: 180, offset: 180 * index, index}
   }
 
-  return (
-    <SafeAreaView style={styles.LiveGamesContainer}>
-      <StatusBar barStyle={'light-content'} translucent={true}/>
-        <LinearGradient
+  return(
+    <>
+    <LinearGradient
           colors={[COLORS.quatenary_support, COLORS.quinary_support]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
@@ -63,8 +52,6 @@ const LiveGame = () => {
            </View>
           </View>
         </LinearGradient>
-        
-        {/* SCROLL MENU */}
         <View style={styles.scrollMenu}>
           <FlatList
             ref={matchDetailRef}
@@ -77,7 +64,7 @@ const LiveGame = () => {
               
               return(
                 <TouchableOpacity style={{height: 30, width: 80}} onPress={()=> setMatchDetailIndex(index)}>
-                  {/* <Text style={styles.scrollMenuText}>{item}</Text> */}
+                  
                   
                    <LinearGradient
                      colors={[COLORS.quatenary_support, COLORS.quinary_support]}
@@ -94,11 +81,53 @@ const LiveGame = () => {
             keyExtractor={(item, index) => index}
         />
         </View>
-
         {/* MATCH DETAILS */}
         <View style={{flex: 1}}>
-
+          <Text style={{textAlign:'center', fontWeight: 'bold', fontSize: 20, marginTop: 10}}>Match Details</Text>
         </View>
+        </>
+        
+  )
+}
+
+
+const LiveGame = () => {
+  const route = useRoute();
+  const [matchDetailIndex, setMatchDetailIndex] = useState(0)
+  const matchDetailRef = useRef(0);
+
+  //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
+  useEffect(()=>{
+    //works if matchDetailRef is defined(true)
+    if(matchDetailRef.current){
+     matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
+    }
+  }, [matchDetailIndex])
+
+  const getItemLayout = (data, index) =>{
+    return  {length: 180, offset: 180 * index, index}
+  }
+
+  return (
+    <SafeAreaView style={styles.LiveGamesContainer}>
+      <StatusBar barStyle={'light-content'} translucent={true}/>
+      <FlatList
+            data={matchDetails}
+            ListHeaderComponent={()=> <LiveGameHeader route={route} matchDetailIndex={matchDetailIndex} setMatchDetailIndex={setMatchDetailIndex} matchDetailRef={matchDetailRef}/>}
+            renderItem={({item, index})=> {
+              var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
+              var statText = index % 2 === 0 ? '#fff' : '#000';
+
+              return(
+                <View style={{flexDirection: 'row', marginHorizontal: 10, marginBottom: 15, padding: 7, justifyContent: 'space-between', backgroundColor: statBackground, borderRadius: 5}}>
+                  <Text style={{color: statText, fontWeight: '550'}}>Home Stat</Text>
+                  <Text style={{color: statText, fontWeight: '550'}}>{item}</Text>
+                  <Text style={{color: statText, fontWeight: '550'}}>Home Stat</Text>
+                </View>
+              )
+            }}
+            keyExtractor={(item, index)=> index}
+      />
     </SafeAreaView>
   )
 }
