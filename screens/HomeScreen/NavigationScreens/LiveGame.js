@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView, FlatList} from 'react-native';
 import { teams, results, news } from '../../../data/footballData'
 import { AntDesign, Entypo, EvilIcons, Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../../constants/index';
@@ -7,7 +7,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Shadow } from 'react-native-shadow-2';
 import { useRoute } from '@react-navigation/native';
 
-const LiveGames = () => {
+const nav_items = ['Statistics', 'Lineups', 'Summary']
+
+const LiveGame = () => {
   const route = useRoute();
   const liveGameDetails = route.params.liveGame;
   const {fixture, teams, status} = liveGameDetails;
@@ -48,14 +50,28 @@ const LiveGames = () => {
            </View>
           </View>
         </LinearGradient>
-      <View>
-
-      </View>
+        
+        <View style={{height: 50, backgroundColor: '#000', flexDirection:'row', justifyContent: 'space-between', alignItems: 'center'}}>
+          <FlatList
+            data={nav_items}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ flex: 1, justifyContent: 'space-between', alignItems: "stretch", marginHorizontal: 10 }}
+            renderItem={({item})=>{
+              return(
+                <TouchableOpacity >
+                  <Text style={{color: '#fff'}}>{item}</Text>
+                </TouchableOpacity>
+              )
+            }}
+            keyExtractor={(item, index) => index}
+        />
+        </View>
     </SafeAreaView>
   )
 }
 
-export default LiveGames
+export default LiveGame
 
 const styles = StyleSheet.create({
   LiveGamesContainer:{

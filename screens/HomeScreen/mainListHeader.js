@@ -21,7 +21,7 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   //navigate to live games and pass details of live game as parameters
   const navigateToLiveGames = () =>{
     setMatchIndex(index)
-    navigation.navigate('LiveGames', {liveGame: item})
+    navigation.navigate('LiveGame', {liveGame: item })
   }
     
   return (
