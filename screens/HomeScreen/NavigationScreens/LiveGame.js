@@ -7,8 +7,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Shadow } from 'react-native-shadow-2';
 import { useRoute } from '@react-navigation/native';
 
+///nav menu headings
 const nav_items = ['Statistics', 'Lineups', 'Summary']
-const matchDetails = ['Possestion', 'Shots', 'Expected Goals', 'Passes', 'Tackles', 'Tackles Won', 'Interceptions', 'Saves', 'Fouls Commited', 'Offsides', 'Corners', 'Freekicks', 'Penalty Kicks', 'Yellow Cards', 'Red Cards'];
 
 const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetailIndex}) => {
   const liveGameDetails = route.params.liveGame;
@@ -95,6 +95,26 @@ const LiveGame = () => {
   const route = useRoute();
   const [matchDetailIndex, setMatchDetailIndex] = useState(0)
   const matchDetailRef = useRef(0);
+  const liveGameDetails = route.params.liveGame;
+  const {fixture, teams, status} = liveGameDetails;
+  const {home, away} = teams;
+  const statsNames = [];
+  const homeStats = [];
+  const awayStats = [];
+  // Extract keys (main stat names) from the live game(using home.gamStats object) & insert into statNames array
+  for (let key in home.gameStats) {
+    statsNames.push(key);
+  }
+
+  // Extract home game stats
+  for (let key in home.gameStats) {
+    homeStats.push(home.gameStats[key]);
+  }
+
+  // Extract home game stats
+  for (let key in away.gameStats) {
+    awayStats.push(away.gameStats[key]);
+  }
 
   //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
   useEffect(()=>{
@@ -112,7 +132,7 @@ const LiveGame = () => {
     <SafeAreaView style={styles.LiveGamesContainer}>
       <StatusBar barStyle={'light-content'} translucent={true}/>
       <FlatList
-            data={matchDetails}
+            data={statsNames}
             ListHeaderComponent={()=> <LiveGameHeader route={route} matchDetailIndex={matchDetailIndex} setMatchDetailIndex={setMatchDetailIndex} matchDetailRef={matchDetailRef}/>}
             renderItem={({item, index})=> {
               var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
@@ -120,9 +140,9 @@ const LiveGame = () => {
 
               return(
                 <View style={{flexDirection: 'row', marginHorizontal: 10, marginBottom: 15, padding: 7, justifyContent: 'space-between', backgroundColor: statBackground, borderRadius: 5}}>
-                  <Text style={{color: statText, fontWeight: '550'}}>Home Stat</Text>
+                  <Text style={{color: statText, fontWeight: '550'}}>{homeStats[index]}</Text>
                   <Text style={{color: statText, fontWeight: '550'}}>{item}</Text>
-                  <Text style={{color: statText, fontWeight: '550'}}>Home Stat</Text>
+                  <Text style={{color: statText, fontWeight: '550'}}>{awayStats[index]}</Text>
                 </View>
               )
             }}
