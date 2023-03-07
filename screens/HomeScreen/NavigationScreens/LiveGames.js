@@ -21,30 +21,30 @@ const LiveGames = () => {
           colors={[COLORS.quatenary_support, COLORS.quinary_support]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
-          style={{height: 270}}
+          style={styles.main_stats}
         >
-          <View style={{flexDirection: 'row', marginTop: 35, alignItems: 'center',}}>
+          <View style={styles.stats_header}>
             <TouchableOpacity>
-              <Ionicons name="arrow-back-circle-outline" size={30} color="black" style={{marginLeft: 10, color: '#fff'}}/>
+              <Ionicons name="arrow-back-circle-outline" size={30} color="black" style={styles.backBtn}/>
             </TouchableOpacity>
-            <Text style={{flex: 1.9,  marginRight: 10, paddingRight: 10,fontSize: 19, color: '#fff', textAlign: 'center',}}>{fixture.tournamentName}</Text>
+            <Text style={styles.tournamentName}>{fixture.tournamentName}</Text>
           </View>
 
-          <View style={{flexDirection: 'row', flex: 1.4, alignItems: 'center'}}>
-           <View style={{flex: 1, alignItems:'center'}}>
+          <View style={styles.teams}>
+           <View style={styles.team}>
              <Image source={home.logo} style={{width: 100, height: 110}} resizMode='contain'/>
-             <Text style={{color: '#fff', fontSize: 14, fontWeight: '600', marginTop: 15}}>{home.name}</Text>
+             <Text style={styles.teamName}>{home.name}</Text>
            </View>
 
-           <View style={{flexDirection: 'row', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={{fontSize:26, color: '#fff', fontWeight:'bold'}}>{home.score}</Text>
-            <Text style={{fontSize:26, color: '#fff', fontWeight:'bold'}}> - </Text>
-            <Text style={{fontSize:26, color: '#fff', fontWeight:'bold'}}>{away.score}</Text>
+           <View style={styles.scores}>
+            <Text style={styles.scoreDetail}>{home.score}</Text>
+            <Text style={styles.scoreDetail}> - </Text>
+            <Text style={styles.scoreDetail}>{away.score}</Text>
            </View>
 
-           <View style={{flex: 1, alignItems: 'center'}}>
+           <View style={styles.team}>
              <Image source={away.logo} style={{width: 110, height: 110}} resizMode='contain'/>
-             <Text style={{color: '#fff', fontSize: 14, fontWeight: '600', marginTop: 15}}>{away.name}</Text>
+             <Text style={styles.teamName}>{away.name}</Text>
            </View>
           </View>
         </LinearGradient>
@@ -63,9 +63,49 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.tetiary_main, 
   },
   main_stats: {
-    backgroundColor: '#232232',
-    height: 300,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-  }
+    height: 270
+  },
+  stats_header: {
+    flexDirection: 'row', 
+    marginTop: 35, 
+    alignItems: 'center'
+  },
+  backBtn: {
+    marginLeft: 10, 
+    color: '#fff'
+  },
+  tournamentName: {
+    flex: 1.9, 
+    marginRight: 10, 
+    paddingRight: 10,
+    fontSize: 19, 
+    color: '#fff', 
+    textAlign: 'center'
+  },
+  teams: {
+    flexDirection: 'row', 
+    flex: 1.4, 
+    alignItems: 'center'
+  },
+  team: {
+    flex: 1, 
+    alignItems:'center'
+  },
+  teamName: {
+    color: '#fff', 
+    fontSize: 14, 
+    fontWeight: '600', 
+    marginTop: 15
+  },
+  scores: {
+    flexDirection: 'row', 
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center'
+  },
+  scoreDetail: {
+    fontSize:26, 
+    color: '#fff', 
+    fontWeight:'bold'
+  },
 })
