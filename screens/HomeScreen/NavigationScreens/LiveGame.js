@@ -64,6 +64,7 @@ const LiveGame = () => {
           </View>
         </LinearGradient>
         
+        {/* SCROLL MENU */}
         <View style={styles.scrollMenu}>
           <FlatList
             ref={matchDetailRef}
@@ -75,13 +76,28 @@ const LiveGame = () => {
             renderItem={({item, index})=>{
               
               return(
-                <TouchableOpacity onPress={()=> setMatchDetailIndex(index)}>
-                  <Text style={styles.scrollMenuText}>{item}</Text>
+                <TouchableOpacity style={{height: 30, width: 80}} onPress={()=> setMatchDetailIndex(index)}>
+                  {/* <Text style={styles.scrollMenuText}>{item}</Text> */}
+                  
+                   <LinearGradient
+                     colors={[COLORS.quatenary_support, COLORS.quinary_support]}
+                     start={{x:0, y:1}}
+                     end={{x: 1, y:0}}
+                     style={{height: '100%', justifyContent:'center', alignItems:'center', borderRadius: 25}}
+                   >
+                    <Text style={styles.scrollMenuText}>{item}</Text>
+                   </LinearGradient>
+                 
                 </TouchableOpacity>
               )
             }}
             keyExtractor={(item, index) => index}
         />
+        </View>
+
+        {/* MATCH DETAILS */}
+        <View style={{flex: 1}}>
+
         </View>
     </SafeAreaView>
   )
@@ -95,7 +111,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.tetiary_main, 
   },
   main_stats: {
-    height: 270
+    height: 270,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30
   },
   stats_header: {
     flexDirection: 'row', 
@@ -141,8 +159,7 @@ const styles = StyleSheet.create({
     fontWeight:'bold'
   },
   scrollMenu: {
-    height: 50, 
-    backgroundColor: '#000', 
+    height: 50,
     flexDirection:'row', 
     justifyContent: 'space-between', 
     alignItems: 'center'
@@ -151,7 +168,7 @@ const styles = StyleSheet.create({
     flex: 1, 
     justifyContent: 'space-between', 
     alignItems: 'stretch', 
-    marginHorizontal: 10 
+    marginHorizontal: 10 ,
   },
   scrollMenuText: {
     color: '#fff'
