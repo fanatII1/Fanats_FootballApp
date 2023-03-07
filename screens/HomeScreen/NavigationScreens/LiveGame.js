@@ -40,7 +40,7 @@ const LiveGame = () => {
         >
           <View style={styles.stats_header}>
             <TouchableOpacity onPress={()=> setMatchDetailIndex()}>
-              <Ionicons name="arrow-back-circle-outline" size={30} color="black" style={styles.backBtn}/>
+              <Ionicons name='arrow-back-circle-outline' size={30} color='black' style={styles.backBtn}/>
             </TouchableOpacity>
             <Text style={styles.tournamentName}>{fixture.tournamentName}</Text>
           </View>
@@ -64,19 +64,19 @@ const LiveGame = () => {
           </View>
         </LinearGradient>
         
-        <View style={{height: 50, backgroundColor: '#000', flexDirection:'row', justifyContent: 'space-between', alignItems: 'center'}}>
+        <View style={styles.scrollMenu}>
           <FlatList
             ref={matchDetailRef}
             data={nav_items}
             horizontal
             showsHorizontalScrollIndicator={false}
             getItemLayout={getItemLayout}
-            contentContainerStyle={{ flex: 1, justifyContent: 'space-between', alignItems: "stretch", marginHorizontal: 10 }}
+            contentContainerStyle={styles.scrollMenuItems}
             renderItem={({item, index})=>{
               
               return(
                 <TouchableOpacity onPress={()=> setMatchDetailIndex(index)}>
-                  <Text style={{color: '#fff'}}>{item}</Text>
+                  <Text style={styles.scrollMenuText}>{item}</Text>
                 </TouchableOpacity>
               )
             }}
@@ -139,5 +139,21 @@ const styles = StyleSheet.create({
     fontSize:26, 
     color: '#fff', 
     fontWeight:'bold'
+  },
+  scrollMenu: {
+    height: 50, 
+    backgroundColor: '#000', 
+    flexDirection:'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center'
+  },
+  scrollMenuItems: { 
+    flex: 1, 
+    justifyContent: 'space-between', 
+    alignItems: 'stretch', 
+    marginHorizontal: 10 
+  },
+  scrollMenuText: {
+    color: '#fff'
   },
 })
