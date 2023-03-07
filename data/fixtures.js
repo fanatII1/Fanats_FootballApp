@@ -138,7 +138,8 @@ var results = [
             tournament: icons.dstv_logo,
             tournamentName: 'DSTV Premiership',
             stream: '',
-            bgColor: COLORS.support_primary
+            bgColor: COLORS.support_primary,
+            fixtureImg: require('../assets/images/fixture_images/gallants_sekhukhune.jpg')
         },
         status: {
             live: game5
@@ -167,6 +168,7 @@ var results = [
             tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary,
+            fixtureImg: require('../assets/images/fixture_images/stellenbosch_swallows.jpg')
         },
         status: {
             live: game6
@@ -194,7 +196,8 @@ var results = [
             tournament: icons.mtn8_logo,
             tournamentName: 'MTN 8',
             stream: '',
-            bgColor: COLORS.support_primary
+            bgColor: COLORS.support_primary,
+            fixtureImg: require('../assets/images/fixture_images/arrows_chippa.jpg')
         },
         status: {
             live: game7,
@@ -222,7 +225,8 @@ var results = [
             tournament: icons.dstv_logo,
             tournamentName: 'DSTV Premiership',
             stream: '',
-            bgColor: COLORS.support_primary
+            bgColor: COLORS.support_primary,
+            fixtureImg: require('../assets/images/fixture_images/richards_galaxy.webp')
         },
         status: {
             live: game8

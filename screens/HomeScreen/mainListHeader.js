@@ -8,9 +8,6 @@ import { Shadow } from 'react-native-shadow-2';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
-
-SafeAreaView.setStatusBarHeight(0);
 
 const {width} = Dimensions.get('window');
 
@@ -73,7 +70,8 @@ const mainListHeader = () => {
 
   return (
     <>
-      <StatusBar barStyle='dark-content' backgroundColor='transparent' hidden/>
+      <StatusBar barStyle='dark-content' backgroundColor='transparent' translucent={true}/>
+      {/* HEADER */}
       <View style={styles.header_wrapper}>
         <View style={{flex: 1}}>
           <EvilIcons name='navicon' size={26} color='#000' />
@@ -86,6 +84,7 @@ const mainListHeader = () => {
         </View>
       </View>
 
+      {/* TEAMS */}
       <View>
         <FlatList
           data={teams}
@@ -102,12 +101,12 @@ const mainListHeader = () => {
           keyExtractor={(item , index)=> index }
         />
 
-      <Text style={styles.sectionHeading}>
+        {/* LIVE GAMES */}
+        <Text style={styles.sectionHeading}>
         <Entypo name='dot-single' size={24} color='#925BFF' />
         Live Matches
-      </Text>
+        </Text>
 
-      {/* LIVE GAMES */}
         <FlatList
         ref={refFlatList}
         data={results}
@@ -119,7 +118,7 @@ const mainListHeader = () => {
       />
       </View>
 
-
+      {/* LATEST NEWS */}
       <Text style={styles.sectionHeading}>
         <Entypo name='dot-single' size={24} color='#925BFF' />
         Latest News
