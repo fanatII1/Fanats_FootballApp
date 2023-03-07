@@ -123,13 +123,49 @@ var results = [
                 name : 'Marumo Gallants',
                 logo: icons.gallants_badge,
                 shortName: 'GAL',
-                score: 0
+                score: 0,
+                gameStats: {
+                    Possestion: 67,
+                    Shots: 4,
+                    ShotsOnTarget: 3,
+                    ExpectedGoals: 1.1,
+                    Passes: 134,
+                    Tackles: 5,
+                    TacklesWon: 3,
+                    Interceptions: 13,
+                    Saves: 9,
+                    FoulsCommited: 4,
+                    Offsides: 4,
+                    Corners: 4, 
+                    Freekicks: 2,
+                    PenaltyKicks: 0,
+                    'Yellow Cards': 6,
+                    'Red Cards': 1
+                }
             },
             away: {
                 name: 'Sekhukhune United',
                 logo: icons.sekhukhune_badge,
                 shortName: 'SEK',
-                score: 0
+                score: 0,
+                gameStats: {
+                    Possestion: 33,
+                    Shots: 15,
+                    ShotsOnTarget: 3,
+                    ExpectedGoals: 3.6,
+                    Passes: 300,
+                    Tackles: 12,
+                    TacklesWon: 5,
+                    Interceptions: 11,
+                    Saves: 4,
+                    FoulsCommited: 7,
+                    Offsides: 6,
+                    Corners: 4, 
+                    Freekicks: 5,
+                    PenaltyKicks: 0,
+                    YellowCards: 3,
+                    RedCards: 2
+                }
             }
         },
         fixture: {
@@ -139,7 +175,7 @@ var results = [
             tournamentName: 'DSTV Premiership',
             stream: '',
             bgColor: COLORS.support_primary,
-            fixtureImg: require('../assets/images/fixture_images/gallants_sekhukhune.jpg')
+            fixtueImg: require('../assets/images/fixture_images/gallants_sekhukhune.jpg')
         },
         status: {
             live: game5
@@ -151,14 +187,49 @@ var results = [
             home: {
                 name : 'Stellenbosch F.C',
                 logo: icons.stellenbosch_badge,
-                shortName: 'STE',
-                score: 4
+                shorName: 'STE',
+                gameStats: {
+                    Possestion: 35,
+                    Shots: 5,
+                    ShotsOnTarget: 3,
+                    ExpectedGoals: 0.3,
+                    Passes: 129,
+                    Tackles: 16,
+                    TacklesWon: 9,
+                    Interceptions: 23,
+                    Saves: 4,
+                    FoulsCommited: 3,
+                    Offsides: 4,
+                    Corners: 5, 
+                    Freekicks: 5,
+                    PenaltyKicks: 2,
+                    YellowCards: 1,
+                    RedCards: 0
+                }
             },
             away: {
                 name: 'Swallows F.C',
                 logo: icons.swallows_badge,
                 shortName: 'SWA',
-                score: 3
+                score: 3,
+                gameStats: {
+                    Possestion: 65,
+                    Shots: 4,
+                    hotsOnTarget: 3,
+                    ExpectedGoals: 4.6,
+                    Passes: 367,
+                    Tackles: 21,
+                    TacklesWon: 12,
+                    Interceptions: 23,
+                    Saves: 10,
+                    FoulsCommited: 8,
+                    Offsides: 7,
+                    Corners: 1, 
+                    Freekicks: 0,
+                    PenaltyKicks: 0,
+                    YellowCards: 0,
+                    RedCards: 0
+                }
             }
         },
         fixture: {
@@ -168,7 +239,7 @@ var results = [
             tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary,
-            fixtureImg: require('../assets/images/fixture_images/stellenbosch_swallows.jpg')
+            fixtueImg: require('../assets/images/fixture_images/stellenbosch_swallows.jpg')
         },
         status: {
             live: game6
@@ -180,14 +251,49 @@ var results = [
             home: {
                 name : 'Chippa United',
                 logo: icons.chippa_badge,
-                shortName: 'CHI',
-                score: 2
+                shorName: 'CHI',
+                gameStats: {
+                    Possestion: 55,
+                    Shots: 4,
+                    ShotsOnTarget: 3,
+                    ExpectedGoals: 1.3,
+                    Passes: 243,
+                    Tackles: 4,
+                    TacklesWon: 2,
+                    Interceptions: 10,
+                    Saves: '2',
+                    FoulsCommited: 3,
+                    Offsides: 2,
+                    Corners: 1, 
+                    Freekicks: 1,
+                    PenaltyKicks: 1,
+                    YellowCards: 2,
+                    RedCards: 0
+                }
             },
             away: {
                 name: 'Golden Arrows',
                 logo: icons.arrows_badge,
                 shortName: 'ARR',
-                score: 3
+                score: 3,
+                gameStats: {
+                    Possestion: 45,
+                    Shots: 5,
+                    hotsOnTarget: 3,
+                    ExpectedGoals: 1.6,
+                    Passes: 267,
+                    Tackles: 13,
+                    TacklesWon: 8,
+                    Interceptions: 20,
+                    Saves: '9',
+                    FoulsCommited: 4,
+                    Offsides: 3,
+                    Corners: 4, 
+                    Freekicks: 2,
+                    PenaltyKicks: 0,
+                    YellowCards: 3,
+                    RedCards: 0
+                }
             }
         },
         fixture: {
@@ -197,7 +303,7 @@ var results = [
             tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary,
-            fixtureImg: require('../assets/images/fixture_images/arrows_chippa.jpg')
+            fixtueImg: require('../assets/images/fixture_images/arrows_chippa.jpg')
         },
         status: {
             live: game7,
@@ -209,14 +315,49 @@ var results = [
             home: {
                 name : 'Richards Bay F.C',
                 logo: icons.richards_bay_badge,
-                shortName: 'RIC',
-                score: 1
+                shorName: 'RIC',
+                gameStats:{ 
+                    Possestion: 22,
+                    Shots: 1,
+                    ShotsOnTarget: 3,
+                    ExpectedGoals: 0.2,
+                    Passes: 112,
+                    Tackles: 18,
+                    TacklesWon: 9,
+                    Interceptions: 19,
+                    Saves: 3,
+                    FoulsCommited: 5,
+                    Offsides: 2,
+                    Corners: 2, 
+                    Freekicks: 7,
+                    PenaltyKicks: 0,
+                    YellowCards: 3,
+                    RedCards: 0
+                }
             },
             away: {
                 name: 'T.S Galaxy',
                 logo: icons.ts_galaxy_badge,
                 shortName: 'TSG',
-                score: 0
+                score: 0,
+                gameStats: {
+                    Possestion: 78,
+                    Shots: 3,
+                    hotsOnTarget: 3,
+                    ExpectedGoals: 2.1,
+                    Passes: 214,
+                    Tackles: 11,
+                    TacklesWon: 3,
+                    Interceptions: 17,
+                    Saves: 2,
+                    FoulsCommited: 3,
+                    Offsides: 1,
+                    Corners: 4, 
+                    Freekicks: 2,
+                    PenaltyKicks: 1,
+                    YellowCrds: 1,
+                    RedCards: 0 
+                }
             }
         },
         fixture: {
