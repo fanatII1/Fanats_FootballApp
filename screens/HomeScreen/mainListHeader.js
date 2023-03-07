@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar} from 'react-native';
 import { teams, results, news } from '../../data/footballData'
 import { AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 import { COLORS } from '../../constants/index';
@@ -8,6 +8,9 @@ import { Shadow } from 'react-native-shadow-2';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+
+SafeAreaView.setStatusBarHeight(0);
 
 const {width} = Dimensions.get('window');
 
@@ -70,6 +73,7 @@ const mainListHeader = () => {
 
   return (
     <>
+      <StatusBar barStyle='dark-content' backgroundColor='transparent' hidden/>
       <View style={styles.header_wrapper}>
         <View style={{flex: 1}}>
           <EvilIcons name='navicon' size={26} color='#000' />

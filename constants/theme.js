@@ -2,11 +2,13 @@ import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 export const COLORS = {
-    // base colors
-    //1: navy, 2: blue, 3: white, 4: pink, 5: orange
+    // base colors -- 1: navy, 2: blue, 3: white, 4: pink, 5: orange, 6: blue support
     primary: '#181828',
     secondary: '#2669fe',
-    secondary_main: '#fafafa',
+    tetiary_main: '#eeeeee',
+    quatenary_support: '#B20600',
+    quinary_support: '#FF5F00',
+    blue_support: '#00092C',
     text: '#fff',
     support_primary: '#ce2b5b',
     support_secondary: '#ef775c'
