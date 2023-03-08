@@ -18,6 +18,7 @@ const MatchSummaryContent =({matchDetailIndex, index, statsNames, item, statBack
       return(
         <FlatList 
           data={statsNames}
+          showsVerticalScrollIndicator={false}
           renderItem={({item, index})=> {
             var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
             var statText = index % 2 === 0 ? '#fff' : '#000';
@@ -65,6 +66,7 @@ const MatchSummaryContent =({matchDetailIndex, index, statsNames, item, statBack
          ref={matchDetailRef}
          data={nav_items}
          horizontal
+         showsHorizontalScrollIndicator={false}
          getItemLayout={getItemLayout}
          renderItem={({item, index})=> {
            return(
