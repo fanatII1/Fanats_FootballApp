@@ -41,18 +41,28 @@ const MatchSummaryContent =({matchDetailIndex, index, statsNames, item, statBack
   }
   
   const MatchSummary= ({matchDetailIndex, index, statsNames, item, statBackground, statText, homeStats, awayStats}) => {
+    const matchDetailRef = useRef(0);
+    //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
+    useEffect(()=>{
+      if(matchDetailRef.current){
+       matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
+      }
+    }, [matchDetailIndex])
+
+    const getItemLayout = (data, index) =>{
+        return  {length: width, offset: width * index, index}
+    }
+    
     return(
       <View>
         <FlatList
+         ref={matchDetailRef}
          data={nav_items}
          horizontal
+         getItemLayout={getItemLayout}
          renderItem={({item, index})=> {
-           var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
-           var statText = index % 2 === 0 ? '#fff' : '#000';
-           console.log(matchDetailIndex)
-  
            return(
-             <View style={{width: width, paddingHorizontal: 10}}>
+             <View style={styles.matchSummaryContentWrapper}>
                <MatchSummaryContent matchDetailIndex={matchDetailIndex} index={index} item={item} statBackground={statBackground} statsNames={statsNames} statText={statText} homeStats={homeStats} awayStats={awayStats}/>
              </View>
            )
@@ -76,5 +86,9 @@ const styles = StyleSheet.create({
     },
     statDetailText: {
         fontWeight: '550'
+    },
+    matchSummaryContentWrapper: {
+        width: width, 
+        paddingHorizontal: 10
     }
 })

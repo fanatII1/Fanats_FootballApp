@@ -55,6 +55,8 @@ const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetail
            </View>
           </View>
         </LinearGradient>
+
+        {/* SCROLL MENU */}
         <View style={styles.scrollMenu}>
           <FlatList
             ref={matchDetailRef}
@@ -67,8 +69,6 @@ const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetail
               
               return(
                 <TouchableOpacity style={styles.scrollMenuItem} onPress={()=> setMatchDetailIndex(index)}>
-                  
-                  
                    <LinearGradient
                      colors={[COLORS.quatenary_support, COLORS.quinary_support]}
                      start={{x:0, y:1}}
@@ -95,7 +95,7 @@ const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetail
 
 const LiveGame = () => {
   const route = useRoute();
-  const [matchDetailIndex, setMatchDetailIndex] = useState(0)
+  const [matchDetailIndex, setMatchDetailIndex] = useState(0);
   const matchDetailRef = useRef(0);
   const liveGameDetails = route.params.liveGame;
   const {fixture, teams, status} = liveGameDetails;
@@ -103,6 +103,13 @@ const LiveGame = () => {
   const statsNames = [];
   const homeStats = [];
   const awayStats = [];
+
+  //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
+  useEffect(()=>{
+    if(matchDetailRef.current){
+     matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
+    }
+  }, [matchDetailIndex])
 
   // FOR LOOPS: 
   //1. Extract keys (stat names) from the live game(using home.gamStats object) & insert into statNames array
@@ -120,13 +127,6 @@ const LiveGame = () => {
     awayStats.push(away.gameStats[key]);
   }
 
-  //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
-  useEffect(()=>{
-    if(matchDetailRef.current){
-     matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
-    }
-  }, [matchDetailIndex])
-
   return (
     <SafeAreaView style={styles.LiveGamesContainer}>
       <StatusBar barStyle={'light-content'} translucent={true}/>
@@ -137,7 +137,7 @@ const LiveGame = () => {
               renderItem={({item, index})=> {
                 var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
                 var statText = index % 2 === 0 ? '#fff' : '#000';
-                console.log(matchDetailIndex)
+                
                 if (index <=0){
                   return <MatchSummary matchDetailIndex={matchDetailIndex} index={index} item={item} statBackground={statBackground} statsNames={statsNames} statText={statText} homeStats={homeStats} awayStats={awayStats}/>
                 }
