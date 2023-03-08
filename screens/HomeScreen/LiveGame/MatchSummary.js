@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView, FlatList} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView} from 'react-native';
 import { teams, results, news } from '../../../data/footballData'
 import { AntDesign, Entypo, EvilIcons, Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../../constants/index';
@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Shadow } from 'react-native-shadow-2';
 import { useRoute } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 
 ///nav menu headings
 const nav_items = ['Statistics', 'Lineups', 'Summary'];
@@ -33,7 +34,11 @@ const MatchSummaryContent =({matchDetailIndex, index, statsNames, item, statBack
       )
     }
     else if(index === 1 ){
-      return <Text>Hi {index}</Text>
+      return (
+        <View style={{flex: 1, backgroundColor: 'red'}}>
+            <Text>Hi {index}</Text>
+        </View>
+      )
     }
     else if(index === 2){
       return <Text>Hi {index} ...</Text>
@@ -42,7 +47,7 @@ const MatchSummaryContent =({matchDetailIndex, index, statsNames, item, statBack
   
   const MatchSummary= ({matchDetailIndex, index, statsNames, item, statBackground, statText, homeStats, awayStats}) => {
     const matchDetailRef = useRef(0);
-    //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
+    //scroll to that nav-menu screen when nav-menu item(matchDetailIndex) changes
     useEffect(()=>{
       if(matchDetailRef.current){
        matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
@@ -53,8 +58,9 @@ const MatchSummaryContent =({matchDetailIndex, index, statsNames, item, statBack
         return  {length: width, offset: width * index, index}
     }
     
+    // HORIZONTAL SCREENS, thus they exceed width of parent(bounded width not height)
     return(
-      <View>
+      <View style={{height: 500}}>
         <FlatList
          ref={matchDetailRef}
          data={nav_items}
@@ -62,7 +68,7 @@ const MatchSummaryContent =({matchDetailIndex, index, statsNames, item, statBack
          getItemLayout={getItemLayout}
          renderItem={({item, index})=> {
            return(
-             <View style={styles.matchSummaryContentWrapper}>
+             <View style={[styles.matchSummaryContentWrapper,{ height: 480}]}>
                <MatchSummaryContent matchDetailIndex={matchDetailIndex} index={index} item={item} statBackground={statBackground} statsNames={statsNames} statText={statText} homeStats={homeStats} awayStats={awayStats}/>
              </View>
            )

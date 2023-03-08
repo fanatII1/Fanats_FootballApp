@@ -130,7 +130,6 @@ const LiveGame = () => {
   return (
     <SafeAreaView style={styles.LiveGamesContainer}>
       <StatusBar barStyle={'light-content'} translucent={true}/>
-          <View style={{flex: 1}}>
             <FlatList 
               data={statsNames}
               ListHeaderComponent={()=> <LiveGameHeader route={route} matchDetailIndex={matchDetailIndex} setMatchDetailIndex={setMatchDetailIndex} matchDetailRef={matchDetailRef}/>}
@@ -144,7 +143,6 @@ const LiveGame = () => {
               }}
             keyExtractor={(item, index)=> index}
           />
-          </View>
     </SafeAreaView>
   )
 }
