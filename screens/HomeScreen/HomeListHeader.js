@@ -52,7 +52,7 @@ const LiveGames = ({item, index, matchIndex, setMatchIndex}) => {
   )
 }
 
-const mainListHeader = () => {
+const HomeListHeader = () => {
   const [matchIndex, setMatchIndex] = useState(0);
   const refFlatList = useRef();
 
@@ -158,7 +158,7 @@ const mainListHeader = () => {
   )
 }
 
-export default mainListHeader
+export default HomeListHeader
 
 const styles = StyleSheet.create({
   header_wrapper:{

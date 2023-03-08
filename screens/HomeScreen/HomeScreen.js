@@ -3,16 +3,16 @@ import { StyleSheet, TouchableOpacity, Text, View, SafeAreaView, Image} from 're
 import {fixtures} from '../../data/footballData'
 import { icons,  theme, COLORS, SIZES, FONTS} from '../../constants/index';
 import { FlatList } from 'react-native-gesture-handler';
-import mainListHeader from './mainListHeader';
-import mainListFooter from './mainListFooter';
+import HomeListHeader from './HomeListHeader';
+import HomeListFooter from './HomeListFooter';
 
-const MainHomeScreen = () => {
+const HomeScreen = () => {
   return (
       <SafeAreaView style={styles.HomeContainer}>
       <FlatList
         data={fixtures}
         showsVerticalScrollIndicator={false}
-        ListHeaderComponent={mainListHeader}
+        ListHeaderComponent={HomeListHeader}
         renderItem={({item, index}) =>{
           return(
             <TouchableOpacity activeOpacity={0.5} style={styles.fixture}>
@@ -33,14 +33,14 @@ const MainHomeScreen = () => {
             </TouchableOpacity>
           )
         }}
-        ListFooterComponent={ mainListFooter}
+        ListFooterComponent={ HomeListFooter}
         keyExtractor={(fixture, index) => index}
       />
     </SafeAreaView>
   )
 }
 
-export default MainHomeScreen
+export default HomeScreen
 
 const styles = StyleSheet.create({
   HomeContainer:{

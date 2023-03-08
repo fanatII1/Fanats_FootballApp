@@ -8,9 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Shadow } from 'react-native-shadow-2';
 
-const {width} = Dimensions.get('window');
-
-const mainListFooter = () => {
+const HomeListFooter = () => {
 
   return (
     <>
@@ -73,7 +71,7 @@ const mainListFooter = () => {
   )
 }
 
-export default mainListFooter
+export default HomeListFooter
 
 const styles = StyleSheet.create({
     sectionHeading:{

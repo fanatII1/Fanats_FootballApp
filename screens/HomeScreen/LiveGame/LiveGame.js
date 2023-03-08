@@ -6,9 +6,12 @@ import { COLORS } from '../../../constants/index';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Shadow } from 'react-native-shadow-2';
 import { useRoute } from '@react-navigation/native';
+import { Dimensions } from 'react-native';
+import MatchSummary from './MatchSummary';
 
 ///nav menu headings
-const nav_items = ['Statistics', 'Lineups', 'Summary']
+const nav_items = ['Statistics', 'Lineups', 'Summary'];
+const{width} = Dimensions.get('window');
 
 const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetailIndex}) => {
   const liveGameDetails = route.params.liveGame;
@@ -82,14 +85,13 @@ const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetail
         />
         </View>
         {/* MATCH DETAILS */}
-        <View style={{flex: 1}}>
+        <View>
           <Text style={{textAlign:'center', fontWeight: 'bold', fontSize: 20, marginTop: 10}}>Match Details</Text>
         </View>
         </>
         
   )
 }
-
 
 const LiveGame = () => {
   const route = useRoute();
@@ -101,53 +103,48 @@ const LiveGame = () => {
   const statsNames = [];
   const homeStats = [];
   const awayStats = [];
-  // Extract keys (main stat names) from the live game(using home.gamStats object) & insert into statNames array
+
+  // FOR LOOPS: 
+  //1. Extract keys (stat names) from the live game(using home.gamStats object) & insert into statNames array
+  //2: Extract home game stats
+  //3: Extract home game stats
   for (let key in home.gameStats) {
     statsNames.push(key);
   }
 
-  // Extract home game stats
   for (let key in home.gameStats) {
     homeStats.push(home.gameStats[key]);
   }
 
-  // Extract home game stats
   for (let key in away.gameStats) {
     awayStats.push(away.gameStats[key]);
   }
 
   //when click nav-menu(mathcDetailIndex). scroll to that nav-menu using its index
   useEffect(()=>{
-    //works if matchDetailRef is defined(true)
     if(matchDetailRef.current){
      matchDetailRef.current.scrollToIndex({animated: true, index: matchDetailIndex})
     }
   }, [matchDetailIndex])
 
-  const getItemLayout = (data, index) =>{
-    return  {length: 180, offset: 180 * index, index}
-  }
-
   return (
     <SafeAreaView style={styles.LiveGamesContainer}>
       <StatusBar barStyle={'light-content'} translucent={true}/>
-      <FlatList
-            data={statsNames}
-            ListHeaderComponent={()=> <LiveGameHeader route={route} matchDetailIndex={matchDetailIndex} setMatchDetailIndex={setMatchDetailIndex} matchDetailRef={matchDetailRef}/>}
-            renderItem={({item, index})=> {
-              var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
-              var statText = index % 2 === 0 ? '#fff' : '#000';
-
-              return(
-                <View style={{flexDirection: 'row', marginHorizontal: 10, marginBottom: 15, padding: 7, justifyContent: 'space-between', backgroundColor: statBackground, borderRadius: 5}}>
-                  <Text style={{color: statText, fontWeight: '550'}}>{homeStats[index]}</Text>
-                  <Text style={{color: statText, fontWeight: '550'}}>{item}</Text>
-                  <Text style={{color: statText, fontWeight: '550'}}>{awayStats[index]}</Text>
-                </View>
-              )
-            }}
+          <View style={{flex: 1}}>
+            <FlatList 
+              data={statsNames}
+              ListHeaderComponent={()=> <LiveGameHeader route={route} matchDetailIndex={matchDetailIndex} setMatchDetailIndex={setMatchDetailIndex} matchDetailRef={matchDetailRef}/>}
+              renderItem={({item, index})=> {
+                var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
+                var statText = index % 2 === 0 ? '#fff' : '#000';
+                console.log(matchDetailIndex)
+                if (index <=0){
+                  return <MatchSummary matchDetailIndex={matchDetailIndex} index={index} item={item} statBackground={statBackground} statsNames={statsNames} statText={statText} homeStats={homeStats} awayStats={awayStats}/>
+                }
+              }}
             keyExtractor={(item, index)=> index}
-      />
+          />
+          </View>
     </SafeAreaView>
   )
 }
@@ -209,7 +206,8 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection:'row', 
     justifyContent: 'space-between', 
-    alignItems: 'center'
+    alignItems: 'center', 
+    backgroundColor:'#000'
   },
   scrollMenuItems: { 
     flex: 1, 
