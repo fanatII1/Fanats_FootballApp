@@ -22,7 +22,7 @@ const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetail
   return(
     <>
     <LinearGradient
-          colors={[COLORS.quatenary_support, COLORS.quinary_support]}
+          colors={['#000', '#00092C']}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={styles.main_stats}
@@ -63,14 +63,14 @@ const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetail
             renderItem={({item, index})=>{
               
               return(
-                <TouchableOpacity style={{height: 30, width: 80}} onPress={()=> setMatchDetailIndex(index)}>
+                <TouchableOpacity style={styles.scrollMenuItem} onPress={()=> setMatchDetailIndex(index)}>
                   
                   
                    <LinearGradient
                      colors={[COLORS.quatenary_support, COLORS.quinary_support]}
                      start={{x:0, y:1}}
                      end={{x: 1, y:0}}
-                     style={{height: '100%', justifyContent:'center', alignItems:'center', borderRadius: 25}}
+                     style={styles.scrollMenuItemGradient}
                    >
                     <Text style={styles.scrollMenuText}>{item}</Text>
                    </LinearGradient>
@@ -161,8 +161,6 @@ const styles = StyleSheet.create({
   },
   main_stats: {
     height: 270,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30
   },
   stats_header: {
     flexDirection: 'row', 
@@ -221,5 +219,15 @@ const styles = StyleSheet.create({
   },
   scrollMenuText: {
     color: '#fff'
+  },
+  scrollMenuItem: {
+    height: 30, 
+    width: 80
+  },
+  scrollMenuItemGradient: {
+    height: '100%', 
+    justifyContent:'center', 
+    alignItems:'center', 
+    borderRadius: 25
   },
 })

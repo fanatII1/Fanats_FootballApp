@@ -125,7 +125,7 @@ var results = [
                 shortName: 'GAL',
                 score: 0,
                 gameStats: {
-                    Possestion: 67,
+                    Possession: 67,
                     Shots: 4,
                     ShotsOnTarget: 3,
                     ExpectedGoals: 1.1,
@@ -149,7 +149,7 @@ var results = [
                 shortName: 'SEK',
                 score: 0,
                 gameStats: {
-                    Possestion: 33,
+                    Possession: 33,
                     Shots: 15,
                     ShotsOnTarget: 3,
                     ExpectedGoals: 3.6,
@@ -188,8 +188,9 @@ var results = [
                 name : 'Stellenbosch F.C',
                 logo: icons.stellenbosch_badge,
                 shorName: 'STE',
+                score: 3,
                 gameStats: {
-                    Possestion: 35,
+                    Possession: 35,
                     Shots: 5,
                     ShotsOnTarget: 3,
                     ExpectedGoals: 0.3,
@@ -213,7 +214,7 @@ var results = [
                 shortName: 'SWA',
                 score: 3,
                 gameStats: {
-                    Possestion: 65,
+                    Possession: 65,
                     Shots: 4,
                     hotsOnTarget: 3,
                     ExpectedGoals: 4.6,
@@ -252,8 +253,9 @@ var results = [
                 name : 'Chippa United',
                 logo: icons.chippa_badge,
                 shorName: 'CHI',
+                score: 2,
                 gameStats: {
-                    Possestion: 55,
+                    Possession: 55,
                     Shots: 4,
                     ShotsOnTarget: 3,
                     ExpectedGoals: 1.3,
@@ -277,7 +279,7 @@ var results = [
                 shortName: 'ARR',
                 score: 3,
                 gameStats: {
-                    Possestion: 45,
+                    Possession: 45,
                     Shots: 5,
                     hotsOnTarget: 3,
                     ExpectedGoals: 1.6,
@@ -316,8 +318,9 @@ var results = [
                 name : 'Richards Bay F.C',
                 logo: icons.richards_bay_badge,
                 shorName: 'RIC',
+                score: 0,
                 gameStats:{ 
-                    Possestion: 22,
+                    Possession: 22,
                     Shots: 1,
                     ShotsOnTarget: 3,
                     ExpectedGoals: 0.2,
@@ -341,7 +344,7 @@ var results = [
                 shortName: 'TSG',
                 score: 0,
                 gameStats: {
-                    Possestion: 78,
+                    Possession: 78,
                     Shots: 3,
                     hotsOnTarget: 3,
                     ExpectedGoals: 2.1,
