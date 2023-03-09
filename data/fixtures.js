@@ -124,6 +124,7 @@ var results = [
                 logo: icons.gallants_badge,
                 shortName: 'GAL',
                 score: 0,
+                color: '#7ba920',
                 gameStats: {
                     Possession: 67,
                     Shots: 4,
@@ -205,6 +206,7 @@ var results = [
                 logo: icons.sekhukhune_badge,
                 shortName: 'SEK',
                 score: 0,
+                color: '#a70a35',
                 gameStats: {
                     Possession: 33,
                     Shots: 15,
@@ -303,6 +305,7 @@ var results = [
                 logo: icons.stellenbosch_badge,
                 shorName: 'STE',
                 score: 3,
+                color: '#a8802b',
                 gameStats: {
                     Possession: 35,
                     Shots: 5,
@@ -384,6 +387,7 @@ var results = [
                 logo: icons.swallows_badge,
                 shortName: 'SWA',
                 score: 3,
+                color: '#6d0f39',
                 gameStats: {
                     Possession: 65,
                     Shots: 4,
@@ -482,6 +486,7 @@ var results = [
                 logo: icons.chippa_badge,
                 shorName: 'CHI',
                 score: 2,
+                color: '#000267',
                 gameStats: {
                     Possession: 55,
                     Shots: 4,
@@ -563,6 +568,7 @@ var results = [
                 logo: icons.arrows_badge,
                 shortName: 'ARR',
                 score: 3,
+                color: '#1e793b',
                 gameStats: {
                     Possession: 45,
                     Shots: 5,
@@ -661,6 +667,7 @@ var results = [
                 logo: icons.richards_bay_badge,
                 shorName: 'RIC',
                 score: 0,
+                color: '#145e8a',
                 gameStats:{ 
                     Possession: 22,
                     Shots: 1,
@@ -742,6 +749,7 @@ var results = [
                 logo: icons.ts_galaxy_badge,
                 shortName: 'TSG',
                 score: 0,
+                color: '#dc2141',
                 gameStats: {
                     Possession: 78,
                     Shots: 3,
