@@ -14,7 +14,7 @@ import MatchSummaryContent from './MatchSummaryContent';
 const nav_items = ['Statistics', 'Lineups', 'Summary'];
 const { width } = Dimensions.get('window');
 
-const MatchSummary = ({ matchDetailIndex, statsNames, statText, homeStats, awayStats, homeLineup, awayLineup }) => {
+const MatchSummary = ({ matchDetailIndex, teams, statsNames, statText, homeStats, awayStats, homeLineup, awayLineup }) => {
   const matchDetailRef = useRef(0);
   //scroll to that nav-menu screen when nav-menu item(matchDetailIndex) changes
   useEffect(() => {
@@ -41,6 +41,7 @@ const MatchSummary = ({ matchDetailIndex, statsNames, statText, homeStats, awayS
             <View style={[styles.matchSummaryContentWrapper, { height: 480 }]}>
               <MatchSummaryContent
                 index={index}
+                teams={teams}
                 statsNames={statsNames}
                 statText={statText}
                 homeStats={homeStats}

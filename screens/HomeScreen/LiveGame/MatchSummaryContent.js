@@ -5,7 +5,9 @@ import { Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-const MatchSummaryContent = ({ index, statsNames, homeStats, awayStats, homeLineup, awayLineup }) => {
+const MatchSummaryContent = ({ index, teams, statsNames, homeStats, awayStats, homeLineup, awayLineup }) => {
+  var homeTeamColors = teams.home.color;
+  var awayTeamColors = teams.away.color;
 
   if (index === 0) {
     return (
@@ -42,19 +44,19 @@ const MatchSummaryContent = ({ index, statsNames, homeStats, awayStats, homeLine
             <View style={{ flex: 1 }}>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='GK'/> )}
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='GK' homeTeamColor={homeTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='DEF'/> )}
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='DEF' homeTeamColor={homeTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='MID'/> )}
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='MID' homeTeamColor={homeTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='FWD'/> )}
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='FWD' homeTeamColor={homeTeamColors}/>)}
               </View>
             </View>
 
@@ -62,24 +64,24 @@ const MatchSummaryContent = ({ index, statsNames, homeStats, awayStats, homeLine
             <View style={{ flex: 1 }}>
 
               <View style={styles.layerFieldPosition}>
-                {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='FWD'/> )}
+                {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='FWD' awayTeamColor={awayTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
                 <View style={styles.layerFieldPosition}>
-                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='MID'/> )}
+                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='MID' awayTeamColor={awayTeamColors}/> )}
                 </View>
               </View>
 
               <View style={styles.layerFieldPosition}>
                 <View style={styles.layerFieldPosition}>
-                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='DEF'/>)}
+                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='DEF' awayTeamColor={awayTeamColors}/>)}
                 </View>
               </View>
 
               <View style={styles.layerFieldPosition}>
                 <View style={styles.layerFieldPosition}>
-                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='GK'/> )}
+                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='GK' awayTeamColor={awayTeamColors}/> )}
                 </View>
               </View>
 
@@ -97,14 +99,14 @@ const MatchSummaryContent = ({ index, statsNames, homeStats, awayStats, homeLine
 //return players based on position
 // main(outside <view>) -- box position
 //inside view -- player info
-function AwayPlayers({player, index, position}){
+function AwayPlayers({player, index, position, awayTeamColor}){
   let returnPosition = position;
 
   if (player.position[0] === returnPosition){
   return (
     <View style={styles.playersPositionBox} key={index}>
-      <View style={styles.player}>
-        <Text>{player.number}</Text>
+      <View style={[styles.player, {backgroundColor: awayTeamColor}]}>
+        <Text style={styles.playerNumber}>{player.number}</Text>
       </View>
       <Text style={styles.playerName}>{player.name}</Text>
     </View>
@@ -115,14 +117,14 @@ function AwayPlayers({player, index, position}){
 //return players based on position
 // main(outside <view>) -- box position
 //inside view -- player info
-function HomePlayers({player, index, position}){
+function HomePlayers({player, index, position, homeTeamColor}){
   let returnPosition = position;
 
   if (player.position[0] === returnPosition){
   return (
     <View style={styles.playersPositionBox} key={index}>
-      <View style={styles.player}>
-        <Text>{player.number}</Text>
+      <View style={[styles.player, {backgroundColor: homeTeamColor,}]}>
+        <Text style={styles.playerNumber}>{player.number}</Text>
       </View>
       <Text style={styles.playerName}>{player.name}</Text>
     </View>
@@ -179,13 +181,15 @@ const styles = StyleSheet.create({
     height: 27,
     width: 27,
     borderRadius: 27 / 2,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   playerName: { 
-    color: '#000', 
-    fontWeight: '650', 
-    fontSize: 13
+    color: '#fff', 
+    fontWeight: '670', 
+    fontSize: 14
+  },
+  playerNumber: {
+    color: '#fff'
   },
 });

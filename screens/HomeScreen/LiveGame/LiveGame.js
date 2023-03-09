@@ -141,8 +141,8 @@ const LiveGame = () => {
                   return(
                     <MatchSummary 
                       matchDetailIndex={matchDetailIndex} 
-                      index={index} 
-                      item={item} 
+                      
+                      teams={teams}
                       statBackground={statBackground} 
                       statsNames={statsNames} 
                       statText={statText} 
