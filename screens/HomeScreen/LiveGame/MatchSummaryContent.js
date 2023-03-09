@@ -6,15 +6,17 @@ import { Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 
 const MatchSummaryContent = ({ index, statsNames, homeStats, awayStats, homeLineup, awayLineup }) => {
-  console.log(homeLineup[0]);
+
   if (index === 0) {
     return (
       <FlatList
         data={statsNames}
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => {
+          //set text color and background color of stats for rach even number
           var statBackground = index % 2 === 0 ? '#00092C' : '#FF5F00';
           var statText = index % 2 === 0 ? '#fff' : '#000';
+          
           return (
             <View style={[styles.statDetailWrapper, { backgroundColor: statBackground }]}>
               <Text style={[styles.statDetailText, { color: statText }]}>{homeStats[index]}</Text>
@@ -28,228 +30,59 @@ const MatchSummaryContent = ({ index, statsNames, homeStats, awayStats, homeLine
     );
   } else if (index === 1) {
     return (
-      <View style={{ flex: 1, alignItems: 'center' }}>
-        <ScrollView contentContainerStyle={{ alignItems: 'center' }} style={{ backgroundColor: '#000', width: '100%', borderRadius: 20 }}>
+      <View style={styles.pitchContainter}>
+        <ScrollView contentContainerStyle={styles.pitchScrollContainer} style={styles.pitchScroll}>
           <ImageBackground
             source={require('../../../assets/images/pitch.png')}
             resizeMode='contain'
-            style={{ height: 620, width: width }}
-            imageStyle={{ borderRadius: 20 }}
+            style={styles.ImageBackgroundContainer}
+            imageStyle={styles.imageStyle}
           >
-            {/* HOME LINEUP */}
+            {/* HOME LINEUP --- FWD: FOWARDS, MID: MIDFIELDERS< DEF: DEFENDERS, GK: GOALKEEPRS */}
             <View style={{ flex: 1 }}>
-              {/* GOALKEEPR */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {/* formation player container */}
-                {homeLineup.map((player, index) => {
-                  if (player.position[0] === 'GK')
-                    return (
-                      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                        {/* player */}
-                        <View
-                          style={{
-                            height: 30,
-                            width: 30,
-                            borderRadius: 30 / 2,
-                            backgroundColor: '#fff',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Text>{player.number}</Text>
-                        </View>
-                        <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                      </View>
-                    );
-                })}
+
+              <View style={styles.layerFieldPosition}>
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='GK'/> )}
               </View>
 
-              {/* DEFENDERS */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {homeLineup.map((player, index) => {
-                  if (player.position[0] === 'DEF')
-                    return (
-                      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                        {/* player */}
-                        <View
-                          style={{
-                            height: 30,
-                            width: 30,
-                            borderRadius: 30 / 2,
-                            backgroundColor: '#fff',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Text>{player.number}</Text>
-                        </View>
-                        <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                      </View>
-                    );
-                })}
+              <View style={styles.layerFieldPosition}>
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='DEF'/> )}
               </View>
 
-              {/* MIDFIELDERS */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {homeLineup.map((player, index) => {
-                  if (player.position[0] === 'MID')
-                    return (
-                      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                        {/* player */}
-                        <View
-                          style={{
-                            height: 30,
-                            width: 30,
-                            borderRadius: 30 / 2,
-                            backgroundColor: '#fff',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Text>{player.number}</Text>
-                        </View>
-                        <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                      </View>
-                    );
-                })}
+              <View style={styles.layerFieldPosition}>
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='MID'/> )}
               </View>
 
-              {/* FOWARDS */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {homeLineup.map((player, index) => {
-                  if (player.position[0] === 'FWD')
-                    return (
-                      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                        {/* player */}
-                        <View
-                          style={{
-                            height: 30,
-                            width: 30,
-                            borderRadius: 30 / 2,
-                            backgroundColor: '#fff',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Text>{player.number}</Text>
-                        </View>
-                        <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                      </View>
-                    );
-                })}
+              <View style={styles.layerFieldPosition}>
+                {homeLineup.map((player, index) => <HomePlayers player={player} key={index} position='FWD'/> )}
               </View>
             </View>
 
-            {/* AWAY LINEUP */}
+            {/* AWAY LINEUP --- FWD: FOWARDS, MID: MIDFIELDERS< DEF: DEFENDERS, GK: GOALKEEPRS */}
             <View style={{ flex: 1 }}>
-              {/* FOWARDS */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {awayLineup.map((player, index) => {
-                  if (player.position[0] === 'FWD')
-                    return (
-                      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                        {/* player */}
-                        <View
-                          style={{
-                            height: 30,
-                            width: 30,
-                            borderRadius: 30 / 2,
-                            backgroundColor: '#fff',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Text>{player.number}</Text>
-                        </View>
-                        <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                      </View>
-                    );
-                })}
+
+              <View style={styles.layerFieldPosition}>
+                {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='FWD'/> )}
               </View>
 
-              {/* MIDFIELDERS */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {/* formation player container */}
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                  {awayLineup.map((player, index) => {
-                    if (player.position[0] === 'MID')
-                      return (
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                          {/* player */}
-                          <View
-                            style={{
-                              height: 30,
-                              width: 30,
-                              borderRadius: 30 / 2,
-                              backgroundColor: '#fff',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                          >
-                            <Text>{player.number}</Text>
-                          </View>
-                          <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                        </View>
-                      );
-                  })}
+              <View style={styles.layerFieldPosition}>
+                <View style={styles.layerFieldPosition}>
+                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='MID'/> )}
                 </View>
               </View>
 
-              {/* DEFENDERS */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {/* formation player container */}
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                  {awayLineup.map((player, index) => {
-                    if (player.position[0] === 'DEF')
-                      return (
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                          {/* player */}
-                          <View
-                            style={{
-                              height: 30,
-                              width: 30,
-                              borderRadius: 30 / 2,
-                              backgroundColor: '#fff',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                          >
-                            <Text>{player.number}</Text>
-                          </View>
-                          <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                        </View>
-                      );
-                  })}
+              <View style={styles.layerFieldPosition}>
+                <View style={styles.layerFieldPosition}>
+                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='DEF'/>)}
                 </View>
               </View>
 
-              {/* GOALKEEPR */}
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                {/* formation player container */}
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 10 }}>
-                  {awayLineup.map((player, index) => {
-                    if (player.position[0] === 'GK')
-                      return (
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} key={index}>
-                          {/* player */}
-                          <View
-                            style={{
-                              height: 30,
-                              width: 30,
-                              borderRadius: 30 / 2,
-                              backgroundColor: '#fff',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                          >
-                            <Text>{player.number}</Text>
-                          </View>
-                          <Text style={{ color: '#000', fontWeight: '600', fontSize: 13.5 }}>{player.name}</Text>
-                        </View>
-                      );
-                  })}
+              <View style={styles.layerFieldPosition}>
+                <View style={styles.layerFieldPosition}>
+                  {awayLineup.map((player, index) => <AwayPlayers player={player} key={index} position='GK'/> )}
                 </View>
               </View>
+
             </View>
           </ImageBackground>
         </ScrollView>
@@ -259,6 +92,43 @@ const MatchSummaryContent = ({ index, statsNames, homeStats, awayStats, homeLine
     return <Text>Hi {index} ...</Text>;
   }
 };
+
+
+//return players based on position
+// main(outside <view>) -- box position
+//inside view -- player info
+function AwayPlayers({player, index, position}){
+  let returnPosition = position;
+
+  if (player.position[0] === returnPosition){
+  return (
+    <View style={styles.playersPositionBox} key={index}>
+      <View style={styles.player}>
+        <Text>{player.number}</Text>
+      </View>
+      <Text style={styles.playerName}>{player.name}</Text>
+    </View>
+  )
+  }
+}
+
+//return players based on position
+// main(outside <view>) -- box position
+//inside view -- player info
+function HomePlayers({player, index, position}){
+  let returnPosition = position;
+
+  if (player.position[0] === returnPosition){
+  return (
+    <View style={styles.playersPositionBox} key={index}>
+      <View style={styles.player}>
+        <Text>{player.number}</Text>
+      </View>
+      <Text style={styles.playerName}>{player.name}</Text>
+    </View>
+  )
+  }
+}
 
 export default MatchSummaryContent;
 
@@ -273,5 +143,49 @@ const styles = StyleSheet.create({
   },
   statDetailText: {
     fontWeight: '550',
+  },
+  pitchContainter: { 
+    flex: 1, 
+    alignItems: 'center' 
+  },
+  pitchScroll: { 
+    backgroundColor: '#000', 
+    width: '100%', 
+    borderRadius: 20 
+  },
+  pitchScrollContainer: { 
+    alignItems: 'center' 
+  },
+  ImageBackgroundContainer: { 
+    height: 620, 
+    width: width 
+  },
+  imageStyle: { 
+    borderRadius: 20 
+  },
+  layerFieldPosition: { 
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    marginBottom: 10 
+  },
+  playersPositionBox: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center' 
+  },
+  player: {
+    height: 27,
+    width: 27,
+    borderRadius: 27 / 2,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  playerName: { 
+    color: '#000', 
+    fontWeight: '650', 
+    fontSize: 13
   },
 });
