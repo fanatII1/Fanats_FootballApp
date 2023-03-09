@@ -138,7 +138,20 @@ const LiveGame = () => {
                 var statText = index % 2 === 0 ? '#fff' : '#000';
                 
                 if (index <=0){
-                  return <MatchSummary matchDetailIndex={matchDetailIndex} index={index} item={item} statBackground={statBackground} statsNames={statsNames} statText={statText} homeStats={homeStats} awayStats={awayStats}/>
+                  return(
+                    <MatchSummary 
+                      matchDetailIndex={matchDetailIndex} 
+                      index={index} 
+                      item={item} 
+                      statBackground={statBackground} 
+                      statsNames={statsNames} 
+                      statText={statText} 
+                      homeStats={homeStats} 
+                      awayStats={awayStats}
+                      homeLineup={home.lineUp}
+                      awayLineup={away.lineUp}
+                    />
+                  )
                 }
               }}
             keyExtractor={(item, index)=> index}

@@ -141,7 +141,64 @@ var results = [
                     PenaltyKicks: 0,
                     'Yellow Cards': 6,
                     'Red Cards': 1
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'W. Arubi',
+                        number: 36,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'M. Mvelase',
+                        number: 24,
+                        position: ['DEF', 'RB']
+                    },
+                    {
+                        name: 'T. Gumede',
+                        number: 29,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'L. Nonyane',
+                        number: 18,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'M. Mabotja',
+                        number: 5,
+                        position: ['DEF', 'LB']
+                    },
+                    {
+                        name: 'L. Nku',
+                        number: 7,
+                        position: ['FWD', 'RW']
+                    },
+                    {
+                        name: 'C. Ngema',
+                        number: 10,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'K. Otladisa',
+                        number: 11,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'L. Mohomi',
+                        number: 17,
+                        position: ['FWD', 'LW']
+                    },
+                    {
+                        name: 'L. Koapeng',
+                        number: 14,
+                        position: ['FWD', 'ST']
+                    },
+                    {
+                        name: 'R. Chivaviro',
+                        number: 8,
+                        position: ['FWD', 'ST']
+                    },
+                ]
             },
             away: {
                 name: 'Sekhukhune United',
@@ -165,7 +222,64 @@ var results = [
                     PenaltyKicks: 0,
                     YellowCards: 3,
                     RedCards: 2
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'B. Sangare',
+                        number: 30,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'N. Moobie',
+                        number: 2,
+                        position: ['DEF', 'RB']
+                    },
+                    {
+                        name: 'E. Gyimah',
+                        number: 39,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'D. Cardoso',
+                        number: 4,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'S. Ntiya-Ntiya',
+                        number: 36,
+                        position: ['DEF', 'LB']
+                    },
+                    {
+                        name: 'R. Kabwe',
+                        number: 15,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'G. Mashikinya',
+                        number: 6,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'S. Seabi',
+                        number: 18,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'S. Letsoalo',
+                        number: 21,
+                        position: ['FWD', 'LW']
+                    },
+                    {
+                        name: 'V. Mncube',
+                        number: 7,
+                        position: ['FWD', 'ST']
+                    },
+                    {
+                        name: 'E. Mokwana',
+                        number: 17,
+                        position: ['FWD', 'RW']
+                    },
+                ]
             }
         },
         fixture: {
@@ -206,7 +320,64 @@ var results = [
                     PenaltyKicks: 2,
                     YellowCards: 1,
                     RedCards: 0
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'S. Stephens',
+                        number: 17,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'D. Van Rooyen',
+                        number: 7,
+                        position: ['DEF', 'RB']
+                    },
+                    {
+                        name: 'O. Makhanya',
+                        number: 38,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'V. Sibiya',
+                        number: 5,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'F. Basadien',
+                        number: 21,
+                        position: ['DEF', 'LB']
+                    },
+                    {
+                        name: 'S. Mthethwa',
+                        number: 6,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'I. Jabar',
+                        number: 27,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'D. Titus',
+                        number: 34,
+                        position: ['FWD', 'RW']
+                    },
+                    {
+                        name: 'J. Adams',
+                        number: 23,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'J. Mendieta',
+                        number: 10,
+                        position: ['FWD', 'LW']
+                    },
+                    {
+                        name: 'I. Rayners',
+                        number: 9,
+                        position: ['FWD', 'ST']
+                    },
+                ]
             },
             away: {
                 name: 'Swallows F.C',
@@ -230,7 +401,64 @@ var results = [
                     PenaltyKicks: 0,
                     YellowCards: 0,
                     RedCards: 0
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'T. Mbanjwa',
+                        number: 31,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'N. Mngonyama',
+                        number: 24,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'S. Sibiya',
+                        number: 2,
+                        position: ['DEF', 'CB']
+                    },
+                    {
+                        name: 'Y. Sasman',
+                        number: 28,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'L. Lukhubeni',
+                        number: 32,
+                        position: ['MID', 'RWB']
+                    },
+                    {
+                        name: 'P. Mtshali',
+                        number: 7,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'T. Mthethwa',
+                        number: 6,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'P. Zulu',
+                        number: 43,
+                        position: ['MID', 'LWB']
+                    },
+                    {
+                        name: 'E. Rusike',
+                        number: 19,
+                        position: ['FWD', 'RW']
+                    },
+                    {
+                        name: 'J. Malinga',
+                        number: 26,
+                        position: ['FWD', 'ST']
+                    },
+                    {
+                        name: 'T. Macheke',
+                        number: 70,
+                        position: ['FWD', 'LW']
+                    },
+                ]
             }
         },
         fixture: {
@@ -271,7 +499,64 @@ var results = [
                     PenaltyKicks: 1,
                     YellowCards: 2,
                     RedCards: 0
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'S. Nwabili',
+                        number: 32,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'S. Kammies',
+                        number: 25,
+                        position: ['DEF', 'RB']
+                    },
+                    {
+                        name: 'Z. Mdunyelwa',
+                        number: 2,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'R. Pietersen',
+                        number: 5,
+                        position: ['DEF', 'CB']
+                    },
+                    {
+                        name: 'R. Pfumbidzai',
+                        number: 15,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'A. Ntsabo',
+                        number: 3,
+                        position: ['DEF', 'LB']
+                    },
+                    {
+                        name: 'T. Lebitso',
+                        number: 28,
+                        position: ['FWD', 'RW']
+                    },
+                    {
+                        name: 'S. Mkhize',
+                        number: 14,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'S. Luthuli',
+                        number: 36,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'R. Maarman',
+                        number: 17,
+                        position: ['FWD', 'LW']
+                    },
+                    {
+                        name: 'E. Ighodaro',
+                        number: 37,
+                        position: ['FWD', 'ST']
+                    },
+                ]
             },
             away: {
                 name: 'Golden Arrows',
@@ -295,7 +580,64 @@ var results = [
                     PenaltyKicks: 0,
                     YellowCards: 3,
                     RedCards: 0
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'S. Mbatha',
+                        number: 28,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'S. Hlatshwayo',
+                        number: 22,
+                        position: ['DEF', 'RB']
+                    },
+                    {
+                        name: 'S. Ndlovu',
+                        number: 37,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'T. Manthiyane',
+                        number: 35,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'D. Lunga',
+                        number: 3,
+                        position: ['DEF', 'LB']
+                    },
+                    {
+                        name: 'V. Ndwandwe',
+                        number: 12,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'N. Makhubela',
+                        number: 8,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'G. Khumalo',
+                        number: 4,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'P. Mmodi',
+                        number: 13,
+                        position: ['FWD', 'LW']
+                    },
+                    {
+                        name: 'N. Sibya',
+                        number: 11,
+                        position: ['FWD', 'RW']
+                    },
+                    {
+                        name: 'K. Mutizwa',
+                        number: 18,
+                        position: ['FWD', 'ST']
+                    },
+                ]
             }
         },
         fixture: {
@@ -336,7 +678,64 @@ var results = [
                     PenaltyKicks: 0,
                     YellowCards: 3,
                     RedCards: 0
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'J. Salim',
+                        number: 80,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'K. Maphathe',
+                        number: 2,
+                        position: ['DEF', 'RB']
+                    },
+                    {
+                        name: 'N. Nyauza',
+                        number: 34,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'T. Mabua',
+                        number: 35,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'S. Msani',
+                        number: 7,
+                        position: ['DEF', 'LB']
+                    },
+                    {
+                        name: 'B. Barns',
+                        number: 30,
+                        position: ['FWD', 'RW']
+                    },
+                    {
+                        name: 'L. Mhlongo',
+                        number: 21,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'T. Mtolo',
+                        number: 4,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'S. Ntsundwana',
+                        number: 45,
+                        position: ['FWD', 'LW']
+                    },
+                    {
+                        name: 'A. Mabaso',
+                        number: 6,
+                        position: ['FWD', 'ST']
+                    },
+                    {
+                        name: 'Y. Mbuthuma',
+                        number: 9,
+                        position: ['FWD', 'ST']
+                    },
+                ]
             },
             away: {
                 name: 'T.S Galaxy',
@@ -360,7 +759,64 @@ var results = [
                     PenaltyKicks: 1,
                     YellowCrds: 1,
                     RedCards: 0 
-                }
+                },
+                lineUp: [
+                    {
+                        name: 'V. Kolak',
+                        number: 32,
+                        position: ['GK', 'GK']
+                    },
+                    {
+                        name: 'M. Munyai',
+                        number: 23,
+                        position: ['DEF', 'RB']
+                    },
+                    {
+                        name: 'S. Msimango',
+                        number: 5,
+                        position: ['DEF', 'RCB']
+                    },
+                    {
+                        name: 'P. Sanoka',
+                        number: 3,
+                        position: ['DEF', 'LCB']
+                    },
+                    {
+                        name: 'T. Nyama',
+                        number: 11,
+                        position: ['DEF', 'LB']
+                    },
+                    {
+                        name: 'B. Parker',
+                        number: 17,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'M. Mbunjana',
+                        number: 8,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'Y. Medina',
+                        number: 37,
+                        position: ['FWD', 'RW']
+                    },
+                    {
+                        name: 'X. Mlambo',
+                        number: 20,
+                        position: ['MID', 'CM']
+                    },
+                    {
+                        name: 'L. Mahlangu',
+                        number: 27,
+                        position: ['FWD', 'LW']
+                    },
+                    {
+                        name: 'D. Traore',
+                        number: 9,
+                        position: ['FWD', 'ST']
+                    },
+                ]
             }
         },
         fixture: {
@@ -378,6 +834,8 @@ var results = [
 
     }
 ];
+
+
 var standings = [
     {
         teams: {
