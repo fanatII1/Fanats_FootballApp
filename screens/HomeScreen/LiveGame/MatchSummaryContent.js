@@ -151,19 +151,19 @@ const styles = StyleSheet.create({
     alignItems: 'center' 
   },
   pitchScroll: { 
-    backgroundColor: '#000', 
-    width: '100%', 
+    width: 400, 
     borderRadius: 20 
   },
   pitchScrollContainer: { 
     alignItems: 'center' 
   },
   ImageBackgroundContainer: { 
-    height: 620, 
-    width: width 
+    height: 700, 
+    width: "100%",
+    marginVertical: -15,
   },
-  imageStyle: { 
-    borderRadius: 20 
+  imageStyle: {
+    width:'100%',
   },
   layerFieldPosition: { 
     flex: 1, 

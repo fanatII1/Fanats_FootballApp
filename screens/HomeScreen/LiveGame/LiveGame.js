@@ -8,6 +8,7 @@ import { Shadow } from 'react-native-shadow-2';
 import { useRoute } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import MatchSummary from './MatchSummary';
+import { useNavigation } from '@react-navigation/native';
 
 ///nav menu headings
 const nav_items = ['Statistics', 'Lineups', 'Summary'];
@@ -15,6 +16,7 @@ const{width} = Dimensions.get('window');
 
 const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetailIndex}) => {
   const liveGameDetails = route.params.liveGame;
+  const navigation = useNavigation();
   const {fixture, teams, status} = liveGameDetails;
   const {home, away} = teams;
 
@@ -31,7 +33,7 @@ const LiveGameHeader = ({route, matchDetailIndex, matchDetailRef, setMatchDetail
           style={styles.main_stats}
         >
           <View style={styles.stats_header}>
-            <TouchableOpacity onPress={()=> setMatchDetailIndex()}>
+            <TouchableOpacity onPress={()=> navigation.navigate('HomeScreen')}>
               <Ionicons name='arrow-back-circle-outline' size={30} color='black' style={styles.backBtn}/>
             </TouchableOpacity>
             <Text style={styles.tournamentName}>{fixture.tournamentName}</Text>
