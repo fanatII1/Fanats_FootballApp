@@ -1,12 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/LoginScreen/Login';
 import Home from './navigators/Home';
+import HomeScreen from './screens/HomeScreen/HomeScreen';
 import {} from 'react-native-screens'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+
+// const Stack = createStackNavigator();
 
 const App = () => {
   // console.log(matchOfTheDay)
