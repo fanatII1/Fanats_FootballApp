@@ -291,7 +291,22 @@ var results = [
             tournamentName: 'DSTV Premiership',
             stream: '',
             bgColor: COLORS.support_primary,
-            fixtueImg: require('../assets/images/fixture_images/gallants_sekhukhune.jpg')
+            fixtueImg: require('../assets/images/fixture_images/gallants_sekhukhune.jpg'),
+            commentary: [
+                {
+                  "Min": 0,
+                  "Txt": "Game Starts"
+                },
+                
+                {
+                    "Min": 0,
+                    "Txt": "Home Team with the first card of the game"
+                },
+                {
+                    "Min": 90,
+                    "Txt": "Match ends in a draw"
+                },
+            ]
         },
         status: {
             live: game5
@@ -472,7 +487,27 @@ var results = [
             tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary,
-            fixtueImg: require('../assets/images/fixture_images/stellenbosch_swallows.jpg')
+            fixtueImg: require('../assets/images/fixture_images/stellenbosch_swallows.jpg'),
+            commentary: [
+                {
+                  "Min": 0,
+                  "Txt": "Game Starts"
+                },
+                
+                {
+                    "Min": 3,
+                    "Txt": "Stellenbosch nich in the first goal"
+                },
+                {
+                    "Min": 34,
+                    "Txt": "Banger netted in by Stellenbosch's center back"
+                },
+                {
+                    'Min': 40,
+                    'Txt': 'Swallows with the Equaliser from a corner'
+                }
+            ]
+
         },
         status: {
             live: game6
@@ -653,7 +688,19 @@ var results = [
             tournamentName: 'MTN 8',
             stream: '',
             bgColor: COLORS.support_primary,
-            fixtueImg: require('../assets/images/fixture_images/arrows_chippa.jpg')
+            fixtueImg: require('../assets/images/fixture_images/arrows_chippa.jpg'),
+            commentary: [
+                {
+                  "Min": 0,
+                  "Txt": "Game Starts"
+                },
+                
+                {
+                    "Min": 1,
+                    "Txt": "Arrows score the fastest goal in the league's history"
+                },
+            ]
+
         },
         status: {
             live: game7,
@@ -834,7 +881,27 @@ var results = [
             tournamentName: 'DSTV Premiership',
             stream: '',
             bgColor: COLORS.support_primary,
-            fixtureImg: require('../assets/images/fixture_images/richards_galaxy.webp')
+            fixtureImg: require('../assets/images/fixture_images/richards_galaxy.webp'),
+            commentary: [
+                {
+                  "Min": 0,
+                  "Txt": "Game Starts"
+                },
+                
+                {
+                    "Min": 13,
+                    "Txt": "Galaxy have missed their first 3 shots on goal"
+                },
+                {
+                    "Min": 45,
+                    "Txt": "Halftime: It's an equal game at both ends"
+                },
+                {
+                    'Min': 66,
+                    'Txt': 'Richards Bay have hit the post twice in the last 4 minutes'
+                }
+            ]
+
         },
         status: {
             live: game8
@@ -1192,14 +1259,6 @@ var standings = [
 ];
 
 
-function returnMatchOfTheDay(){
-    let chooseMatchOfTheDay = Math.floor(Math.random() * fixtures.length);
-    let matches = results;
-    matches[chooseMatchOfTheDay].status.matchOfTheDay = true;
-    return matches[chooseMatchOfTheDay]
-}
-
-const matchOfTheDay = returnMatchOfTheDay();
 // let home = standings.map((team) => team.teams.home.standings.pts());
 // let away = standings.map((team) => team.teams.home.standings.pts());
 var home = standings.map((team) => team.teams.home);
@@ -1208,4 +1267,4 @@ var combinedTeams = home.concat(away);
 var sortedStandings = combinedTeams.sort((a,b) => b.standings.pts() - a.standings.pts());
 
 
-export {fixtures, results, sortedStandings, matchOfTheDay}
+export {fixtures, results, sortedStandings}

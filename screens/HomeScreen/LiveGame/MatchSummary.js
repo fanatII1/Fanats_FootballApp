@@ -1,11 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView } from 'react-native';
-import { teams, results, news } from '../../../data/footballData';
-import { AntDesign, Entypo, EvilIcons, Ionicons } from '@expo/vector-icons';
-import { COLORS } from '../../../constants/index';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Shadow } from 'react-native-shadow-2';
-import { useRoute } from '@react-navigation/native';
+import { StyleSheet, Text, View} from 'react-native';
 import { Dimensions } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import MatchSummaryContent from './MatchSummaryContent';
@@ -14,7 +8,7 @@ import MatchSummaryContent from './MatchSummaryContent';
 const nav_items = ['Statistics', 'Lineups', 'Summary'];
 const { width } = Dimensions.get('window');
 
-const MatchSummary = ({ matchDetailIndex, teams, statsNames, statText, homeStats, awayStats, homeLineup, awayLineup }) => {
+const MatchSummary = ({ matchDetailIndex, teams, statsNames, statText, homeStats, awayStats, homeLineup, awayLineup, commentary }) => {
   const matchDetailRef = useRef(0);
   //scroll to that nav-menu screen when nav-menu item(matchDetailIndex) changes
   useEffect(() => {
@@ -42,6 +36,7 @@ const MatchSummary = ({ matchDetailIndex, teams, statsNames, statText, homeStats
               <MatchSummaryContent
                 index={index}
                 teams={teams}
+                commentary={commentary}
                 statsNames={statsNames}
                 statText={statText}
                 homeStats={homeStats}

@@ -1,5 +1,5 @@
-import { fixtures, results,sortedStandings, matchOfTheDay } from "./fixtures";
+import { fixtures, results,sortedStandings,} from "./fixtures";
 import { news } from "./news";
 import teams from "./teams";
 
-export { teams, fixtures, results, sortedStandings, matchOfTheDay, news } ;
+export { teams, fixtures, results, sortedStandings,news } ;

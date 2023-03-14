@@ -101,6 +101,7 @@ const LiveGame = () => {
   const matchDetailRef = useRef(0);
   const liveGameDetails = route.params.liveGame;
   const {fixture, teams, status} = liveGameDetails;
+  const {commentary} = fixture;
   const {home, away} = teams;
   const statsNames = [];
   const homeStats = [];
@@ -143,7 +144,7 @@ const LiveGame = () => {
                   return(
                     <MatchSummary 
                       matchDetailIndex={matchDetailIndex} 
-                      
+                      commentary={commentary}
                       teams={teams}
                       statBackground={statBackground} 
                       statsNames={statsNames} 
