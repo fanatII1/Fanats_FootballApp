@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView } from 'react-native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet, TouchableOpacity, Text, View, Image, ImageBackground, StatusBar, SafeAreaView, ScrollView } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
@@ -33,7 +33,7 @@ const MatchSummaryContent = ({ index, teams, statsNames, homeStats, awayStats, h
   } else if (index === 1) {
     return (
       <View style={styles.pitchContainter}>
-        <ScrollView contentContainerStyle={styles.pitchScrollContainer} style={styles.pitchScroll}>
+        <ScrollView contentContainerStyle={styles.pitchScrollContainer} style={styles.pitchScroll} nestedScrollEnabled={true}>
           <ImageBackground
             source={require('../../../assets/images/pitch.png')}
             resizeMode='contain'
@@ -148,14 +148,16 @@ const styles = StyleSheet.create({
   },
   pitchContainter: { 
     flex: 1, 
-    alignItems: 'center' 
+    alignItems: 'center' ,
   },
   pitchScroll: { 
-    width: 400, 
+    flex: 1,
+    width: '110%', 
     borderRadius: 20 
   },
   pitchScrollContainer: { 
-    alignItems: 'center' 
+    alignItems: 'center' ,
+    
   },
   ImageBackgroundContainer: { 
     height: 700, 
