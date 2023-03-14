@@ -9,6 +9,9 @@ import { FlatList } from 'react-native-gesture-handler';
 import { Shadow } from 'react-native-shadow-2';
 
 const HomeListFooter = () => {
+  const getItemLayout = (data, index) =>{
+    return  {length: 50, offset: 50 * index, index}
+  }
 
   return (
     <>
@@ -21,6 +24,7 @@ const HomeListFooter = () => {
         <FlatList
           data={sortedStandings}
           showsVerticalScrollIndicator={false}
+          getItemLayout={getItemLayout}
           ListHeaderComponent={()=>{
             return (
               <View style={styles.standingsHeaders}>

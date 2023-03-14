@@ -67,6 +67,9 @@ const HomeListHeader = () => {
   const getItemLayout = (data, index) =>{
     return  {length: 180, offset: 180 * index, index}
   }
+  const teamsLayout = (data, index) =>{
+    return  {length: 45, offset: 45 * index, index}
+  }
 
   return (
     <>
@@ -90,6 +93,7 @@ const HomeListHeader = () => {
           data={teams}
           horizontal
           showsHorizontalScrollIndicator={false}
+          getItemLayout={teamsLayout}
           renderItem={({item, index})=>{
             
             return (
