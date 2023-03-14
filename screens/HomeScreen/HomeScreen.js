@@ -11,7 +11,7 @@ const HomeScreen = () => {
   
   useEffect(()=>{
     //delay screen rendering to prevent lagging: maybe wait till thread is done
-    setTimeout(()=> setIsReady(true), 5)
+    setTimeout(()=> setIsReady(true), 10)
   },[])
 
   //after component is rendered, we wait for animations to finish
