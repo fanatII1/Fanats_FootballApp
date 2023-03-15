@@ -5,13 +5,13 @@ import { Shadow } from 'react-native-shadow-2';
 import { Dimensions } from 'react-native';
 import { COLORS } from '../../../constants/index';
 import { FontAwesome } from '@expo/vector-icons';
-
-const { width } = Dimensions.get('window');
+import PlayerInfoModal from './PlayerInfoModal';
 
 const MatchSummaryContent = ({ index, teams, statsNames, homeStats, awayStats, homeLineup, awayLineup, commentary }) => {
   var homeTeamColors = teams.home.color;
   var awayTeamColors = teams.away.color;
   const [modalState, setModalState] = useState(false);
+  const [modalViewHeight, setModalViewHeight] = useState('100%');
 
   if (index === 0) {
     return (
@@ -38,7 +38,10 @@ const MatchSummaryContent = ({ index, teams, statsNames, homeStats, awayStats, h
   else if (index === 1) {
     return (
     <>
-      <PlayerInformation modalState={modalState}/>
+      {/* PLAYER INFORMATION MODAL */}
+      <PlayerInfoModal modalState={modalState} setModalState={setModalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight}/>
+      
+      {/* MAIN PITCH CONTAINER */}
       <View style={styles.pitchContainter}>
         
         <ScrollView contentContainerStyle={styles.pitchScrollContainer} style={styles.pitchScroll} nestedScrollEnabled={true}>
@@ -52,19 +55,19 @@ const MatchSummaryContent = ({ index, teams, statsNames, homeStats, awayStats, h
             <View style={{ flex: 1 }}>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='GK' homeTeamColor={homeTeamColors}/> )}
+                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='GK' homeTeamColor={homeTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='DEF' homeTeamColor={homeTeamColors}/> )}
+                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='DEF' homeTeamColor={homeTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='MID' homeTeamColor={homeTeamColors}/> )}
+                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='MID' homeTeamColor={homeTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
-                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='FWD' homeTeamColor={homeTeamColors}/>)}
+                {homeLineup.map((player, index) => <HomePlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='FWD' homeTeamColor={homeTeamColors}/>)}
               </View>
             </View>
 
@@ -72,24 +75,24 @@ const MatchSummaryContent = ({ index, teams, statsNames, homeStats, awayStats, h
             <View style={{ flex: 1 }}>
 
               <View style={styles.layerFieldPosition}>
-                {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='FWD' awayTeamColor={awayTeamColors}/> )}
+                {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='FWD' awayTeamColor={awayTeamColors}/> )}
               </View>
 
               <View style={styles.layerFieldPosition}>
                 <View style={styles.layerFieldPosition}>
-                  {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='MID' awayTeamColor={awayTeamColors}/> )}
+                  {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='MID' awayTeamColor={awayTeamColors}/> )}
                 </View>
               </View>
 
               <View style={styles.layerFieldPosition}>
                 <View style={styles.layerFieldPosition}>
-                  {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='DEF' awayTeamColor={awayTeamColors}/>)}
+                  {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='DEF' awayTeamColor={awayTeamColors}/>)}
                 </View>
               </View>
 
               <View style={styles.layerFieldPosition}>
                 <View style={styles.layerFieldPosition}>
-                  {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} player={player} key={index} position='GK' awayTeamColor={awayTeamColors}/> )}
+                  {awayLineup.map((player, index) => <AwayPlayers setModalState={setModalState} modalState={modalState} modalViewHeight={modalViewHeight} setModalViewHeight={setModalViewHeight} player={player} key={index} position='GK' awayTeamColor={awayTeamColors}/> )}
                 </View>
               </View>
 
@@ -144,13 +147,17 @@ function AwayPlayers({player, index, position, awayTeamColor, setModalState}){
   }
 }
 
-function HomePlayers({player, index, position, homeTeamColor, setModalState, modalState}){
+function HomePlayers({player, index, position, homeTeamColor, setModalState, setModalViewHeight}){
   let returnPosition = position;
-  console.log(modalState)
+
+  const showModal = () =>{
+    setModalState(true)
+    setModalViewHeight('30%')
+  }
 
   if (player.position[0] === returnPosition){
   return (
-    <TouchableOpacity style={styles.playersPositionBox} key={index} onPress={()=> setModalState(true)}>
+    <TouchableOpacity style={styles.playersPositionBox} key={index} onPress={showModal}>
       <View style={[styles.player, {backgroundColor: homeTeamColor,}]}>
         <Text style={styles.playerNumber}>{player.number}</Text>
       </View>
@@ -158,32 +165,6 @@ function HomePlayers({player, index, position, homeTeamColor, setModalState, mod
     </TouchableOpacity>
   )
   }
-}
-
-function PlayerInformation({modalState}){
-  const [height, setHeight] = useState(70);
-  return(
-    <Modal
-      animationType='fade'
-      transparent={true}
-      visible={modalState}
-    //  style={{height: 1000, width: 400, backgroundColor: '#000', position: 'relative', bottom: 0, left: 0, zIndex: 3}}
-    >
-      <View 
-         style={{height: '100%', width: '100%', backgroundColor: 'transparent', position: 'relative', bottom: 0, left: 0, zIndex: 3, justifyContent: 'center'}}
-      >
-        <View style={{position: 'absolute', bottom: 0, left: 0, right: 0, width: '100%', backgroundColor: 'black', height: height, borderTopLeftRadius: 15, borderTopRightRadius: 15}}>
-          <TouchableOpacity onPress={()=> setHeight('100%')}>
-
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={()=> setHeight('100%')}>
-
-          </TouchableOpacity>
-        </View>
-      </View>
-    </Modal>
-  )
 }
 
 export default MatchSummaryContent;

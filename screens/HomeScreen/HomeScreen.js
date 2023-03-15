@@ -17,7 +17,7 @@ const HomeScreen = () => {
   //after component is rendered, we wait for animations to finish
   //when finished, set state to true, animations finished
   if(isReady === false){
-    console.log(isReady, 2, !isReady, 'a')
+    // console.log(isReady, 2, !isReady, 'a')
     return(
       <View style={{flex: 1, justifyContent: 'center'}}> 
        <ActivityIndicator size={'large'} color="red"/>
