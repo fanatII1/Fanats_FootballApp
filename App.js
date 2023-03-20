@@ -7,6 +7,7 @@ import Home from './navigators/Home';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import {} from 'react-native-screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Host, Portal } from 'react-native-portalize';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,10 +17,12 @@ const App = () => {
   // console.log(matchOfTheDay)
   return (
     <NavigationContainer>
+      <Host>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Home" component={Home}/>
       </Stack.Navigator>
+      </Host>
     </NavigationContainer>
   )
 }

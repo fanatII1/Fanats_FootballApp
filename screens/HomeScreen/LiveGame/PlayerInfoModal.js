@@ -1,46 +1,13 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView, Modal, TouchableOpacity } from 'react-native';
 import { COLORS } from '../../../constants/index';
 import { Entypo, AntDesign } from '@expo/vector-icons';
+import { Modalize } from 'react-native-modalize';
 
 
-const PlayerInfoModal = ({ modalState, setModalState, modalViewHeight, setModalViewHeight }) => {
-  const hideModal = () => {
-    setModalViewHeight(0);
-    setModalState(false);
-  };
-  
-  //make modal view full height or revert it back to 30% height
-  const fullModal = () => {
-    if(modalViewHeight === '100%'){
-      setModalViewHeight( '30%')
-    }
-    else{
-      setModalViewHeight( '100%')
-    }
-  }
-
+const PlayerInfoModal = () => {
   return (
-    <Modal
-      animationType='fade'
-      transparent={true}
-      visible={modalState}
-    >
-      <View style={styles.modalView}>
-        <View style={[styles.modalContentContainer, { height: modalViewHeight }]}>
-          {/* FUNCTIONALITY BTNS */}
-          <View style={styles.modalFunctionalityBtns}>
-            <TouchableOpacity onPress={fullModal} style={styles.modalBtn}>
-              {modalViewHeight === "30%" ? 
-               (<Entypo name="chevron-thin-up" size={20} color="black" />) :
-               (<Entypo name="chevron-thin-down" size={20} color="black" />)
-              }
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={hideModal} style={styles.modalBtn}>
-              <AntDesign name="close" size={20} color="black" />
-            </TouchableOpacity>
-          </View>
+    <>
           {/* PLAYER SUMMARY INFO */}
           <View style={styles.playerInfo}>
             {/* INFO */}
@@ -71,45 +38,16 @@ const PlayerInfoModal = ({ modalState, setModalState, modalViewHeight, setModalV
                 />
             </View>
           </View>
-        </View>
-      </View>
-    </Modal>
+    </>
   );
 };
 
 export default PlayerInfoModal;
 
 const styles = StyleSheet.create({
-    modalView: {
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'transparent',
-    },
-    modalContentContainer: { 
-        position: 'absolute', 
-        bottom: 0, 
-        left: 0, 
-        right: 0, 
-        width: '100%', 
-        backgroundColor: COLORS.tetiary_main,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-    },
-    modalFunctionalityBtns: { 
-        flexDirection: 'row',
-        height: '13%', 
-        width: '100%', 
-    },
-    modalBtn: { 
-        width: 40,
-        height: '100%',
-        flex: 1, 
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
     playerInfo: {
-      flex: 1, 
-      flexDirection: 'row'
+      height: '100%',
+      flexDirection: 'row',
     },
     summaryInfo: {
       flex:1, 
